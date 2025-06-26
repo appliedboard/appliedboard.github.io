@@ -1,69 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Connexion</title>
   <style>
     body {
-      background-color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
     }
 
     .card {
-      width: 350px;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
       text-align: center;
     }
 
     .card img {
-      max-width: 120px;
-      margin-bottom: 20px;
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 1.5rem;
     }
 
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    input {
+    input[type="text"],
+    input[type="password"] {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
     }
 
     button {
       width: 100%;
-      padding: 10px;
+      padding: 0.8rem;
       background-color: #0073e6;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
       font-weight: bold;
     }
 
     button:hover {
       background-color: #005bb5;
     }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1rem;
+        margin: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-
   <div class="card">
-    <img src="https://www.ets.org/content/dam/ets-org/brands/all-products/interior-third-applyboard-logo.jpg" alt="Logo">
-    <h2>Log In</h2>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>Log In</button>
+    <img src="https://www.ets.org/content/dam/ets-org/brands/all-products/interior-third-applyboard-logo.jpg" alt="Logo" />
+    <h2>Connexion</h2>
+    <form>
+      <input type="text" placeholder="Nom d'utilisateur" required />
+      <input type="password" placeholder="Mot de passe" required />
+      <button type="submit">Se connecter</button>
+    </form>
   </div>
-
 </body>
 </html>
