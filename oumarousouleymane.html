@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
     }
 
-    /* --- NAVBAR --- */
+    /* --- BARRE SUPÉRIEURE --- */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -20,42 +20,44 @@
       padding: 0.8rem 1rem;
     }
 
-    .navbar-title {
-      font-weight: bold;
-      font-size: 1.2rem;
+    .navbar-left i,
+    .navbar-right i {
+      font-size: 1.3rem;
+      cursor: pointer;
     }
 
-    .navbar-icons {
+    .navbar-left {
       display: flex;
       align-items: center;
+    }
+
+    .navbar-right {
+      display: flex;
       gap: 1rem;
+      align-items: center;
     }
 
-    .navbar-icons i {
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    /* --- MENU SLIDE --- */
+    /* --- SIDEBAR --- */
     .sidebar {
       position: fixed;
       top: 0;
-      right: -75%;
+      left: -75%;
       width: 75%;
       height: 100%;
-      background-color: #f4f4f4;
-      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
       padding: 2rem;
-      transition: right 0.3s ease;
-      z-index: 1000;
+      transition: left 0.3s ease;
+      z-index: 999;
     }
 
     .sidebar.open {
-      right: 0;
+      left: 0;
     }
 
-    .sidebar h2 {
-      margin-top: 0;
+    /* --- CONTENU --- */
+    main {
+      padding: 2rem;
     }
 
     /* --- FOOTER --- */
@@ -63,7 +65,6 @@
       background-color: #f0f0f0;
       padding: 2rem 1rem;
       text-align: center;
-      margin-top: 2rem;
     }
 
     .footer-top p {
@@ -102,44 +103,42 @@
     @media (min-width: 768px) {
       .sidebar {
         width: 300px;
-        right: -300px;
-      }
-
-      .sidebar.open {
-        right: 0;
+        left: -300px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRE SUPÉRIEURE -->
+  <!-- NAVBAR -->
   <div class="navbar">
-    <div class="navbar-title">AppliedBoard</div>
-    <div class="navbar-icons">
-      <i class="bell">🔔</i>
-      <i class="menu" onclick="toggleSidebar()">☰</i>
+    <div class="navbar-left">
+      <i onclick="toggleSidebar()">☰</i>
+    </div>
+    <div class="navbar-right">
+      <i>🔔</i>
+      <i>👤</i>
     </div>
   </div>
 
-  <!-- SIDEBAR (Menu slide) -->
+  <!-- SIDEBAR -->
   <div id="sidebar" class="sidebar">
     <h2>Menu</h2>
     <ul>
       <li><a href="#">Accueil</a></li>
-      <li><a href="#">Profil</a></li>
+      <li><a href="#">Mon compte</a></li>
       <li><a href="#">Paramètres</a></li>
       <li><a href="#">Déconnexion</a></li>
     </ul>
   </div>
 
   <!-- CONTENU PRINCIPAL -->
-  <main style="padding: 2rem;">
+  <main>
     <h1>Bienvenue Oumarou Souleymane</h1>
-    <p>Ceci est votre tableau de bord personnel.</p>
+    <p>Page personnalisée après connexion.</p>
   </main>
 
-  <!-- PIED DE PAGE -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-top">
       <p>© 2025 <strong>appliedboard.com</strong></p>
@@ -162,12 +161,12 @@
     </div>
   </footer>
 
-  <!-- Script -->
+  <!-- JS pour le menu -->
   <script>
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('open');
+      document.getElementById('sidebar').classList.toggle('open');
     }
   </script>
+
 </body>
 </html>
