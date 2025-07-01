@@ -10,6 +10,9 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .navbar {
@@ -86,7 +89,24 @@
     }
 
     main {
+      flex: 1;
       padding: 2rem;
+    }
+
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .footer-icons {
+      margin-top: 0.5rem;
+    }
+
+    .footer-icons img {
+      height: 30px;
+      margin: 0 0.5rem;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -118,6 +138,16 @@
     <h1>Bienvenue sur AppliedBoard</h1>
     <p>Contenu principal ici...</p>
   </main>
+
+  <footer>
+    <div>2025 &copy; AppliedBoard</div>
+    <div class="footer-icons">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Twitter" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733590.png" alt="Instagram" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" /></a>
+    </div>
+  </footer>
 
   <script>
     function toggleSidebar() {
