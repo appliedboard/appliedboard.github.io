@@ -1,117 +1,258 @@
-<h2 style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/5611/5611134.png" alt="Paiement" style="height: 40px;">
-  Mes Paiements
-</h2>
 
-<section style="margin-bottom: 2rem;">
-  <h3>Paiements effectués</h3>
-  <div class="card-container">
-    <div class="card fade-in clickable" onclick="alert('Paiement du 02/07/2025')">
-      <p><strong>Date :</strong> 02/07/2025</p>
-      <p><strong>Type de carte :</strong> VISA</p>
-      <p><strong>Nom sur la carte :</strong> Oumarou Daouda</p>
-      <p><strong>Numéro de la carte :</strong> **** **** **** 2780</p>
-      <p><strong>Montant :</strong> 100 €</p>
-      <p class="status-paid"><strong>Status :</strong> Payé</p>
-    </div>
-    <div class="card fade-in clickable" onclick="alert('Paiement du 25/06/2025')">
-      <p><strong>Date :</strong> 25/06/2025</p>
-      <p><strong>Type de carte :</strong> MasterCard</p>
-      <p><strong>Nom sur la carte :</strong> Oumarou Daouda</p>
-      <p><strong>Numéro de la carte :</strong> **** **** **** 3612</p>
-      <p><strong>Montant :</strong> 75 €</p>
-      <p class="status-paid"><strong>Status :</strong> Payé</p>
-    </div>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paiements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-<section>
-  <h3>Paiements en attente</h3>
-  <div class="card-container">
-    <div class="card pending fade-in clickable">
-      <p><strong>Date prévue :</strong> 05/07/2025</p>
-      <p><strong>Méthode :</strong> Carte bancaire</p>
-      <p><strong>Nom :</strong> Oumarou Daouda</p>
-      <p><strong>Numéro de carte :</strong> **** **** **** 8742</p>
-      <p><strong>Montant :</strong> 50 €</p>
-      <p class="status-pending"><strong>Status :</strong> En attente</p>
-      <button onclick="validerPaiement(this)">Valider</button>
-    </div>
-  </div>
-</section>
+    .card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
 
-<style>
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+    .btn:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+    }
 
-  .card {
-    background: white;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    animation: fadeIn 0.5s ease-in-out;
-    transition: transform 0.2s;
-  }
+    .btn:active {
+      transform: scale(0.98);
+    }
 
-  .card:hover {
-    transform: scale(1.02);
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
 
-  .card.clickable {
-    cursor: pointer;
-  }
+    .section {
+      margin: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-  .card.pending {
-    background: #fffaf0;
-  }
+    .section-header {
+      padding: 1rem;
+      font-weight: bold;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  .status-paid {
-    color: green;
-  }
+    .section-header.paid {
+      background-color: #0066e6;
+      color: white;
+    }
 
-  .status-pending {
-    color: orange;
-  }
+    .card {
+      background: white;
+      margin: 10px;
+      border-radius: 6px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
 
-  button {
-    background-color: #004080;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-  button:hover {
-    background-color: #002d5f;
-  }
+    .card-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 600px) {
-    section h3 {
+    .status-icon {
       font-size: 1.2rem;
     }
-    .card {
-      font-size: 0.9rem;
+
+    .status-paid {
+      color: green;
     }
-  }
-</style>
+
+    .status-pending {
+      color: gray;
+    }
+
+    .card-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card-content div {
+      flex: 1 1 150px;
+      min-width: 120px;
+    }
+
+    .card-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-actions button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-view {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-download {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-pay {
+      background-color: #f0ad4e;
+      color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="section">
+  <div class="section-header"><i class="fas fa-shopping-cart"></i> Paiements en attente</div>
+
+  <div class="card" onclick="handleCardClick(this)">
+    <div class="card-header">
+      <div class="card-header-left">
+        <i class="fas fa-clock status-icon status-pending"></i>
+        <strong>En attente</strong>
+      </div>
+    </div>
+    <div class="card-content">
+      <div><strong>Date :</strong> 12/07/2025</div>
+      <div><strong>Carte :</strong> Visa</div>
+      <div><strong>Nom :</strong> Oumarou Souleymane</div>
+      <div><strong>Numéro :</strong> **** **** **** 2780</div>
+      <div><strong>Montant :</strong> 50€</div>
+      <div><strong>App # :</strong> 8362701</div>
+      <div><strong>Institution :</strong> ASU</div>
+      <div><strong>Programme :</strong> Sciences Politiques</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-view">Voir</button>
+      <button class="btn-delete"><i class="fas fa-trash-alt"></i></button>
+      <button class="btn-pay">Payer</button>
+    </div>
+  </div>
+
+  <div class="card" onclick="handleCardClick(this)">
+    <div class="card-header">
+      <div class="card-header-left">
+        <i class="fas fa-clock status-icon status-pending"></i>
+        <strong>En attente</strong>
+      </div>
+    </div>
+    <div class="card-content">
+      <div><strong>Date :</strong> 10/07/2025</div>
+      <div><strong>Carte :</strong> MasterCard</div>
+      <div><strong>Nom :</strong> Oumarou Souleymane</div>
+      <div><strong>Numéro :</strong> **** **** **** 1234</div>
+      <div><strong>Montant :</strong> 100€</div>
+      <div><strong>App # :</strong> 9362701</div>
+      <div><strong>Institution :</strong> MIT</div>
+      <div><strong>Programme :</strong> Informatique</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-view">Voir</button>
+      <button class="btn-delete"><i class="fas fa-trash-alt"></i></button>
+      <button class="btn-pay">Payer</button>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header paid"><i class="fas fa-credit-card"></i> Paiements effectués</div>
+
+  <div class="card" onclick="handleCardClick(this)">
+    <div class="card-header">
+      <div class="card-header-left">
+        <i class="fas fa-check-circle status-icon status-paid"></i>
+        <strong>Payé</strong>
+      </div>
+    </div>
+    <div class="card-content">
+      <div><strong>Date :</strong> 05/07/2025</div>
+      <div><strong>Carte :</strong> Visa</div>
+      <div><strong>Nom :</strong> Oumarou Souleymane</div>
+      <div><strong>Numéro :</strong> **** **** **** 4321</div>
+      <div><strong>Montant :</strong> 75€</div>
+      <div><strong>App # :</strong> 7452903</div>
+      <div><strong>Institution :</strong> Harvard</div>
+      <div><strong>Programme :</strong> Droit</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-download"><i class="fas fa-download"></i></button>
+    </div>
+  </div>
+
+  <div class="card" onclick="handleCardClick(this)">
+    <div class="card-header">
+      <div class="card-header-left">
+        <i class="fas fa-check-circle status-icon status-paid"></i>
+        <strong>Payé</strong>
+      </div>
+    </div>
+    <div class="card-content">
+      <div><strong>Date :</strong> 01/07/2025</div>
+      <div><strong>Carte :</strong> MasterCard</div>
+      <div><strong>Nom :</strong> Oumarou Souleymane</div>
+      <div><strong>Numéro :</strong> **** **** **** 5678</div>
+      <div><strong>Montant :</strong> 120€</div>
+      <div><strong>App # :</strong> 6219932</div>
+      <div><strong>Institution :</strong> Oxford</div>
+      <div><strong>Programme :</strong> Médecine</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-download"><i class="fas fa-download"></i></button>
+    </div>
+  </div>
+</div>
+
 
 <script>
-  function validerPaiement(button) {
-    event.stopPropagation();
-    const card = button.parentElement;
-    card.classList.remove("pending");
-    card.querySelector(".status-pending").innerHTML = "<strong>Status :</strong> Payé";
-    card.querySelector(".status-pending").className = "status-paid";
-    button.remove();
+  function handleCardClick(card) {
+    card.style.boxShadow = '0 0 15px rgba(0, 123, 255, 0.6)';
+    setTimeout(() => {
+      card.style.boxShadow = '';
+    }, 300);
   }
 </script>
+</body>
+
+</html>
