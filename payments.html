@@ -1,5 +1,117 @@
-<h2>Mes Paiements</h2>
-    <div class='card' style='background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
-        <p><strong>Paiement 1 :</strong> 100 € - <span style='color: green;'>Validé</span></p>
-        <p><strong>Paiement 2 :</strong> 75 € - <span style='color: orange;'>En attente</span></p>
+<h2 style="display: flex; align-items: center; gap: 10px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/5611/5611134.png" alt="Paiement" style="height: 40px;">
+  Mes Paiements
+</h2>
+
+<section style="margin-bottom: 2rem;">
+  <h3>Paiements effectués</h3>
+  <div class="card-container">
+    <div class="card fade-in clickable" onclick="alert('Paiement du 02/07/2025')">
+      <p><strong>Date :</strong> 02/07/2025</p>
+      <p><strong>Type de carte :</strong> VISA</p>
+      <p><strong>Nom sur la carte :</strong> Oumarou Daouda</p>
+      <p><strong>Numéro de la carte :</strong> **** **** **** 2780</p>
+      <p><strong>Montant :</strong> 100 €</p>
+      <p class="status-paid"><strong>Status :</strong> Payé</p>
     </div>
+    <div class="card fade-in clickable" onclick="alert('Paiement du 25/06/2025')">
+      <p><strong>Date :</strong> 25/06/2025</p>
+      <p><strong>Type de carte :</strong> MasterCard</p>
+      <p><strong>Nom sur la carte :</strong> Oumarou Daouda</p>
+      <p><strong>Numéro de la carte :</strong> **** **** **** 3612</p>
+      <p><strong>Montant :</strong> 75 €</p>
+      <p class="status-paid"><strong>Status :</strong> Payé</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Paiements en attente</h3>
+  <div class="card-container">
+    <div class="card pending fade-in clickable">
+      <p><strong>Date prévue :</strong> 05/07/2025</p>
+      <p><strong>Méthode :</strong> Carte bancaire</p>
+      <p><strong>Nom :</strong> Oumarou Daouda</p>
+      <p><strong>Numéro de carte :</strong> **** **** **** 8742</p>
+      <p><strong>Montant :</strong> 50 €</p>
+      <p class="status-pending"><strong>Status :</strong> En attente</p>
+      <button onclick="validerPaiement(this)">Valider</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  .card.clickable {
+    cursor: pointer;
+  }
+
+  .card.pending {
+    background: #fffaf0;
+  }
+
+  .status-paid {
+    color: green;
+  }
+
+  .status-pending {
+    color: orange;
+  }
+
+  button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #002d5f;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    section h3 {
+      font-size: 1.2rem;
+    }
+    .card {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  function validerPaiement(button) {
+    event.stopPropagation();
+    const card = button.parentElement;
+    card.classList.remove("pending");
+    card.querySelector(".status-pending").innerHTML = "<strong>Status :</strong> Payé";
+    card.querySelector(".status-pending").className = "status-paid";
+    button.remove();
+  }
+</script>
