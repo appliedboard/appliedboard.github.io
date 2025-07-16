@@ -1,1 +1,476 @@
-<h2>Mon Profil</h2><p>Voici les informations de votre profil.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mon Profil</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { margin: 0; background-color: #f8f9fb; }
+    .layout { display: flex; max-width: 1200px; margin: auto; padding: 2rem; gap: 2rem; }
+    .sidebar {
+      width: 250px;
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar li {
+      padding: 0.5rem 0;
+      cursor: pointer;
+      color: #0d6efd;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar li:hover {
+      text-decoration: underline;
+    }
+    .content {
+      flex: 1;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card h2 { margin-top: 0; font-size: 1.2rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .save-btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .status-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .status-complete { background-color: #28a745; }
+    .status-incomplete { background-color: #ffc107; }
+    .status-not-started { background-color: #6c757d; }
+    .profile-header {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .profile-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .profile-header p {
+      margin: 0.5rem 0 0;
+      opacity: 0.9;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0d6efd;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #0d6efd;
+      margin-bottom: 1.5rem;
+    }
+    .section-title i {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <div class="sidebar">
+    <h2><i class="fas fa-user-circle"></i> My Profile</h2>
+    <ul>
+      <li onclick="showSection('general')"><i class="fas fa-check-circle"></i> General Information</li>
+      <li onclick="showSection('education')"><i class="fas fa-check-circle"></i> Education History</li>
+      <li onclick="showSection('tests')"><i class="fas fa-arrow-circle-right"></i> Test Scores</li>
+      <li onclick="showSection('visa')"><i class="fas fa-check-circle"></i> Visa &amp; Study Permit</li>
+    </ul>
+  </div>
+  <div class="content" id="contentArea">
+    <!-- Contenu injecté dynamiquement -->
+    <div class="profile-header">
+      <h1>Profil Étudiant</h1>
+      <p>Oumaroudaoudasouleymane Oumaroudaoudasouleymane</p>
+    </div>
+    <div class="card">
+      <div class="section-title">
+        <i class="fas fa-info-circle"></i>
+        <h2>Bienvenue sur votre profil étudiant</h2>
+      </div>
+      <p>Ce tableau de bord vous permet de gérer toutes les informations relatives à votre parcours académique.</p>
+      <p>Sélectionnez une section dans le menu de gauche pour commencer à mettre à jour vos informations.</p>
+      <div class="grid" style="margin-top: 2rem;">
+        <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+          <h3><i class="fas fa-graduation-cap"></i> Éducation</h3>
+          <p>Niveau: Licence</p>
+          <p>Moyenne: 16/20</p>
+        </div>
+        <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+          <h3><i class="fas fa-globe-americas"></i> Langues</h3>
+          <p>Langue maternelle: Français</p>
+          <p>Tests: En préparation</p>
+        </div>
+        <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+          <h3><i class="fas fa-passport"></i> Visa</h3>
+          <p>Statut: En cours de préparation</p>
+          <p>Pas de refus antérieur</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sections = {
+    visa: `
+      <div class="profile-header">
+        <h1>Visa & Permis d'Études</h1>
+        <p>Informations sur votre statut d'immigration</p>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-passport"></i>
+          <h2>Visa & Permis d'Études</h2>
+        </div>
+        <div id="visaPermit">
+          <div style="margin-top: 1.5rem;">
+            <label style="font-weight: bold; display: block; margin-bottom: 0.5rem;">
+              Avez-vous déjà été refusé un visa pour le Canada, les États-Unis, le Royaume-Uni, la Nouvelle-Zélande, l'Australie ou l'Irlande ? *
+            </label>
+            <div class="radio-group" style="gap: 2rem;">
+              <label><input type="radio" name="refusedVisa" /> Oui</label>
+              <label><input type="radio" name="refusedVisa" checked /> Non</label>
+            </div>
+          </div>
+          <div style="margin-top: 2rem;">
+            <label style="font-weight: bold;">Quels permis d'études ou visas valides possédez-vous ?</label>
+            <div class="radio-group" style="margin-top: 0.5rem; flex-wrap: wrap; gap: 1rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" /> Canada
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" /> États-Unis
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" /> Royaume-Uni
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" /> Australie
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" checked /> Aucun
+              </label>
+            </div>
+          </div>
+          <div style="margin-top: 2rem;">
+            <label style="font-weight: bold;">
+              Veuillez fournir plus d'informations sur votre permis d'études/visa actuel et tout refus antérieur, le cas échéant
+            </label>
+            <textarea placeholder="Décrivez votre situation..." style="width: 100%; padding: 0.8rem; height: 100px; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;"></textarea>
+          </div>
+          <div class="clearfix">
+            <button class="save-btn" style="background: #198754;">
+              <i class="fas fa-save"></i> Enregistrer & Continuer
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <h2>Documents Requis</h2>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem;">
+            <div>
+              <i class="fas fa-file-pdf" style="color: #e74c3c; margin-right: 10px;"></i>
+              Passeport valide
+            </div>
+            <span style="color: #198754; font-weight: bold;"><i class="fas fa-check-circle"></i> Téléchargé</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem;">
+            <div>
+              <i class="fas fa-file-pdf" style="color: #e74c3c; margin-right: 10px;"></i>
+              Preuves financières
+            </div>
+            <span style="color: #6c757d; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> En attente</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem;">
+            <div>
+              <i class="fas fa-file-pdf" style="color: #e74c3c; margin-right: 10px;"></i>
+              Lettre d'acceptation
+            </div>
+            <span style="color: #6c757d; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> En attente</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+            <div>
+              <i class="fas fa-file-image" style="color: #3498db; margin-right: 10px;"></i>
+              Photos d'identité
+            </div>
+            <span style="color: #198754; font-weight: bold;"><i class="fas fa-check-circle"></i> Téléchargé</span>
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button style="padding: 0.7rem 1.5rem; background: #0d6efd; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            <i class="fas fa-upload"></i> Télécharger des documents
+          </button>
+        </div>
+      </div>
+    `,
+
+    general: `
+      <div class="profile-header">
+        <h1>Informations Personnelles</h1>
+        <p>Mettez à jour vos données personnelles</p>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-user"></i>
+          <h2>Informations Personnelles</h2>
+        </div>
+        <div class="grid">
+          <div><label>Prénom *</label><input type="text" value="Oumaroudaoudasouleymane" disabled /></div>
+          <div><label>Deuxième prénom</label><input type="text" value="" disabled /></div>
+          <div><label>Nom *</label><input type="text" value="Oumaroudaoudasouleymane" disabled /></div>
+          <div><label>Date de naissance *</label><input type="date" value="1995-05-12" disabled /></div>
+          <div><label>Langue maternelle *</label><input type="text" value="Français" disabled /></div>
+          <div><label>Pays de citoyenneté *</label><select disabled><option selected>Niger</option></select></div>
+          <div><label>Numéro de passeport *</label><input type="text" value="13pc50948" disabled /></div>
+          <div><label>Date d'expiration du passeport</label><input type="date" value="2030-06-01" disabled /></div>
+        </div>
+        <div class="grid" style="margin-top: 1rem;">
+          <div>
+            <label>État civil *</label>
+            <div class="radio-group">
+              <label><input type="radio" checked disabled /> Célibataire</label>
+              <label><input type="radio" disabled /> Marié(e)</label>
+            </div>
+          </div>
+          <div>
+            <label>Genre *</label>
+            <div class="radio-group">
+              <label><input type="radio" checked disabled /> Masculin</label>
+              <label><input type="radio" disabled /> Féminin</label>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-home"></i>
+          <h2>Adresse</h2>
+        </div>
+        <div class="grid">
+          <div><label>Adresse *</label><input type="text" value="Boukoki4" disabled /></div>
+          <div><label>Ville *</label><input type="text" value="Niamey" disabled /></div>
+          <div><label>Pays *</label><select disabled><option selected>Niger</option></select></div>
+          <div><label>Région/État *</label><select disabled><option selected>Tillabéri Region</option></select></div>
+          <div><label>Code postal</label><input type="text" value="8002" disabled /></div>
+          <div><label>Email</label><input type="email" value="oumaroudaoudasouleymane@yahoo.com" disabled /></div>
+          <div><label>Téléphone *</label><input type="text" value="+227 92 11 11 78" disabled /></div>
+        </div>
+        <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+      </div>
+    `,
+    
+    education: `
+      <div class="profile-header">
+        <h1>Parcours Académique</h1>
+        <p>Votre historique éducatif</p>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-graduation-cap"></i>
+          <h2>Résumé Éducatif</h2>
+        </div>
+        <div id="eduSummary">
+          <div class="grid">
+            <div>
+              <label>Pays d'éducation *</label>
+              <select><option selected>Niger</option></select>
+            </div>
+            <div>
+              <label>Niveau d'éducation le plus élevé *</label>
+              <select><option selected>Licence (3 ans)</option></select>
+            </div>
+            <div>
+              <label>Système de notation *</label>
+              <select><option selected>Échelle: 0-20</option></select>
+            </div>
+            <div>
+              <label>Moyenne générale *</label>
+              <input type="text" value="16" />
+            </div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <label>J'ai obtenu mon diplôme de cet établissement *</label>
+            <div class="radio-group">
+              <label><input type="radio" checked name="graduated" /> Oui</label>
+              <label><input type="radio" name="graduated" /> Non</label>
+            </div>
+          </div>
+          <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-school"></i>
+          <h2>Établissements Scolaires</h2>
+        </div>
+        <div style="border-top: 1px solid #eee; margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; cursor: pointer;" onclick="toggleSection('school1')">
+            <div>
+              <i class="fas fa-university" style="color: #0d6efd; margin-right: 10px;"></i>
+              LICENCE (3 ANS)
+            </div>
+            <i id="icon-school1" class="fas fa-chevron-down"></i>
+          </div>
+          <div id="school1" style="display: none; padding: 1rem; background: #f8f9fa; border-radius: 0 0 8px 8px;">
+            <p style="margin: 0;">Détails sur la licence...</p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; margin-top: 0.5rem; background: #f8f9fa; border-radius: 8px; cursor: pointer;" onclick="toggleSection('school2')">
+            <div>
+              <i class="fas fa-school" style="color: #0d6efd; margin-right: 10px;"></i>
+              LYCÉE
+            </div>
+            <i id="icon-school2" class="fas fa-chevron-down"></i>
+          </div>
+          <div id="school2" style="display: none; padding: 1rem; background: #f8f9fa; border-radius: 0 0 8px 8px;">
+            <p style="margin: 0;">Détails sur le lycée...</p>
+          </div>
+        </div>
+        <button style="background: none; border: none; color: #0d6efd; cursor: pointer; padding: 0; font-weight: bold; margin-top: 1rem; display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-plus-circle"></i> Ajouter un établissement scolaire
+        </button>
+        <div class="clearfix"><button class="save-btn">Continuer</button></div>
+      </div>
+    `,
+    
+    tests: `
+      <div class="profile-header">
+        <h1>Résultats de Tests</h1>
+        <p>Vos scores aux examens linguistiques</p>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-language"></i>
+          <h2>Scores aux Tests d'Anglais</h2>
+        </div>
+        <div id="testEnglish">
+          <div class="radio-group" style="flex-direction: column; align-items: flex-start; margin-top: 1rem; gap: 0.8rem;">
+            <label><input type="radio" name="english" /> TOEFL</label>
+            <label><input type="radio" name="english" /> IELTS</label>
+            <label><input type="radio" name="english" /> PTE</label>
+            <label><input type="radio" name="english" /> Duolingo</label>
+            <label><input type="radio" name="english" /> Je n'ai pas de test</label>
+            <label><input type="radio" name="english" checked /> Pas encore, mais je le ferai à l'avenir</label>
+            <small>Si vous n'avez pas encore passé de test, ApplyBoard peut vous aider à le faire à l'avenir.</small>
+          </div>
+          <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-chart-line"></i>
+          <h2>Scores GRE ou GMAT</h2>
+        </div>
+        <div id="testGreGmat">
+          <div class="radio-group" style="margin: 1rem 0; gap: 1.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" /> J'ai des scores GMAT
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" checked /> J'ai des scores GRE
+            </label>
+          </div>
+          <div class="grid">
+            <div><label>Score Verbal *</label><input type="text" value="110" /></div>
+            <div><label>Rang Verbal *</label><input type="text" value="100" /></div>
+            <div><label>Score Quantitatif *</label><input type="text" value="110" /></div>
+            <div><label>Rang Quantitatif *</label><input type="text" value="100" /></div>
+            <div><label>Score AWA *</label><input type="text" value="4.0" /></div>
+            <div><label>Rang AWA *</label><input type="text" value="8" /></div>
+            <div><label>Date de l'examen *</label><input type="date" /></div>
+          </div>
+          <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        </div>
+      </div>
+    `
+  };
+
+  function showSection(section) {
+    document.getElementById('contentArea').innerHTML = sections[section];
+  }
+
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    const icon = document.getElementById('icon-' + id);
+    if (section.style.display === "none" || section.style.display === "") {
+      section.style.display = "block";
+      icon.classList.remove('fa-chevron-down');
+      icon.classList.add('fa-chevron-up');
+    } else {
+      section.style.display = "none";
+      icon.classList.remove('fa-chevron-up');
+      icon.classList.add('fa-chevron-down');
+    }
+  }
+
+  // Load default section
+  showSection('general');
+</script>
+</body>
+</html>
