@@ -401,10 +401,8 @@
             <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
           </div>
           <div class="application-card-actions">
-<a href="cvoumaroudaoudasouleymane.pdf" download class="app-btn btn-download">
-  <i class="fas fa-download"></i> Télécharger
-</a>
-         </div>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button>
+          </div>
         </div>
 
         <div class="application-card" onclick="handleCardClick(this)">
@@ -554,19 +552,5 @@
   </footer>
 
   <script src="script.js"></script>
-
-
-<script>
-// Fonction pour télécharger le CV
-function downloadCV() {
-  const link = document.createElement('a');
-  link.href = 'cv-oumaroudaoudasouleymane.pdf';
-  link.download = 'cv-oumaroudaoudasouleymane.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  alert('Le téléchargement de votre CV a commencé.');
-}
-</script>
 </body>
 </html>
