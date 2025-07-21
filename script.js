@@ -11,6 +11,21 @@
       document.querySelectorAll('#main-content > div').forEach(page => {
         page.style.display = 'none';
       });
+         // Fonction pour télécharger le CV
+    function downloadCV() {
+      // Créer un lien de téléchargement
+      const link = document.createElement('a');
+      link.href = 'cvoumaroudaoudasouleymane.pdf';
+      link.download = 'cvoumaroudaoudasouleymane.pdf';
+      
+      // Simuler un clic sur le lien
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Afficher un message de confirmation
+      alert('Le téléchargement de votre CV a commencé.');
+    }
       
       // Afficher la page demandée
       document.getElementById(`${pageId}-page`).style.display = 'block';
