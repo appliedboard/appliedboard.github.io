@@ -3,141 +3,555 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connexion</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .card {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .card img.logo {
-      max-width: 180px;
-      height: auto;
-      margin-bottom: 1.5rem;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      box-sizing: border-box;
-    }
-
-    button {
-      width: 100%;
-      padding: 0.9rem;
-      background-color: #0073e6;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background-color: #005bb5;
-    }
-
-    .error {
-      color: red;
-      margin-top: 1rem;
-      display: none;
-    }
-
-    .social-icons {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .social-icons a img {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.2s ease;
-    }
-
-    .social-icons a img:hover {
-      transform: scale(1.2);
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 1rem;
-        margin: 1rem;
-      }
-
-      input[type="text"],
-      input[type="password"],
-      button {
-        font-size: 0.95rem;
-        padding: 0.8rem;
-      }
-
-      .social-icons a img {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  </style>
+  <title>AppliedBoard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <img class="logo" src="https://www.ets.org/content/dam/ets-org/brands/all-products/interior-third-applyboard-logo.jpg" alt="Logo" />
-    <h2>Connexion</h2>
-    <form onsubmit="return verifierConnexion(event)">
-      <input type="text" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Mot de passe" required />
-      <button type="submit">Se connecter</button>
-      <div class="error" id="error">Identifiants incorrects</div>
-    </form>
 
-    <div class="social-icons">
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" title="Connexion via Google" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" title="Connexion via Facebook" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X" title="Connexion via X (Twitter)" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" title="Connexion via LinkedIn" /></a>
+  <div class="navbar">
+    <div class="navbar-left">
+      <i class="fas fa-bars" onclick="toggleSidebar()"></i>
+    </div>
+    <div class="navbar-right">
+      <div style="position: relative;">
+        <i class="fas fa-bell" onclick="showPage('notifications')"></i>
+        <div class="notification-badge">3</div>
+      </div>
+      <i class="fas fa-user-circle" onclick="showPage('profile')"></i>
     </div>
   </div>
 
-  <script>
-    function verifierConnexion(event) {
-      event.preventDefault(); // Empêche l'envoi du formulaire
+  <div class="sidebar" id="sidebar">
+    <h2><i class="fas fa-graduation-cap"></i> AppliedBoard</h2>
+    <ul>
+      <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Accueil</a></li>
+      <li><a href="#" onclick="showPage('profile')"><i class="fas fa-user"></i> Mon Profil</a></li>
+      <li><a href="#" onclick="showPage('acceptations')"><i class="fas fa-check-circle"></i> Mes Acceptations</a></li>
+      <li><a href="#" onclick="showPage('demandes')"><i class="fas fa-envelope-open-text"></i> Mes Demandes</a></li>
+      <li><a href="#" onclick="showPage('payments')"><i class="fas fa-credit-card"></i> Mes Paiements</a></li>
+      <li><a href="#" onclick="showPage('notifications')"><i class="fas fa-bell"></i> Notifications</a></li>
+    </ul>
+  </div>
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-      if (
-        email === "oumaroudaoudasouleymane@yahoo.com" &&
-        password === "USA.2025.usa"
-      ) {
-        window.location.href = "oumarousouleymane.html";
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
-    }
-  </script>
+  <main id="main-content">
+    <!-- Page d'accueil par défaut -->
+    <div id="home-page">
+      <div class="welcome-section">
+        <h1>Bienvenue sur AppliedBoard</h1>
+        <p>Votre plateforme complète pour gérer vos demandes d'admission dans les universités à travers le monde. Suivez votre parcours, gérez vos documents et maximisez vos chances de réussite.</p>
+      </div>
+      
+      <div class="features">
+        <div class="feature-card" onclick="showPage('profile')">
+          <i class="fas fa-user-graduate"></i>
+          <h3>Gestion de Profil</h3>
+          <p>Créez et gérez votre profil académique complet pour faciliter vos candidatures.</p>
+        </div>
+        
+        <div class="feature-card" onclick="showPage('demandes')">
+          <i class="fas fa-university"></i>
+          <h3>Suivi des Demandes</h3>
+          <p>Suivez l'état de vos candidatures en temps réel et recevez des notifications.</p>
+        </div>
+        
+        <div class="feature-card" onclick="showProfileSection('documents')">
+          <i class="fas fa-file-contract"></i>
+          <h3>Gestion des Documents</h3>
+          <p>Téléchargez et organisez tous vos documents académiques en un seul endroit.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section Profil (cachée par défaut) -->
+    <div id="profile-page" style="display: none;">
+      <div class="layout">
+        <div class="profile-sidebar">
+          <h2><i class="fas fa-user-circle"></i> Mon Profil</h2>
+          <ul>
+            <li id="menu-general" onclick="showProfileSection('general')" class="active">
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Informations Générales
+            </li>
+            <li id="menu-education" onclick="showProfileSection('education')">
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Historique Éducatif
+            </li>
+            <li id="menu-documents" onclick="showProfileSection('documents')">
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Documents
+            </li>
+            <li id="menu-tests" onclick="showProfileSection('tests')">
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Résultats de Tests
+            </li>
+            <li id="menu-visa" onclick="showProfileSection('visa')">
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Visa & Permis d'Études
+            </li>
+          </ul>
+        </div>
+        
+        <div class="profile-content" id="profile-content">
+          <div class="profile-header">
+            <h1>Profil Étudiant</h1>
+            <p>Oumaroudaoudasouleymane Oumaroudaoudasouleymane</p>
+          </div>
+          
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-info-circle"></i>
+              <h2>Bienvenue sur votre profil étudiant</h2>
+            </div>
+            <p>Ce tableau de bord vous permet de gérer toutes les informations relatives à votre parcours académique.</p>
+            <p>Sélectionnez une section dans le menu de gauche pour commencer à mettre à jour vos informations.</p>
+            
+            <div class="grid" style="margin-top: 2rem;">
+              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+                <h3><i class="fas fa-graduation-cap"></i> Éducation</h3>
+                <p>Niveau: Licence</p>
+                <p>Moyenne: 16/20</p>
+              </div>
+              
+              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+                <h3><i class="fas fa-globe-americas"></i> Langues</h3>
+                <p>Langue maternelle: Français</p>
+                <p>Tests: En préparation</p>
+              </div>
+              
+              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
+                <h3><i class="fas fa-passport"></i> Visa</h3>
+                <p>Statut: En cours de préparation</p>
+                <p>Pas de refus antérieur</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Page Mes Acceptations -->
+    <div id="acceptations-page" style="display: none;">
+      <div class="welcome-section">
+        <h1>Mes Acceptations</h1>
+        <p>Gérez vos offres d'admission de Houston Community College.</p>
+      </div>
+      
+      <div class="application-section">
+        <div class="section-header accepted">
+          <i class="fas fa-check-circle"></i> Acceptations confirmées
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Accepté - Confirmé</strong>
+            </div>
+            <div>Date: 15/07/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Date de début:</strong> Août 2025</div>
+            <div><strong>Type de programme:</strong> Associate of Applied Science</div>
+            <div><strong>Crédits requis:</strong> 60 crédits</div>
+            <div><strong>Statut:</strong> Inscription confirmée</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre d'acceptation</button>
+            <button class="app-btn btn-respond"><i class="fas fa-reply"></i> Répondre</button>
+          </div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Accepté - En attente de réponse</strong>
+            </div>
+            <div>Date: 10/07/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> International Business</div>
+            <div><strong>Date de début:</strong> Août 2025</div>
+            <div><strong>Type de programme:</strong> Associate of Applied Science</div>
+            <div><strong>Crédits requis:</strong> 60 crédits</div>
+            <div><strong>Statut:</strong> En attente de votre réponse</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre d'acceptation</button>
+            <button class="app-btn btn-respond"><i class="fas fa-reply"></i> Répondre</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="application-section">
+        <div class="section-header">
+          <i class="fas fa-hourglass-half"></i> Acceptations en attente de confirmation
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-clock status-icon status-pending"></i>
+              <strong>En attente de votre décision</strong>
+            </div>
+            <div>Date: 05/07/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Date de début:</strong> Janvier 2026</div>
+            <div><strong>Type de programme:</strong> Certificat</div>
+            <div><strong>Délai de réponse:</strong> 30/09/2025</div>
+            <div><strong>Statut:</strong> En attente de votre réponse</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre d'acceptation</button>
+            <button class="app-btn btn-respond"><i class="fas fa-reply"></i> Répondre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Page Mes Demandes -->
+    <div id="demandes-page" style="display: none;">
+      <div class="welcome-section">
+        <h1>Mes Demandes</h1>
+        <p>Suivez l'état de vos candidatures à Houston Community College.</p>
+      </div>
+      
+      <div class="application-section">
+        <div class="section-header">
+          <i class="fas fa-hourglass-start"></i> Demandes en cours
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-sync-alt status-icon status-pending"></i>
+              <strong>En traitement</strong>
+            </div>
+            <div>Date de soumission: 01/07/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> International Business</div>
+            <div><strong>Date limite:</strong> 15/08/2025</div>
+            <div><strong>Statut:</strong> Documents en revue</div>
+            <div><strong>Date de décision estimée:</strong> 25/08/2025</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> Voir les détails</button>
+          </div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-exclamation-circle status-icon status-pending"></i>
+              <strong>Documents requis</strong>
+            </div>
+            <div>Date de soumission: 20/06/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Date limite:</strong> 01/09/2025</div>
+            <div><strong>Statut:</strong> Documents supplémentaires requis</div>
+            <div><strong>Date de décision estimée:</strong> 10/09/2025</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-upload" onclick="showProfileSection('documents')"><i class="fas fa-upload"></i> Téléverser les documents manquants</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="application-section">
+        <div class="section-header accepted">
+          <i class="fas fa-check-circle"></i> Demandes complétées
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Accepté</strong>
+            </div>
+            <div>Date de soumission: 15/05/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Date de décision:</strong> 10/07/2025</div>
+            <div><strong>Statut:</strong> Accepté</div>
+            <div><strong>Date de début:</strong> Août 2025</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre d'acceptation</button>
+          </div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-times-circle status-icon status-rejected"></i>
+              <strong>Refusé</strong>
+            </div>
+            <div>Date de soumission: 10/05/2025</div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Établissement:</strong> Houston Community College</div>
+            <div><strong>Programme:</strong> International Business</div>
+            <div><strong>Date de décision:</strong> 05/07/2025</div>
+            <div><strong>Statut:</strong> Refusé</div>
+            <div><strong>Raison:</strong> Documents incomplets</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre de décision</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Page des Paiements -->
+    <div id="payments-page" style="display: none;">
+      <div class="welcome-section">
+        <h1>Mes Paiements</h1>
+        <p>Historique et gestion de vos transactions pour Houston Community College</p>
+      </div>
+      
+      <div class="application-section">
+        <div class="section-header">
+          <i class="fas fa-shopping-cart"></i> Paiements en attente
+        </div>
+
+        <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-clock status-icon status-pending"></i>
+              <strong>En attente</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 12/07/2025</div>
+            <div><strong>Carte :</strong> Visa</div>
+            <div><strong>Nom :</strong> Oumarou Souleymane</div>
+            <div><strong>Numéro :</strong> **** **** **** 2780</div>
+            <div><strong>Montant :</strong> 50$</div>
+            <div><strong>App # :</strong> HCC-8362701</div>
+            <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
+            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+            <button class="app-btn btn-respond"><i class="fas fa-money-bill-wave"></i> Payer</button>
+          </div>
+        </div>
+
+        <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-clock status-icon status-pending"></i>
+              <strong>En attente</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 10/07/2025</div>
+            <div><strong>Carte :</strong> MasterCard</div>
+            <div><strong>Nom :</strong> Oumarou Souleymane</div>
+            <div><strong>Numéro :</strong> **** **** **** 1234</div>
+            <div><strong>Montant :</strong> 75$</div>
+            <div><strong>App # :</strong> HCC-9362701</div>
+            <div><strong>Programme :</strong> International Business</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
+            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+            <button class="app-btn btn-respond"><i class="fas fa-money-bill-wave"></i> Payer</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="application-section">
+        <div class="section-header accepted">
+          <i class="fas fa-credit-card"></i> Paiements effectués
+        </div>
+
+        <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Payé</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 05/07/2025</div>
+            <div><strong>Carte :</strong> Visa</div>
+            <div><strong>Nom :</strong> Oumarou Souleymane</div>
+            <div><strong>Numéro :</strong> **** **** **** 4321</div>
+            <div><strong>Montant :</strong> 100$</div>
+            <div><strong>App # :</strong> HCC-7452903</div>
+            <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button>
+          </div>
+        </div>
+
+        <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Payé</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 01/07/2025</div>
+            <div><strong>Carte :</strong> MasterCard</div>
+            <div><strong>Nom :</strong> Oumarou Souleymane</div>
+            <div><strong>Numéro :</strong> **** **** **** 5678</div>
+            <div><strong>Montant :</strong> 120$</div>
+            <div><strong>App # :</strong> HCC-6219932</div>
+            <div><strong>Programme :</strong> International Business</div>
+          </div>
+          <div class="application-card-actions">
+            <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Page des Notifications -->
+    <div id="notifications-page" style="display: none;">
+      <div class="welcome-section">
+        <h1>Notifications</h1>
+        <p>Restez informé des mises à jour importantes concernant Houston Community College.</p>
+      </div>
+      
+      <div class="application-section">
+        <div class="notification-card unread">
+          <div class="notification-time">Aujourd'hui, 09:45</div>
+          <h3>Nouvelle acceptation !</h3>
+          <p>Félicitations ! Vous avez été accepté dans le programme Logistics and Global Supply Chain Management à Houston Community College.</p>
+          <div class="notification-actions">
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+          </div>
+        </div>
+        
+        <div class="notification-card unread">
+          <div class="notification-time">Hier, 16:30</div>
+          <h3>Document manquant</h3>
+          <p>Votre candidature à Houston Community College pour International Business nécessite un relevé de notes officiel.</p>
+          <div class="notification-actions">
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+          </div>
+        </div>
+        
+        <div class="notification-card">
+          <div class="notification-time">17/07/2025, 11:20</div>
+          <h3>Paiement confirmé</h3>
+          <p>Votre paiement de 100$ pour Houston Community College (Logistics) a été confirmé avec succès.</p>
+          <div class="notification-actions">
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+          </div>
+        </div>
+        
+        <div class="notification-card">
+          <div class="notification-time">15/07/2025, 14:15</div>
+          <h3>Rappel de délai</h3>
+          <p>Il vous reste 15 jours pour répondre à l'offre d'admission de Houston Community College pour International Business.</p>
+          <div class="notification-actions">
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+          </div>
+        </div>
+        
+        <div class="notification-card">
+          <div class="notification-time">12/07/2025, 10:05</div>
+          <h3>Document téléchargé</h3>
+          <p>Votre lettre de motivation pour Houston Community College a été téléchargée avec succès.</p>
+          <div class="notification-actions">
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page des détails du programme -->
+    <div id="program-details-page" style="display: none;">
+      <div class="program-details">
+        <div class="program-header">
+          <h1 id="program-details-title">Détails du Programme</h1>
+          <p id="program-details-college">Houston Community College</p>
+        </div>
+
+        <div class="program-content">
+          <div class="program-section">
+            <h2><i class="fas fa-info-circle"></i> Description</h2>
+            <div id="program-description">
+              <!-- Contenu dynamique -->
+            </div>
+          </div>
+
+          <div class="program-section program-requirements">
+            <h2><i class="fas fa-list-check"></i> Exigences</h2>
+            <div id="program-requirements">
+              <!-- Contenu dynamique -->
+            </div>
+          </div>
+
+          <div class="program-section">
+            <h2><i class="fas fa-calendar-alt"></i> Dates importantes</h2>
+            <div id="program-dates">
+              <!-- Contenu dynamique -->
+            </div>
+          </div>
+
+          <div class="program-section">
+            <h2><i class="fas fa-graduation-cap"></i> Perspectives</h2>
+            <div id="program-careers">
+              <!-- Contenu dynamique -->
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="back-btn" onclick="showPage('demandes')"><i class="fas fa-arrow-left"></i> Retour aux demandes</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div>&copy; 2025 <strong>appliedboard.com</strong> - Plateforme de gestion académique</div>
+    <div class="footer-icons">
+      <a href="#"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+      <a href="#">Accessibilité</a>
+      <a href="#">À propos</a>
+      <a href="#">Blog</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
