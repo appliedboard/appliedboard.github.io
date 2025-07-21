@@ -96,8 +96,8 @@ const profileSections = {
           <textarea placeholder="Décrivez votre situation..." style="width: 100%; padding: 0.8rem; height: 100px; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;"></textarea>
         </div>
         <div class="clearfix">
-          <button class="save-btn" style="background: #198754;">
-            <i class="fas fa-save"></i> Enregistrer & Continuer
+          <button class="save-btn" style="background: #138756;">
+            <i class="fas fa-save"></i> Modifier
           </button>
         </div>
       </div>
@@ -140,7 +140,7 @@ const profileSections = {
           </div>
         </div>
       </div>
-      <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+      <div class="clearfix"><button class="save-btn"> Modifier </button></div>
     </div>
 
     <div class="card">
@@ -157,7 +157,7 @@ const profileSections = {
         <div><label>Email</label><input type="email" value="oumaroudaoudasouleymane@yahoo.com" disabled /></div>
         <div><label>Téléphone *</label><input type="text" value="+227 92 11 11 78" disabled /></div>
       </div>
-      <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+      <div class="clearfix"><button class="save-btn">Modifier</button></div>
     </div>
   `,
   
@@ -197,7 +197,7 @@ const profileSections = {
             <label><input type="radio" name="graduated" /> Non</label>
           </div>
         </div>
-        <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        <div class="clearfix"><button class="save-btn"> Modifier </button></div>
       </div>
     </div>
 
@@ -255,7 +255,7 @@ const profileSections = {
           <label><input type="radio" name="english" checked /> Pas encore, mais je le ferai à l'avenir</label>
           <small>Si vous n'avez pas encore passé de test, AppliedBoard peut vous aider à le faire à l'avenir.</small>
         </div>
-        <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        <div class="clearfix"><button class="save-btn"> Modifier </button></div>
       </div>
     </div>
 
@@ -282,7 +282,7 @@ const profileSections = {
           <div><label>Rang AWA *</label><input type="text" value="8" /></div>
           <div><label>Date de l'examen *</label><input type="date" /></div>
         </div>
-        <div class="clearfix"><button class="save-btn">Enregistrer & Continuer</button></div>
+        <div class="clearfix"><button class="save-btn"> Modifier </button></div>
       </div>
     </div>
   `,
