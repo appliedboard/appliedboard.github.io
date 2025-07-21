@@ -35,8 +35,8 @@ function showPage(pageId) {
 function downloadCV() {
   // Créer un lien de téléchargement
   const link = document.createElement('a');
-  link.href = 'cv-oumaroudaoudasouleymane.pdf';
-  link.download = 'cv-oumaroudaoudasouleymane.pdf';
+  link.href = 'cvoumaroudaoudasouleymane.pdf';
+  link.download = 'cvoumaroudaoudasouleymane.pdf';
   
   // Simuler un clic sur le lien
   document.body.appendChild(link);
