@@ -91,39 +91,7 @@
         </div>
         
         <div class="profile-content" id="profile-content">
-          <div class="profile-header">
-            <h1>Profil Étudiant</h1>
-            <p>Oumaroudaoudasouleymane Oumaroudaoudasouleymane</p>
-          </div>
-          
-          <div class="card">
-            <div class="section-title">
-              <i class="fas fa-info-circle"></i>
-              <h2>Bienvenue sur votre profil étudiant</h2>
-            </div>
-            <p>Ce tableau de bord vous permet de gérer toutes les informations relatives à votre parcours académique.</p>
-            <p>Sélectionnez une section dans le menu de gauche pour commencer à mettre à jour vos informations.</p>
-            
-            <div class="grid" style="margin-top: 2rem;">
-              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
-                <h3><i class="fas fa-graduation-cap"></i> Éducation</h3>
-                <p>Niveau: Licence</p>
-                <p>Moyenne: 16/20</p>
-              </div>
-              
-              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
-                <h3><i class="fas fa-globe-americas"></i> Langues</h3>
-                <p>Langue maternelle: Français</p>
-                <p>Tests: En préparation</p>
-              </div>
-              
-              <div style="background: #e7f1ff; padding: 1rem; border-radius: 8px;">
-                <h3><i class="fas fa-passport"></i> Visa</h3>
-                <p>Statut: En cours de préparation</p>
-                <p>Pas de refus antérieur</p>
-              </div>
-            </div>
-          </div>
+          <!-- Contenu dynamique chargé par JavaScript -->
         </div>
       </div>
     </div>
@@ -351,7 +319,9 @@
           <div class="application-card-actions">
             <button class="app-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
             <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
-            <button class="app-btn btn-respond"><i class="fas fa-money-bill-wave"></i> Payer</button>
+            <button class="app-btn btn-respond" onclick="showPaymentPage('Logistics and Global Supply Chain Management', 50)">
+              <i class="fas fa-money-bill-wave"></i> Payer
+            </button>
           </div>
         </div>
 
@@ -374,7 +344,9 @@
           <div class="application-card-actions">
             <button class="app-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
             <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
-            <button class="app-btn btn-respond"><i class="fas fa-money-bill-wave"></i> Payer</button>
+            <button class="app-btn btn-respond" onclick="showPaymentPage('International Business', 75)">
+              <i class="fas fa-money-bill-wave"></i> Payer
+            </button>
           </div>
         </div>
       </div>
