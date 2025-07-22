@@ -869,3 +869,148 @@ input:focus, select:focus {
   font-style: italic;
   margin-top: 0.5rem;
 }
+
+/* Ajouter à la fin du fichier style.css */
+.payment-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.payment-amount {
+  font-size: 1.2rem;
+  color: #004080;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.payment-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.payment-card h2 {
+  color: #004080;
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #004080;
+}
+
+.payment-form {
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  border-color: #004080;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.payment-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #004080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-btn:hover {
+  background: #002d5a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.payment-security {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.payment-success {
+  text-align: center;
+  padding: 2rem;
+}
+
+.payment-success i {
+  font-size: 4rem;
+  color: #28a745;
+  margin-bottom: 1.5rem;
+}
+
+.payment-success h2 {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.payment-success p {
+  margin-bottom: 2rem;
+}
+
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.payment-method {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-method:hover {
+  border-color: #004080;
+  background: #f0f7ff;
+}
+
+.payment-method.active {
+  border-color: #004080;
+  background: #004080;
+  color: white;
+}
