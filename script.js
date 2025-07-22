@@ -425,3 +425,175 @@ document.addEventListener('DOMContentLoaded', function() {
   showPage('home');
   updateNotificationBadge();
 });
+
+// Ajouter ces fonctions au fichier script.js
+
+// Fonction pour afficher la page de paiement
+function showPaymentPage(programName, amount) {
+  // Créer le contenu HTML de la page de paiement
+  const paymentHTML = `
+    <div id="payment-page">
+      <div class="payment-container">
+        <h1>Paiement pour ${programName}</h1>
+        <p class="payment-amount">Montant à payer: ${amount} €</p>
+        
+        <div class="payment-card">
+          <h2><i class="fas fa-credit-card"></i> Informations de paiement</h2>
+          
+          <div class="payment-form">
+            <div class="form-group">
+              <label for="card-number">Numéro de carte *</label>
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            
+            <div class="form-group">
+              <label for="card-name">Nom sur la carte *</label>
+              <input type="text" id="card-name" placeholder="Nom Prénom">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiry-date">Date d'expiration *</label>
+                <input type="text" id="expiry-date" placeholder="MM/AA" maxlength="5">
+              </div>
+              
+              <div class="form-group">
+                <label for="cvv">CVV *</label>
+                <input type="text" id="cvv" placeholder="123" maxlength="3">
+              </div>
+            </div>
+            
+            <div class="payment-methods">
+              <div class="payment-method active">
+                <i class="fab fa-cc-visa"></i> Visa
+              </div>
+              <div class="payment-method">
+                <i class="fab fa-cc-mastercard"></i> Mastercard
+              </div>
+              <div class="payment-method">
+                <i class="fas fa-university"></i> Virement
+              </div>
+            </div>
+            
+            <button class="payment-btn" onclick="processPayment('${programName}', ${amount})">
+              <i class="fas fa-lock"></i> Payer ${amount} €
+            </button>
+            
+            <p class="payment-security">
+              <i class="fas fa-lock"></i> Transactions sécurisées avec chiffrement SSL
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Créer un nouvel élément div pour la page de paiement
+  const paymentPage = document.createElement('div');
+  paymentPage.id = 'payment-page';
+  paymentPage.innerHTML = paymentHTML;
+  
+  // Ajouter la page au contenu principal
+  const mainContent = document.getElementById('main-content');
+  mainContent.appendChild(paymentPage);
+  
+  // Masquer toutes les autres pages et afficher la page de paiement
+  showPage('payment');
+  
+  // Ajouter les gestionnaires d'événements pour les méthodes de paiement
+  document.querySelectorAll('.payment-method').forEach(method => {
+    method.addEventListener('click', function() {
+      document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  
+  // Formater automatiquement le numéro de carte
+  document.getElementById('card-number').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s+/g, '');
+    if (value.length > 0) {
+      value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+    }
+    e.target.value = value;
+  });
+  
+  // Formater automatiquement la date d'expiration
+  document.getElementById('expiry-date').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D+/g, '');
+    if (value.length > 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+  });
+}
+
+// Fonction pour traiter le paiement
+function processPayment(programName, amount) {
+  const cardNumber = document.getElementById('card-number').value;
+  const cardName = document.getElementById('card-name').value;
+  const expiryDate = document.getElementById('expiry-date').value;
+  const cvv = document.getElementById('cvv').value;
+  
+  // Validation simple
+  if (!cardNumber || !cardName || !expiryDate || !cvv) {
+    alert('Veuillez remplir tous les champs obligatoires');
+    return;
+  }
+  
+  if (cardNumber.replace(/\s/g, '').length !== 16) {
+    alert('Veuillez entrer un numéro de carte valide (16 chiffres)');
+    return;
+  }
+  
+  if (cvv.length !== 3) {
+    alert('Veuillez entrer un code CVV valide (3 chiffres)');
+    return;
+  }
+  
+  // Simuler un traitement de paiement
+  setTimeout(() => {
+    showPaymentSuccess(programName, amount);
+  }, 1500);
+}
+
+// Fonction pour afficher la confirmation de paiement
+function showPaymentSuccess(programName, amount) {
+  document.getElementById('payment-page').innerHTML = `
+    <div class="payment-container">
+      <div class="payment-success">
+        <i class="fas fa-check-circle"></i>
+        <h2>Paiement réussi !</h2>
+        <p>Votre paiement de ${amount} € pour le programme ${programName} a été traité avec succès.</p>
+        <p>Une confirmation a été envoyée à votre adresse email.</p>
+        <button class="payment-btn" onclick="showPage('payments')">
+          <i class="fas fa-arrow-left"></i> Retour aux paiements
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// Mettre à jour la fonction showPage pour inclure la page de paiement
+function showPage(pageId) {
+  document.querySelectorAll('#main-content > div').forEach(page => {
+    page.style.display = 'none';
+  });
+  
+  if (pageId === 'payment') {
+    document.getElementById('payment-page').style.display = 'block';
+  } else {
+    document.getElementById(`${pageId}-page`).style.display = 'block';
+  }
+  
+  if (window.innerWidth < 768) {
+    toggleSidebar();
+  }
+  
+  if (pageId === 'profile') {
+    showProfileSection('general');
+  }
+  
+  if (pageId === 'notifications') {
+    updateNotificationBadge();
+  }
+}
