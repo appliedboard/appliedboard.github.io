@@ -1014,3 +1014,68 @@ input:focus, select:focus {
   background: #004080;
   color: white;
 }
+/* Ajoutez ces styles à la fin de votre fichier CSS */
+.payment-loading {
+  text-align: center;
+  padding: 2rem;
+}
+
+.payment-loading i {
+  font-size: 3rem;
+  color: #004080;
+  margin-bottom: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.verification-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.verification-card h2 {
+  color: #004080;
+  margin-top: 0;
+}
+
+.verification-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.verification-inputs input {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.verification-inputs input:focus {
+  border-color: #004080;
+  outline: none;
+}
+
+.verification-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.resend-code {
+  color: #004080;
+  cursor: pointer;
+  text-decoration: underline;
+}
