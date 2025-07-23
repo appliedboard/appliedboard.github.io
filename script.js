@@ -562,9 +562,13 @@ function showPaymentSuccess(programName, amount) {
     <div class="payment-container">
       <div class="payment-success">
         <i class="fas fa-check-circle"></i>
-        <h2>Paiement réussi !</h2>
+        <h2>Paiement confirmé !</h2>
         <p>Votre paiement de ${amount} € pour le programme ${programName} a été traité avec succès.</p>
         <p>Une confirmation a été envoyée à votre adresse email.</p>
+        <div class="payment-details">
+          <p><strong>Référence:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
+          <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+        </div>
         <button class="payment-btn" onclick="showPage('payments')">
           <i class="fas fa-arrow-left"></i> Retour aux paiements
         </button>
