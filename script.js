@@ -203,33 +203,67 @@ education: `
        <div class="education-item" onclick="toggleEducationDetails('bachelor')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">1-YEAR MASTER DEGREE</div>
+          <div class="education-title">1-YEAR LICENCE</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
         </div>
         <div class="education-details" id="details-bachelor" style="display: none;">
           <div class="detail-row">
             <label>Établissement:</label>
-            <span>IPHEC</span>
+            <span>ESCOM</span>
           </div>
           <div class="detail-row">
             <label>Adresse:</label>
-            <span>Any Koira, 2288 Niamey</span>
+            <span>QT Abidjan, 2437 Niamey</span>
           </div>
           <div class="detail-row">
             <label>Période:</label>
-            <span>Septembre 2019 - Juin 2020</span>
+            <span>Septembre 2018 - Juin 2019</span>
           </div>
           <div class="detail-row">
             <label>Moyenne:</label>
-            <span>11.98/20</span>
+            <span>12.87/20</span>
           </div>
           <div class="detail-row">
             <label>Spécialisation:</label>
-            <span>LOGISTIQUE-TRANSPORT</span>
+            <span>MANAGEMENT LOGISTIQUE-TRANSPORT</span>
           </div>
           <div class="detail-row">
             <label>Diplôme obtenu:</label>
             <span>Oui</span>
+          </div>
+        </div>
+      </div>
+
+         <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+        <div class="education-header">
+          <i class="fas fa-circle icon-red"></i>
+          <div class="education-title">2-YEAR LICENCE</div>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
+        </div>
+        <div class="education-details" id="details-bachelor" style="display: none;">
+          <div class="detail-row">
+            <label>Établissement:</label>
+            <span>ECCAM</span>
+          </div>
+          <div class="detail-row">
+            <label>Adresse:</label>
+            <span>BOUKOKI 2, Niamey</span>
+          </div>
+          <div class="detail-row">
+            <label>Période:</label>
+            <span>Septembre 2018 - Juin 2019</span>
+          </div>
+          <div class="detail-row">
+            <label>Moyenne:</label>
+            <span>12/20</span>
+          </div>
+          <div class="detail-row">
+            <label>Spécialisation:</label>
+            <span>TRANSPORT-LOGISTIQUE</span>
+          </div>
+          <div class="detail-row">
+            <label>Diplôme obtenu:</label>
+            <span>BTS - 2018</span>
           </div>
         </div>
       </div>
