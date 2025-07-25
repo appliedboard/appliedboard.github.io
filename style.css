@@ -1079,3 +1079,121 @@ input:focus, select:focus {
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* Styles pour la timeline éducative */
+.education-timeline {
+  margin-top: 2rem;
+  position: relative;
+  padding-left: 30px;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 9px;
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.education-item {
+  margin-bottom: 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateX(5px);
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  position: relative;
+}
+
+.education-title {
+  flex-grow: 1;
+  font-weight: 600;
+  color: #004080;
+  margin-left: 10px;
+}
+
+.icon-red {
+  color: #e74c3c;
+  font-size: 0.8rem;
+}
+
+.toggle-icon {
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.education-details {
+  padding: 1rem;
+  background: white;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row label {
+  font-weight: 500;
+  min-width: 120px;
+  color: #555;
+}
+
+.detail-row span {
+  flex-grow: 1;
+}
+
+/* Animation pour l'ouverture des détails */
+@keyframes fadeIn {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 500px; }
+}
+
+/* Style pour le mode édition */
+.education-item.editable .education-title,
+.education-item.editable .detail-row span {
+  background: #fffde7;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Bouton pour ajouter une nouvelle formation */
+.add-education-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border: 1px dashed #004080;
+  border-radius: 8px;
+  color: #004080;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.add-education-btn:hover {
+  background: #e6f0ff;
+  border-style: solid;
+}
