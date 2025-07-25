@@ -48,9 +48,36 @@ function toggleEditMode() {
   if (isEditMode) {
     sectionContent.classList.add('editable-section');
     activateEditMode();
+    
+    // Activer l'édition pour l'historique éducatif
+    document.querySelectorAll('.education-item').forEach(item => {
+      item.classList.add('editable');
+    });
+    
+    // Ajouter le bouton "Ajouter une formation" si en mode édition
+    const addButton = document.createElement('button');
+    addButton.className = 'add-education-btn';
+    addButton.innerHTML = '<i class="fas fa-plus"></i> Ajouter une formation';
+    addButton.onclick = addNewEducation;
+    
+    const timeline = document.querySelector('.education-timeline');
+    if (timeline && !document.querySelector('.add-education-btn')) {
+      timeline.appendChild(addButton);
+    }
   } else {
     sectionContent.classList.remove('editable-section');
     deactivateEditMode();
+    
+    // Désactiver l'édition pour l'historique éducatif
+    document.querySelectorAll('.education-item').forEach(item => {
+      item.classList.remove('editable');
+    });
+    
+    // Supprimer le bouton "Ajouter une formation"
+    const addButton = document.querySelector('.add-education-btn');
+    if (addButton) {
+      addButton.remove();
+    }
   }
 }
 
