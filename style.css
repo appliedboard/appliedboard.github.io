@@ -1192,6 +1192,106 @@ input:focus, select:focus {
   margin-top: 1rem;
   transition: all 0.3s ease;
 }
+/* Styles pour la liste des documents */
+.document-list {
+  margin-top: 1rem;
+}
+
+.document-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.document-item:hover {
+  background: #e9ecef;
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.document-info input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.document-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-uploaded {
+  color: #28a745;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-pending {
+  color: #dc3545;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Modal pour l'upload */
+.upload-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 1001;
+  width: 90%;
+  max-width: 500px;
+}
+
+.upload-modal h3 {
+  margin-top: 0;
+  color: #004080;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.5rem;
+}
+
+.upload-modal-content {
+  margin-top: 1.5rem;
+}
+
+.upload-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: none;
+}
+
+.upload-modal-overlay.active {
+  display: block;
+}
 
 .add-education-btn:hover {
   background: #e6f0ff;
