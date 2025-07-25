@@ -169,29 +169,63 @@ education: `
       <div class="education-item" onclick="toggleEducationDetails('bachelor')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">3-YEAR BACHELORS DEGREE</div>
+          <div class="education-title">1-YEAR MASTER DEGREE</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
         </div>
         <div class="education-details" id="details-bachelor" style="display: none;">
           <div class="detail-row">
             <label>Établissement:</label>
-            <span>Université de Paris</span>
+            <span>IPHEC</span>
           </div>
           <div class="detail-row">
             <label>Adresse:</label>
-            <span>12 Rue de l'Université, 75005 Paris</span>
+            <span>Any Koira, 2288 Niamey</span>
           </div>
           <div class="detail-row">
             <label>Période:</label>
-            <span>Septembre 2018 - Juin 2021</span>
+            <span>Septembre 2019 - Juin 2020</span>
           </div>
           <div class="detail-row">
             <label>Moyenne:</label>
-            <span>15.2/20</span>
+            <span>11.98/20</span>
           </div>
           <div class="detail-row">
             <label>Spécialisation:</label>
-            <span>Informatique</span>
+            <span>LOGISTIQUE-TRANSPORT</span>
+          </div>
+          <div class="detail-row">
+            <label>Diplôme obtenu:</label>
+            <span>Oui</span>
+          </div>
+        </div>
+      </div>
+
+       <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+        <div class="education-header">
+          <i class="fas fa-circle icon-red"></i>
+          <div class="education-title">1-YEAR MASTER DEGREE</div>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
+        </div>
+        <div class="education-details" id="details-bachelor" style="display: none;">
+          <div class="detail-row">
+            <label>Établissement:</label>
+            <span>IPHEC</span>
+          </div>
+          <div class="detail-row">
+            <label>Adresse:</label>
+            <span>Any Koira, 2288 Niamey</span>
+          </div>
+          <div class="detail-row">
+            <label>Période:</label>
+            <span>Septembre 2019 - Juin 2020</span>
+          </div>
+          <div class="detail-row">
+            <label>Moyenne:</label>
+            <span>11.98/20</span>
+          </div>
+          <div class="detail-row">
+            <label>Spécialisation:</label>
+            <span>LOGISTIQUE-TRANSPORT</span>
           </div>
           <div class="detail-row">
             <label>Diplôme obtenu:</label>
@@ -210,19 +244,19 @@ education: `
         <div class="education-details" id="details-highschool" style="display: none;">
           <div class="detail-row">
             <label>Établissement:</label>
-            <span>Lycée Louis-le-Grand</span>
+            <span>Lycée SONI ALI BER</span>
           </div>
           <div class="detail-row">
             <label>Adresse:</label>
-            <span>123 Rue Saint-Jacques, 75005 Paris</span>
+            <span>COMPLEXE, 28501 Niamey</span>
           </div>
           <div class="detail-row">
             <label>Période:</label>
-            <span>Septembre 2015 - Juin 2018</span>
+            <span>Septembre 2013 - Juillet 2016</span>
           </div>
           <div class="detail-row">
             <label>Moyenne au bac:</label>
-            <span>16.5/20</span>
+            <span>14.22/20</span>
           </div>
           <div class="detail-row">
             <label>Filière:</label>
