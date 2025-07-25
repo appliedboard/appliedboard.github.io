@@ -103,12 +103,19 @@ const profileSections = {
         <div><label>Prénom *</label><input type="text" value="Oumaroudaoudasouleymane" class="disabled-field" readonly /></div>
         <div><label>Nom *</label><input type="text" value="Oumaroudaoudasouleymane" class="disabled-field" readonly /></div>
         <div><label>Date de naissance *</label><input type="date" value="1995-05-12" class="disabled-field" readonly /></div>
-        <div><label>Langue maternelle *</label><input type="text" value="Français" class="disabled-field" readonly /></div>
-        <div class="grid">
-  <!-- Champs existants... -->
-  <div><label>Nationalité *</label><input type="text" value="Française" class="disabled-field" readonly /></div>
-  <div><label>Adresse email *</label><input type="email" value="email@exemple.com" class="disabled-field" readonly /></div>
-</div>
+        <div><label>Langue maternelle *</label><input type="text" value="Français" class="disabled-field" readonly /></div>       
+        <div><label>Nationalité *</label><input type="text" value="Nigerienne" class="disabled-field" readonly /></div>
+        <div><label>PassePort *</label><input type="text" value="13pc24123" class="disabled-field" readonly /></div>
+        <div><label>PassePort Expire Date *</label><input type="text" value="13pc24123" class="disabled-field" readonly /></div>
+        <div><label>Statut Matrimonial *</label><input type="text" value="Française" class="disabled-field" readonly /></div>
+        <div><label>Telephone *</label><input type="tel" value="227 91111178" class="disabled-field" readonly /></div>
+        <div><label>Adresse email *</label><input type="email" value="email@exemple.com" class="disabled-field" readonly /></div>
+        <div><label>Ville *</label><input type="text" value="Niamey" class="disabled-field" readonly /></div>
+        <div><label>Adress *</label><input type="text" value="BOUKOKI 4" class="disabled-field" readonly /></div>
+        <div><label>Code Postal *</label><input type="text" value="*8002" class="disabled-field" readonly /></div>
+        <div><label>Pays *</label><input type="text" value="NIGER" class="disabled-field" readonly /></div>
+
+
       </div>
       <div class="clearfix">
         <button class="save-btn btn-modify-disabled">
