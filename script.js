@@ -779,3 +779,19 @@ function completePayment(programName, amount) {
   // Simuler la vérification du code
   showPaymentSuccess(programName, amount);
 }
+
+// Fonction pour afficher/masquer les détails de l'éducation
+function toggleEducationDetails(id) {
+  const details = document.getElementById(`details-${id}`);
+  const icon = document.getElementById(`toggle-${id}`);
+  
+  if (details.style.display === "none" || details.style.display === "") {
+    details.style.display = "block";
+    icon.classList.remove('fa-chevron-down');
+    icon.classList.add('fa-chevron-up');
+  } else {
+    details.style.display = "none";
+    icon.classList.remove('fa-chevron-up');
+    icon.classList.add('fa-chevron-down');
+  }
+}
