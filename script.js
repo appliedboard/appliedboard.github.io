@@ -245,32 +245,84 @@ education: `
   </div>
 `,
   
-  documents: `
-    <div class="profile-header">
-      <h1>Documents</h1>
-      <p>Gérez vos documents requis</p>
+documents: `
+  <div class="profile-header">
+    <h1>Documents</h1>
+    <p>Gérez vos documents requis</p>
+  </div>
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-file-alt"></i>
+      <h2>Documents Requis</h2>
     </div>
-    <div class="card">
-      <div class="section-title">
-        <i class="fas fa-file-alt"></i>
-        <h2>Documents Requis</h2>
-      </div>
-      <div style="margin-top: 1rem;">
+    
+    <div class="document-list">
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="passport" disabled checked>
+          <label for="passport">Passeport valide</label>
+        </div>
         <div class="document-status">
-          <div>
-            <i class="fas fa-file-pdf document-status-icon" style="color: #e74c3c;"></i>
-            Passeport valide
-          </div>
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
-            <button class="app-btn btn-download" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; margin-left: 10px;" onclick="downloadCV()">
-              <i class="fas fa-download"></i> Télécharger
-            </button>
           </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('passport')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+      
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="financial" disabled>
+          <label for="financial">Preuves financières</label>
+        </div>
+        <div class="document-status">
+          <span class="status-pending">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('financial')">
+            <i class="fas fa-upload"></i> Téléverser
+          </button>
+        </div>
+      </div>
+      
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="acceptance" disabled>
+          <label for="acceptance">Lettre d'acceptation</label>
+        </div>
+        <div class="document-status">
+          <span class="status-pending">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('acceptance')">
+            <i class="fas fa-upload"></i> Téléverser
+          </button>
+        </div>
+      </div>
+      
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="photos" disabled checked>
+          <label for="photos">Photos d'identité</label>
+        </div>
+        <div class="document-status">
+          <span class="status-uploaded">
+            <i class="fas fa-check-circle"></i> Téléchargé
+          </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('photos')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
         </div>
       </div>
     </div>
-  `,
+    
+    <button class="upload-btn" onclick="showUploadModal()">
+      <i class="fas fa-plus"></i> Ajouter des documents
+    </button>
+  </div>
+`,
   
   visa: `
     <div class="profile-header">
@@ -821,4 +873,18 @@ function toggleEducationDetails(id) {
     icon.classList.remove('fa-chevron-up');
     icon.classList.add('fa-chevron-down');
   }
+}
+function downloadDocument(type) {
+  alert('Téléchargement du ' + type + ' en cours...');
+  // Implémentez la logique réelle ici
+}
+
+function uploadDocument(type) {
+  alert('Téléversement du ' + type + ' en cours...');
+  // Implémentez la logique réelle ici
+}
+
+function showUploadModal() {
+  alert('Ouverture de la fenêtre pour ajouter des documents');
+  // Implémentez la modal réelle ici
 }
