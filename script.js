@@ -125,36 +125,98 @@ const profileSections = {
     </div>
   `,
   
-  education: `
-    <div class="profile-header">
-      <h1>Parcours Académique</h1>
-      <p>Historique éducatif en lecture seule</p>
+education: `
+  <div class="profile-header">
+    <h1>Parcours Académique</h1>
+    <p>Historique de vos formations et diplômes</p>
+  </div>
+  
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-graduation-cap"></i>
+      <h2>Historique Éducatif</h2>
     </div>
-    <div class="card">
-      <div class="section-title">
-        <i class="fas fa-graduation-cap"></i>
-        <h2>Résumé Éducatif</h2>
-      </div>
-      <div class="grid">
-        <div>
-          <label>Niveau d'éducation *</label>
-          <select class="disabled-field" disabled>
-            <option selected>Licence (3 ans)</option>
-          </select>
+    
+    <div class="education-timeline">
+      <!-- Diplôme de Licence -->
+      <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+        <div class="education-header">
+          <i class="fas fa-circle icon-red"></i>
+          <div class="education-title">3-YEAR BACHELORS DEGREE</div>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
         </div>
-        <div>
-          <label>Moyenne générale *</label>
-          <input type="text" value="16" class="disabled-field" readonly />
+        <div class="education-details" id="details-bachelor" style="display: none;">
+          <div class="detail-row">
+            <label>Établissement:</label>
+            <span>Université de Paris</span>
+          </div>
+          <div class="detail-row">
+            <label>Adresse:</label>
+            <span>12 Rue de l'Université, 75005 Paris</span>
+          </div>
+          <div class="detail-row">
+            <label>Période:</label>
+            <span>Septembre 2018 - Juin 2021</span>
+          </div>
+          <div class="detail-row">
+            <label>Moyenne:</label>
+            <span>15.2/20</span>
+          </div>
+          <div class="detail-row">
+            <label>Spécialisation:</label>
+            <span>Informatique</span>
+          </div>
+          <div class="detail-row">
+            <label>Diplôme obtenu:</label>
+            <span>Oui</span>
+          </div>
         </div>
       </div>
-      <div class="clearfix">
-        <button class="save-btn btn-modify-disabled">
-          <i class="fas fa-edit"></i> Modifier
-        </button>
+      
+      <!-- Lycée -->
+      <div class="education-item" onclick="toggleEducationDetails('highschool')">
+        <div class="education-header">
+          <i class="fas fa-circle icon-red"></i>
+          <div class="education-title">GRADE 12 / HIGH SCHOOL</div>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-highschool"></i>
+        </div>
+        <div class="education-details" id="details-highschool" style="display: none;">
+          <div class="detail-row">
+            <label>Établissement:</label>
+            <span>Lycée Louis-le-Grand</span>
+          </div>
+          <div class="detail-row">
+            <label>Adresse:</label>
+            <span>123 Rue Saint-Jacques, 75005 Paris</span>
+          </div>
+          <div class="detail-row">
+            <label>Période:</label>
+            <span>Septembre 2015 - Juin 2018</span>
+          </div>
+          <div class="detail-row">
+            <label>Moyenne au bac:</label>
+            <span>16.5/20</span>
+          </div>
+          <div class="detail-row">
+            <label>Filière:</label>
+            <span>Scientifique</span>
+          </div>
+          <div class="detail-row">
+            <label>Mention:</label>
+            <span>Bien</span>
+          </div>
+        </div>
       </div>
-      <p class="not-editable-message">Cliquez sur "Modifier" pour mettre à jour votre parcours</p>
     </div>
-  `,
+    
+    <div class="clearfix">
+      <button class="save-btn btn-modify-disabled">
+        <i class="fas fa-edit"></i> Modifier
+      </button>
+    </div>
+    <p class="not-editable-message">Cliquez sur "Modifier" pour mettre à jour votre parcours</p>
+  </div>
+`,
   
   documents: `
     <div class="profile-header">
