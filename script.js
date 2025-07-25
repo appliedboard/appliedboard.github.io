@@ -780,3 +780,137 @@ function completePayment(programName, amount) {
   // Simuler la vérification du code
   showPaymentSuccess(programName, amount);
 }
+// Gestion des documents
+function handleFileSelection(files) {
+  if (files.length > 0) {
+    // Ici vous devriez normalement envoyer les fichiers au serveur
+    // Pour l'exemple, nous allons juste simuler le téléversement
+    Array.from(files).forEach(file => {
+      if (file.size > 5 * 1024 * 1024) {
+        alert(`Le fichier ${file.name} dépasse la taille maximale de 5MB`);
+        return;
+      }
+      
+      addDocumentToUI({
+        name: file.name,
+        size: formatFileSize(file.size),
+        type: getFileType(file.name),
+        date: new Date().toLocaleDateString(),
+        status: 'uploaded'
+      });
+    });
+  }
+}
+
+function addDocumentToUI(document) {
+  const documentList = document.getElementById('documentList');
+  const fileIcon = getFileIcon(document.type);
+  const fileSize = document.size ? `(${document.size})` : '';
+  
+  const docElement = document.createElement('div');
+  docElement.className = `document-status ${document.status === 'pending' ? 'pending' : ''}`;
+  docElement.innerHTML = `
+    <div>
+      <i class="fas ${fileIcon} document-status-icon" style="color: ${getFileColor(document.type)};"></i>
+      ${document.name}
+      <span class="file-size">${fileSize}</span>
+    </div>
+    <span class="status-${document.status === 'pending' ? 'pending' : 'uploaded'}">
+      <i class="fas ${document.status === 'pending' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+      ${document.status === 'pending' ? 'Requis' : `Téléchargé le ${document.date}`}
+      ${document.status === 'pending' ? `
+        <button class="app-btn btn-upload" onclick="showUploadModal('${document.name}')">
+          <i class="fas fa-upload"></i> Téléverser
+        </button>
+      ` : `
+        <button class="app-btn btn-download" onclick="downloadDocument('${document.name}')">
+          <i class="fas fa-download"></i> Télécharger
+        </button>
+        <button class="app-btn btn-delete" onclick="deleteDocument('${document.name}')">
+          <i class="fas fa-trash-alt"></i> Supprimer
+        </button>
+      `}
+    </span>
+  `;
+  
+  documentList.appendChild(docElement);
+}
+
+// Fonctions utilitaires pour les documents
+function getFileType(filename) {
+  const extension = filename.split('.').pop().toLowerCase();
+  if (['pdf'].includes(extension)) return 'pdf';
+  if (['doc', 'docx'].includes(extension)) return 'word';
+  if (['xls', 'xlsx'].includes(extension)) return 'excel';
+  if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) return 'image';
+  return 'file';
+}
+
+function getFileIcon(fileType) {
+  const icons = {
+    pdf: 'fa-file-pdf',
+    word: 'fa-file-word',
+    excel: 'fa-file-excel',
+    image: 'fa-file-image'
+  };
+  return icons[fileType] || 'fa-file';
+}
+
+function getFileColor(fileType) {
+  const colors = {
+    pdf: '#e74c3c',
+    word: '#2b579a',
+    excel: '#217346',
+    image: '#e67e22'
+  };
+  return colors[fileType] || '#7f8c8d';
+}
+
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
+}
+
+// Fonctions pour la modal d'upload
+function showUploadModal(documentName) {
+  const modal = document.getElementById('uploadModal');
+  document.getElementById('modalTitle').textContent = `Téléverser ${documentName}`;
+  modal.style.display = 'block';
+}
+
+function closeUploadModal() {
+  document.getElementById('uploadModal').style.display = 'none';
+}
+
+function uploadSelectedFile() {
+  const fileInput = document.getElementById('modalFileInput');
+  if (fileInput.files.length > 0) {
+    handleFileSelection(fileInput.files);
+    closeUploadModal();
+  } else {
+    alert('Veuillez sélectionner un fichier');
+  }
+}
+
+// Fonctions de gestion des documents
+function downloadDocument(filename) {
+  alert(`Téléchargement du fichier ${filename} simulé`);
+  // En production, vous feriez une requête au serveur pour télécharger le fichier
+}
+
+function deleteDocument(filename) {
+  if (confirm(`Êtes-vous sûr de vouloir supprimer ${filename} ?`)) {
+    alert(`Suppression du fichier ${filename} simulée`);
+    // En production, vous feriez une requête au serveur pour supprimer le fichier
+    // Puis vous supprimeriez l'élément du DOM
+    const docElements = document.querySelectorAll('.document-status');
+    docElements.forEach(el => {
+      if (el.textContent.includes(filename)) {
+        el.remove();
+      }
+    });
+  }
+}
