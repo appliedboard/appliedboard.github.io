@@ -104,6 +104,11 @@ const profileSections = {
         <div><label>Nom *</label><input type="text" value="Oumaroudaoudasouleymane" class="disabled-field" readonly /></div>
         <div><label>Date de naissance *</label><input type="date" value="1995-05-12" class="disabled-field" readonly /></div>
         <div><label>Langue maternelle *</label><input type="text" value="Français" class="disabled-field" readonly /></div>
+        <div class="grid">
+  <!-- Champs existants... -->
+  <div><label>Nationalité *</label><input type="text" value="Française" class="disabled-field" readonly /></div>
+  <div><label>Adresse email *</label><input type="email" value="email@exemple.com" class="disabled-field" readonly /></div>
+</div>
       </div>
       <div class="clearfix">
         <button class="save-btn btn-modify-disabled">
