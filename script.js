@@ -100,20 +100,10 @@ const profileSections = {
         <h2>Informations Personnelles</h2>
       </div>
       <div class="grid">
-      
         <div><label>Prénom *</label><input type="text" value="Oumaroudaoudasouleymane" class="disabled-field" readonly /></div>
         <div><label>Nom *</label><input type="text" value="Oumaroudaoudasouleymane" class="disabled-field" readonly /></div>
         <div><label>Date de naissance *</label><input type="date" value="1995-05-12" class="disabled-field" readonly /></div>
-        <div><label>Nationalité *</label><input type="text" value="Nigerienne" class="disabled-field" readonly /></div>
-        <div><label>PassePort *</label><input type="text" value="13pc4524" class="disabled-field" readonly /></div>
-        <div><label>Statut Matrimonial *</label><input type="text" value="13pc4524" class="disabled-field" readonly /></div>
         <div><label>Langue maternelle *</label><input type="text" value="Français" class="disabled-field" readonly /></div>
-        <div><label>Ville *</label><input type="text" value="Niamey" class="disabled-field" readonly /></div>
-        <div><label>Adress *</label><input type="text" value="BOUKOKI 4" class="disabled-field" readonly /></div>
-        <div><label>Pays *</label><input type="text" value="NIGER" class="disabled-field" readonly /></div>
-        <div><label>Adresse email *</label><input type="email" value="oumaroudaouda@yahoo.com" class="disabled-field" readonly /></div>
-        <div><label>Telephone *</label><input type="tel" value="227 92111178" class="disabled-field" readonly /></div>
-        
       </div>
       <div class="clearfix">
         <button class="save-btn btn-modify-disabled">
@@ -155,94 +145,32 @@ const profileSections = {
     </div>
   `,
   
-documents: `
-  <div class="profile-header">
-    <h1>Documents</h1>
-    <p>Gérez vos documents requis</p>
-  </div>
-  <div class="card">
-    <div class="section-title">
-      <i class="fas fa-file-alt"></i>
-      <h2>Documents Requis</h2>
+  documents: `
+    <div class="profile-header">
+      <h1>Documents</h1>
+      <p>Gérez vos documents requis</p>
     </div>
-    
-    <div class="document-upload-area">
-      <div class="drop-zone" id="dropZone">
-        <i class="fas fa-cloud-upload-alt"></i>
-        <p>Glissez-déposez vos fichiers ici ou</p>
-        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
-          <i class="fas fa-folder-open"></i> Parcourir
-        </button>
-        <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFileSelection(this.files)">
+    <div class="card">
+      <div class="section-title">
+        <i class="fas fa-file-alt"></i>
+        <h2>Documents Requis</h2>
       </div>
-      <p class="upload-hint">Formats acceptés: PDF, JPG, PNG (Max. 5MB par fichier)</p>
-    </div>
-    
-    <div class="document-list" id="documentList">
-      <div class="document-status">
-        <div>
-          <i class="fas fa-file-pdf document-status-icon" style="color: #e74c3c;"></i>
-          Passeport valide
-          <span class="file-size">(2.4 MB)</span>
+      <div style="margin-top: 1rem;">
+        <div class="document-status">
+          <div>
+            <i class="fas fa-file-pdf document-status-icon" style="color: #e74c3c;"></i>
+            Passeport valide
+          </div>
+          <span class="status-uploaded">
+            <i class="fas fa-check-circle"></i> Téléchargé
+            <button class="app-btn btn-download" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; margin-left: 10px;" onclick="downloadCV()">
+              <i class="fas fa-download"></i> Télécharger
+            </button>
+          </span>
         </div>
-        <span class="status-uploaded">
-          <i class="fas fa-check-circle"></i> Téléchargé le 24/07/2025
-          <button class="app-btn btn-download" onclick="downloadDocument('passeport.pdf')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
-          <button class="app-btn btn-delete" onclick="deleteDocument('passeport.pdf')">
-            <i class="fas fa-trash-alt"></i> Supprimer
-          </button>
-        </span>
-      </div>
-      
-      <div class="document-status">
-        <div>
-          <i class="fas fa-file-word document-status-icon" style="color: #2b579a;"></i>
-          Lettre de motivation
-          <span class="file-size">(1.1 MB)</span>
-        </div>
-        <span class="status-uploaded">
-          <i class="fas fa-check-circle"></i> Téléchargé le 20/07/2025
-          <button class="app-btn btn-download" onclick="downloadDocument('lettre-motivation.pdf')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
-          <button class="app-btn btn-delete" onclick="deleteDocument('lettre-motivation.pdf')">
-            <i class="fas fa-trash-alt"></i> Supprimer
-          </button>
-        </span>
-      </div>
-      
-      <div class="document-status pending">
-        <div>
-          <i class="fas fa-file-excel document-status-icon" style="color: #217346;"></i>
-          Relevés de notes
-          <span class="file-size">(Manquant)</span>
-        </div>
-        <span class="status-pending">
-          <i class="fas fa-exclamation-circle"></i> Requis
-          <button class="app-btn btn-upload" onclick="showUploadModal('relevés-notes')">
-            <i class="fas fa-upload"></i> Téléverser
-          </button>
-        </span>
       </div>
     </div>
-  </div>
-  
-  <!-- Modal pour le téléversement -->
-  <div class="modal" id="uploadModal" style="display: none;">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeUploadModal()">&times;</span>
-      <h3 id="modalTitle">Téléverser un document</h3>
-      <div class="modal-body">
-        <input type="file" id="modalFileInput" class="modal-file-input">
-        <button class="modal-upload-btn" onclick="uploadSelectedFile()">
-          <i class="fas fa-upload"></i> Téléverser
-        </button>
-      </div>
-    </div>
-  </div>
-`,
+  `,
   
   visa: `
     <div class="profile-header">
@@ -777,139 +705,4 @@ function completePayment(programName, amount) {
   
   // Simuler la vérification du code
   showPaymentSuccess(programName, amount);
-}
-
-// Gestion des documents
-function handleFileSelection(files) {
-  if (files.length > 0) {
-    // Ici vous devriez normalement envoyer les fichiers au serveur
-    // Pour l'exemple, nous allons juste simuler le téléversement
-    Array.from(files).forEach(file => {
-      if (file.size > 5 * 1024 * 1024) {
-        alert(`Le fichier ${file.name} dépasse la taille maximale de 5MB`);
-        return;
-      }
-      
-      addDocumentToUI({
-        name: file.name,
-        size: formatFileSize(file.size),
-        type: getFileType(file.name),
-        date: new Date().toLocaleDateString(),
-        status: 'uploaded'
-      });
-    });
-  }
-}
-
-function addDocumentToUI(document) {
-  const documentList = document.getElementById('documentList');
-  const fileIcon = getFileIcon(document.type);
-  const fileSize = document.size ? `(${document.size})` : '';
-  
-  const docElement = document.createElement('div');
-  docElement.className = `document-status ${document.status === 'pending' ? 'pending' : ''}`;
-  docElement.innerHTML = `
-    <div>
-      <i class="fas ${fileIcon} document-status-icon" style="color: ${getFileColor(document.type)};"></i>
-      ${document.name}
-      <span class="file-size">${fileSize}</span>
-    </div>
-    <span class="status-${document.status === 'pending' ? 'pending' : 'uploaded'}">
-      <i class="fas ${document.status === 'pending' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
-      ${document.status === 'pending' ? 'Requis' : `Téléchargé le ${document.date}`}
-      ${document.status === 'pending' ? `
-        <button class="app-btn btn-upload" onclick="showUploadModal('${document.name}')">
-          <i class="fas fa-upload"></i> Téléverser
-        </button>
-      ` : `
-        <button class="app-btn btn-download" onclick="downloadDocument('${document.name}')">
-          <i class="fas fa-download"></i> Télécharger
-        </button>
-        <button class="app-btn btn-delete" onclick="deleteDocument('${document.name}')">
-          <i class="fas fa-trash-alt"></i> Supprimer
-        </button>
-      `}
-    </span>
-  `;
-  
-  documentList.appendChild(docElement);
-}
-
-// Fonctions utilitaires pour les documents
-function getFileType(filename) {
-  const extension = filename.split('.').pop().toLowerCase();
-  if (['pdf'].includes(extension)) return 'pdf';
-  if (['doc', 'docx'].includes(extension)) return 'word';
-  if (['xls', 'xlsx'].includes(extension)) return 'excel';
-  if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) return 'image';
-  return 'file';
-}
-
-function getFileIcon(fileType) {
-  const icons = {
-    pdf: 'fa-file-pdf',
-    word: 'fa-file-word',
-    excel: 'fa-file-excel',
-    image: 'fa-file-image'
-  };
-  return icons[fileType] || 'fa-file';
-}
-
-function getFileColor(fileType) {
-  const colors = {
-    pdf: '#e74c3c',
-    word: '#2b579a',
-    excel: '#217346',
-    image: '#e67e22'
-  };
-  return colors[fileType] || '#7f8c8d';
-}
-
-function formatFileSize(bytes) {
-  if (bytes === 0) return '0 Bytes';
-  const k = 1024;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
-}
-
-// Fonctions pour la modal d'upload
-function showUploadModal(documentName) {
-  const modal = document.getElementById('uploadModal');
-  document.getElementById('modalTitle').textContent = `Téléverser ${documentName}`;
-  modal.style.display = 'block';
-}
-
-function closeUploadModal() {
-  document.getElementById('uploadModal').style.display = 'none';
-}
-
-function uploadSelectedFile() {
-  const fileInput = document.getElementById('modalFileInput');
-  if (fileInput.files.length > 0) {
-    handleFileSelection(fileInput.files);
-    closeUploadModal();
-  } else {
-    alert('Veuillez sélectionner un fichier');
-  }
-}
-
-// Fonctions de gestion des documents
-function downloadDocument(filename) {
-  alert(`Téléchargement du fichier ${filename} simulé`);
-  // En production, vous feriez une requête au serveur pour télécharger le fichier
-}
-
-function deleteDocument(filename) {
-  if (confirm(`Êtes-vous sûr de vouloir supprimer ${filename} ?`)) {
-    alert(`Suppression du fichier ${filename} simulée`);
-    // En production, vous feriez une requête au serveur pour supprimer le fichier
-    // Puis vous supprimeriez l'élément du DOM
-    const docElements = document.querySelectorAll('.document-status');
-    docElements.forEach(el => {
-      if (el.textContent.includes(filename)) {
-        el.remove();
-      }
-    });
-  }
 }
