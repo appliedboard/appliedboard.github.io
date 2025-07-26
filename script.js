@@ -341,15 +341,30 @@ documents: `
       </div>
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="financial" disabled>
+          <input type="checkbox" id="financial" checked>
           <label for="financial">Preuves financières</label>
         </div>
         <div class="document-status">
           <span class="status-uploaded">
             <i class="fas fa-clock"></i> En attente
           </span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('financial')">
-            <i class="fas fa-upload"></i> Téléverser
+          <button class="app-btn btn-download" onclick="downloadDocument('finance')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+
+            <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="BAC" checked>
+          <label for="financial">BAC Transcript</label>
+        </div>
+        <div class="document-status">
+          <span class="status-uploaded">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+            <i class="fas fa-download"></i> Télécharger
           </button>
         </div>
       </div>
@@ -357,7 +372,7 @@ documents: `
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_2" disabled>
-          <label for="licence_2">ECCAM</label>
+          <label for="licence_2">Transcript ECCAM</label>
         </div>
         <div class="document-status">
           <span class="status-pending">
@@ -372,7 +387,7 @@ documents: `
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_3" disabled>
-          <label for="licence_3">ESCOM</label>
+          <label for="licence_3">Transcript ESCOM</label>
         </div>
         <div class="document-status">
           <span class="status-pending">
@@ -383,6 +398,22 @@ documents: `
           </button>
         </div>
       </div>
+
+	<div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="licence_3" disabled>
+          <label for="licence_3">Transcript IPHEC</label>
+        </div>
+        <div class="document-status">
+          <span class="status-pending">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('Master_1')">
+            <i class="fas fa-upload"></i> Téléverser
+          </button>
+        </div>
+      </div>
+      
       
       <div class="document-item">
         <div class="document-info">
