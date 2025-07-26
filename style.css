@@ -1194,29 +1194,34 @@ input:focus, select:focus {
 }
 /* Styles pour la liste des documents */
 .document-list {
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* Espace entre les éléments */
 }
 
 .document-item {
   display: flex;
+  flex-wrap: wrap; /* Permet le retour à la ligne si nécessaire */
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1rem;
-  background: #f8f9fa;
+  background: white;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  margin-bottom: 0.8rem;
-  transition: all 0.3s ease;
+}
+
+.document-info {
+  flex: 1;
+  min-width: 180px; /* Évite un écrasement sur petits écrans */
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .document-item:hover {
   background: #e9ecef;
 }
 
-.document-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
 .document-info input[type="checkbox"] {
   width: 18px;
@@ -1226,16 +1231,30 @@ input:focus, select:focus {
 .document-status {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 }
 
+/* Boutons "Télécharger" */
+.btn-download {
+  padding: 0.5rem 1rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Empêche le texte de se casser */
+}
+
+/* Statut "Téléchargé" */
 .status-uploaded {
   color: #28a745;
-  font-weight: bold;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3rem;
 }
+
 
 .status-pending {
   color: #dc3545;
@@ -1243,6 +1262,25 @@ input:focus, select:focus {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.upload-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* === Responsive (mobile) === */
+@media (max-width: 768px) {
+  .document-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .document-status {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 /* Modal pour l'upload */
