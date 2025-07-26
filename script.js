@@ -346,7 +346,7 @@ documents: `
         </div>
         <div class="document-status">
           <span class="status-uploaded">
-            <i class="fas fa-clock"></i> En attente
+            <i class="fas fa-check-circle"></i> Téléchargé
           </span>
           <button class="app-btn btn-download" onclick="downloadDocument('finance')">
             <i class="fas fa-download"></i> Télécharger
@@ -361,14 +361,56 @@ documents: `
         </div>
         <div class="document-status">
           <span class="status-uploaded">
-            <i class="fas fa-clock"></i> En attente
+            <i class="fas fa-check-circle"></i> Téléchargé
           </span>
           <button class="app-btn btn-download" onclick="downloadDocument('bac')">
             <i class="fas fa-download"></i> Télécharger
           </button>
         </div>
       </div>
-      
+
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="Motivation" checked>
+          <label for="financial">Lettre De Motivation</label>
+        </div>
+        <div class="document-status">
+          <span class="status-uploaded">
+            <i class="fas fa-check-circle"></i> Téléchargé
+          </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+       <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="Etude" checked>
+          <label for="financial">Projet d'etude</label>
+        </div>
+        <div class="document-status">
+          <span class="status-uploaded">
+            <i class="fas fa-check-circle"></i> Téléchargé
+          </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+       <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="Recomandation" checked>
+          <label for="financial">Lettre De Recomandation</label>
+        </div>
+        <div class="document-status">
+          <span class="status-uploaded">
+            <i class="fas fa-check-circle"></i> Téléchargé
+          </span>
+          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_2" disabled>
