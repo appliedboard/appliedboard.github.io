@@ -165,7 +165,6 @@ education: `
     </div>
     
     <div class="education-timeline">
-      <!-- Diplôme de Licence -->
       <div class="education-item" onclick="toggleEducationDetails('bachelor')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
@@ -200,13 +199,13 @@ education: `
         </div>
       </div>
 
-       <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+       <div class="education-item" onclick="toggleEducationDetails('licence1')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
           <div class="education-title">1-YEAR LICENCE</div>
-          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
-        <div class="education-details" id="details-bachelor" style="display: none;">
+        <div class="education-details" id="details-licence1" style="display: none;">
           <div class="detail-row">
             <label>Établissement:</label>
             <span>ESCOM</span>
@@ -234,13 +233,13 @@ education: `
         </div>
       </div>
 
-         <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+         <div class="education-item" onclick="toggleEducationDetails('licence2')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
           <div class="education-title">2-YEAR LICENCE</div>
-          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-licence2"></i>
         </div>
-        <div class="education-details" id="details-bachelor" style="display: none;">
+        <div class="education-details" id="details-licence2" style="display: none;">
           <div class="detail-row">
             <label>Établissement:</label>
             <span>ECCAM</span>
@@ -268,7 +267,6 @@ education: `
         </div>
       </div>
       
-      <!-- Lycée -->
       <div class="education-item" onclick="toggleEducationDetails('highschool')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
@@ -324,13 +322,13 @@ documents: `
       <h2>Documents Requis</h2>
     </div>
     
-    <div class="document-list">
+    <div class="document-list-container">
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="passport" disabled checked>
           <label for="passport">Passeport valide</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
@@ -344,7 +342,7 @@ documents: `
           <input type="checkbox" id="financial" disabled checked>
           <label for="financial">Preuves financières</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
@@ -353,13 +351,12 @@ documents: `
           </button>
         </div>
       </div>
-
-            <div class="document-item">
+      <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="BAC" disabled checked>
-          <label for="financial">BAC Transcript</label>
+          <label for="BAC">BAC Transcript</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
@@ -368,31 +365,30 @@ documents: `
           </button>
         </div>
       </div>
-
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="Motivation" disabled checked>
-          <label for="financial">Lettre De Motivation</label>
+          <label for="Motivation">Lettre De Motivation</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+          <button class="app-btn btn-download" onclick="downloadDocument('motivation')">
             <i class="fas fa-download"></i> Télécharger
           </button>
         </div>
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Etude"disabled checked>
-          <label for="financial">Projet d'etude</label>
+          <input type="checkbox" id="Etude" disabled checked>
+          <label for="Etude">Projet d'étude</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+          <button class="app-btn btn-download" onclick="downloadDocument('etude')">
             <i class="fas fa-download"></i> Télécharger
           </button>
         </div>
@@ -400,13 +396,13 @@ documents: `
        <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="Recomandation" disabled checked>
-          <label for="financial">Lettre De Recomandation</label>
+          <label for="Recomandation">Lettre De Recommandation</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
+          <button class="app-btn btn-download" onclick="downloadDocument('recommandation')">
             <i class="fas fa-download"></i> Télécharger
           </button>
         </div>
@@ -416,7 +412,7 @@ documents: `
           <input type="checkbox" id="licence_2" disabled>
           <label for="licence_2">Transcript ECCAM</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-pending">
           <span class="status-pending">
             <i class="fas fa-clock"></i> En attente
           </span>
@@ -425,13 +421,12 @@ documents: `
           </button>
         </div>
       </div>
-      
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_3" disabled>
           <label for="licence_3">Transcript ESCOM</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-pending">
           <span class="status-pending">
             <i class="fas fa-clock"></i> En attente
           </span>
@@ -440,13 +435,12 @@ documents: `
           </button>
         </div>
       </div>
-
-	<div class="document-item">
+	    <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="licence_3" disabled>
-          <label for="licence_3">Transcript IPHEC</label>
+          <input type="checkbox" id="master_1" disabled>
+          <label for="master_1">Transcript IPHEC</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-pending">
           <span class="status-pending">
             <i class="fas fa-clock"></i> En attente
           </span>
@@ -455,14 +449,12 @@ documents: `
           </button>
         </div>
       </div>
-      
-      
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="photos" disabled checked>
           <label for="photos">Photos d'identité</label>
         </div>
-        <div class="document-status">
+        <div class="document-status status-uploaded">
           <span class="status-uploaded">
             <i class="fas fa-check-circle"></i> Téléchargé
           </span>
@@ -634,14 +626,16 @@ function deleteNotification(button) {
 }
 
 function updateNotificationBadge() {
-  const unreadNotifications = document.querySelectorAll('.notification-card.unread').length;
+  const unreadCount = document.querySelectorAll('.notification-card.unread').length;
   const badge = document.querySelector('.notification-badge');
   
-  if (unreadNotifications > 0) {
-    badge.textContent = unreadNotifications;
-    badge.style.display = 'flex';
-  } else {
-    badge.style.display = 'none';
+  if (badge) {
+      if (unreadCount > 0) {
+        badge.textContent = unreadCount;
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
   }
 }
 
@@ -733,16 +727,22 @@ document.addEventListener('DOMContentLoaded', function() {
   updateNotificationBadge();
 });
 
-// Ajouter ces fonctions au fichier script.js
-
 // Fonction pour afficher la page de paiement
 function showPaymentPage(programName, amount) {
+    let paymentPage = document.getElementById('payment-page-container');
+    if (!paymentPage) {
+        paymentPage = document.createElement('div');
+        paymentPage.id = 'payment-page-container';
+        document.getElementById('main-content').appendChild(paymentPage);
+    }
   // Créer le contenu HTML de la page de paiement
-  const paymentHTML = `
+  paymentPage.innerHTML = `
     <div id="payment-page">
       <div class="payment-container">
-        <h1>Paiement pour ${programName}</h1>
-        <p class="payment-amount">Montant à payer: ${amount} €</p>
+        <div class="program-header">
+            <h1>Paiement pour ${programName}</h1>
+            <p class="payment-amount">Montant à payer: ${amount} $</p>
+        </div>
         
         <div class="payment-card">
           <h2><i class="fas fa-credit-card"></i> Informations de paiement</h2>
@@ -783,7 +783,7 @@ function showPaymentPage(programName, amount) {
             </div>
             
             <button class="payment-btn" onclick="processPayment('${programName}', ${amount})">
-              <i class="fas fa-lock"></i> Payer ${amount} €
+              <i class="fas fa-lock"></i> Payer ${amount} $
             </button>
             
             <p class="payment-security">
@@ -794,18 +794,8 @@ function showPaymentPage(programName, amount) {
       </div>
     </div>
   `;
-
-  // Créer un nouvel élément div pour la page de paiement
-  const paymentPage = document.createElement('div');
-  paymentPage.id = 'payment-page';
-  paymentPage.innerHTML = paymentHTML;
   
-  // Ajouter la page au contenu principal
-  const mainContent = document.getElementById('main-content');
-  mainContent.appendChild(paymentPage);
-  
-  // Masquer toutes les autres pages et afficher la page de paiement
-  showPage('payment');
+  showPage('payment-page-container');
   
   // Ajouter les gestionnaires d'événements pour les méthodes de paiement
   document.querySelectorAll('.payment-method').forEach(method => {
@@ -817,7 +807,7 @@ function showPaymentPage(programName, amount) {
   
   // Formater automatiquement le numéro de carte
   document.getElementById('card-number').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\s+/g, '');
+    let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
     if (value.length > 0) {
       value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
     }
@@ -826,7 +816,7 @@ function showPaymentPage(programName, amount) {
   
   // Formater automatiquement la date d'expiration
   document.getElementById('expiry-date').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D+/g, '');
+    let value = e.target.value.replace(/\D/g, '');
     if (value.length > 2) {
       value = value.substring(0, 2) + '/' + value.substring(2, 4);
     }
@@ -834,118 +824,38 @@ function showPaymentPage(programName, amount) {
   });
 }
 
-// Fonction pour traiter le paiement
 function processPayment(programName, amount) {
   const cardNumber = document.getElementById('card-number').value;
   const cardName = document.getElementById('card-name').value;
   const expiryDate = document.getElementById('expiry-date').value;
   const cvv = document.getElementById('cvv').value;
   
-  // Validation simple
   if (!cardNumber || !cardName || !expiryDate || !cvv) {
     alert('Veuillez remplir tous les champs obligatoires');
     return;
   }
   
-  if (cardNumber.replace(/\s/g, '').length !== 16) {
-    alert('Veuillez entrer un numéro de carte valide (16 chiffres)');
-    return;
-  }
-  
-  if (cvv.length !== 3) {
-    alert('Veuillez entrer un code CVV valide (3 chiffres)');
-    return;
-  }
-  
-  // Simuler un traitement de paiement
-  setTimeout(() => {
-    showPaymentSuccess(programName, amount);
-  }, 1500);
-}
-
-// Fonction pour afficher la confirmation de paiement
-function showPaymentSuccess(programName, amount) {
-  document.getElementById('payment-page').innerHTML = `
-    <div class="payment-container">
-      <div class="payment-success">
-        <i class="fas fa-check-circle"></i>
-        <h2>Paiement confirmé !</h2>
-        <p>Votre paiement de ${amount} € pour le programme ${programName} a été traité avec succès.</p>
-        <p>Une confirmation a été envoyée à votre adresse email.</p>
-        <div class="payment-details">
-          <p><strong>Référence:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
-          <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
-        </div>
-        <button class="payment-btn" onclick="showPage('payments')">
-          <i class="fas fa-arrow-left"></i> Retour aux paiements
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-// Mettre à jour la fonction showPage pour inclure la page de paiement
-function showPage(pageId) {
-  document.querySelectorAll('#main-content > div').forEach(page => {
-    page.style.display = 'none';
-  });
-  
-  if (pageId === 'payment') {
-    document.getElementById('payment-page').style.display = 'block';
-  } else {
-    document.getElementById(`${pageId}-page`).style.display = 'block';
-  }
-  
-  if (window.innerWidth < 768) {
-    toggleSidebar();
-  }
-  
-  if (pageId === 'profile') {
-    showProfileSection('general');
-  }
-  
-  if (pageId === 'notifications') {
-    updateNotificationBadge();
-  }
-}
-
-// Ajoutez ces fonctions à votre fichier script.js
-
-function processPayment(programName, amount) {
-  const cardNumber = document.getElementById('card-number').value;
-  const cardName = document.getElementById('card-name').value;
-  const expiryDate = document.getElementById('expiry-date').value;
-  const cvv = document.getElementById('cvv').value;
-  
-  // Validation
-  if (!cardNumber || !cardName || !expiryDate || !cvv) {
-    alert('Veuillez remplir tous les champs obligatoires');
-    return;
-  }
-  
-  // Afficher le loading
   showPaymentLoading(programName, amount);
   
-  // Simuler l'envoi des données et la réception du code
   setTimeout(() => {
     showVerificationForm(programName, amount);
-  }, 4000);
+  }, 2000);
 }
 
 function showPaymentLoading(programName, amount) {
-  document.getElementById('payment-page').innerHTML = `
+  document.getElementById('payment-page-container').innerHTML = `
     <div class="payment-container">
       <div class="payment-loading">
         <i class="fas fa-spinner"></i>
         <h2>Traitement de votre paiement</h2>
-        <p>Veuillez patienter pendant que nous traitons votre paiement de ${amount} € pour ${programName}...</p>
+        <p>Veuillez patienter pendant que nous traitons votre paiement de ${amount} $ pour ${programName}...</p>
       </div>
     </div>
   `;
 }
 
 function showVerificationForm(programName, amount) {
-  document.getElementById('payment-page').innerHTML = `
+  document.getElementById('payment-page-container').innerHTML = `
     <div class="payment-container">
       <div class="verification-card">
         <h2><i class="fas fa-mobile-alt"></i> Vérification en 2 étapes</h2>
@@ -957,7 +867,7 @@ function showVerificationForm(programName, amount) {
           <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
           <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
           <input type="text" maxlength="1" oninput="moveToNext(this, 5)">
-          <input type="text" maxlength="1" oninput="verifyCode(this)">
+          <input type="text" maxlength="1">
         </div>
         
         <p class="verification-note">
@@ -974,33 +884,25 @@ function showVerificationForm(programName, amount) {
       </div>
     </div>
   `;
+  document.querySelector('.verification-inputs input').focus();
 }
 
 function moveToNext(input, nextIndex) {
   if (input.value.length === 1) {
-    const nextInput = input.parentElement.querySelector(`input:nth-child(${nextIndex + 1})`);
-    if (nextInput) {
-      nextInput.focus();
+    const inputs = input.parentElement.querySelectorAll('input');
+    if (nextIndex < inputs.length) {
+      inputs[nextIndex].focus();
     }
-  }
-}
-
-function verifyCode(input) {
-  if (input.value.length === 1) {
-    // Vous pouvez ajouter ici la logique pour vérifier immédiatement le code
-    // au lieu d'attendre le clic sur le bouton Valider
   }
 }
 
 function resendCode() {
   alert("Un nouveau code a été envoyé à votre numéro de téléphone.");
-  // Ici vous pourriez implémenter la logique pour renvoyer réellement le code
 }
 
 function completePayment(programName, amount) {
   const codeInputs = document.querySelectorAll('.verification-inputs input');
   let verificationCode = '';
-  
   codeInputs.forEach(input => {
     verificationCode += input.value;
   });
@@ -1010,36 +912,49 @@ function completePayment(programName, amount) {
     return;
   }
   
-  // Simuler la vérification du code
   showPaymentSuccess(programName, amount);
 }
 
-// Fonction pour afficher/masquer les détails de l'éducation
+
+function showPaymentSuccess(programName, amount) {
+  document.getElementById('payment-page-container').innerHTML = `
+    <div class="payment-container">
+      <div class="payment-success">
+        <i class="fas fa-check-circle"></i>
+        <h2>Paiement confirmé !</h2>
+        <p>Votre paiement de ${amount} $ pour le programme ${programName} a été traité avec succès.</p>
+        <p>Une confirmation a été envoyée à votre adresse email.</p>
+        <div class="payment-details" style="margin-top:1.5rem; padding:1rem; background-color:#f8f9fa; border-radius:8px;">
+          <p><strong>Référence:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
+          <p><strong>Date:</strong> ${new Date().toLocaleDateString('fr-FR')}</p>
+        </div>
+        <button class="back-btn" onclick="showPage('payments')" style="margin-top:2rem;">
+          <i class="fas fa-arrow-left"></i> Retour aux paiements
+        </button>
+      </div>
+    </div>
+  `;
+}
+
 function toggleEducationDetails(id) {
   const details = document.getElementById(`details-${id}`);
   const icon = document.getElementById(`toggle-${id}`);
-  
-  if (details.style.display === "none" || details.style.display === "") {
-    details.style.display = "block";
-    icon.classList.remove('fa-chevron-down');
-    icon.classList.add('fa-chevron-up');
-  } else {
-    details.style.display = "none";
-    icon.classList.remove('fa-chevron-up');
-    icon.classList.add('fa-chevron-down');
+  if (details && icon) {
+      const isVisible = details.style.display === "block";
+      details.style.display = isVisible ? "none" : "block";
+      icon.classList.toggle('fa-chevron-down', isVisible);
+      icon.classList.toggle('fa-chevron-up', !isVisible);
   }
 }
+
 function downloadDocument(type) {
-  alert('Téléchargement du ' + type + ' en cours...');
-  // Implémentez la logique réelle ici
+  alert('Simulation du téléchargement du document : ' + type);
 }
 
 function uploadDocument(type) {
-  alert('Téléversement du ' + type + ' en cours...');
-  // Implémentez la logique réelle ici
+  alert('Simulation du téléversement pour : ' + type);
 }
 
 function showUploadModal() {
-  alert('Ouverture de la fenêtre pour ajouter des documents');
-  // Implémentez la modal réelle ici
+  alert("Affichage de la modale pour l'ajout de nouveaux documents.");
 }
