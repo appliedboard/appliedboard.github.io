@@ -11,15 +11,23 @@ function toggleSidebar() {
 }
 
 function showPage(pageId) {
+  // Masque toutes les pages principales
   document.querySelectorAll('#main-content > div').forEach(page => {
     page.style.display = 'none';
   });
-  document.getElementById(`${pageId}-page`).style.display = 'block';
   
+  // Affiche la page demandée en ajoutant le suffixe '-page'
+  const pageElement = document.getElementById(`${pageId}-page`);
+  if (pageElement) {
+    pageElement.style.display = 'block';
+  }
+  
+  // Ferme le menu latéral sur les petits écrans après une sélection
   if (window.innerWidth < 768) {
     toggleSidebar();
   }
   
+  // Logique spécifique pour certaines pages
   if (pageId === 'profile') {
     showProfileSection('general');
   }
@@ -49,16 +57,14 @@ function toggleEditMode() {
     sectionContent.classList.add('editable-section');
     activateEditMode();
     
-    // Activer l'édition pour l'historique éducatif
     document.querySelectorAll('.education-item').forEach(item => {
       item.classList.add('editable');
     });
     
-    // Ajouter le bouton "Ajouter une formation" si en mode édition
     const addButton = document.createElement('button');
     addButton.className = 'add-education-btn';
     addButton.innerHTML = '<i class="fas fa-plus"></i> Ajouter une formation';
-    addButton.onclick = addNewEducation;
+    addButton.onclick = () => alert("Fonctionnalité d'ajout non implémentée.");
     
     const timeline = document.querySelector('.education-timeline');
     if (timeline && !document.querySelector('.add-education-btn')) {
@@ -68,12 +74,10 @@ function toggleEditMode() {
     sectionContent.classList.remove('editable-section');
     deactivateEditMode();
     
-    // Désactiver l'édition pour l'historique éducatif
     document.querySelectorAll('.education-item').forEach(item => {
       item.classList.remove('editable');
     });
     
-    // Supprimer le bouton "Ajouter une formation"
     const addButton = document.querySelector('.add-education-btn');
     if (addButton) {
       addButton.remove();
@@ -114,7 +118,7 @@ function deactivateEditMode() {
   saveBtn.innerHTML = '<i class="fas fa-edit"></i> Modifier';
 }
 
-// Profil sections
+// Contenu des sections du profil
 const profileSections = {
   general: `
     <div class="profile-header">
@@ -165,37 +169,19 @@ education: `
     </div>
     
     <div class="education-timeline">
-      <div class="education-item" onclick="toggleEducationDetails('bachelor')">
+      <div class="education-item" onclick="toggleEducationDetails('master')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
           <div class="education-title">1-YEAR MASTER DEGREE</div>
-          <i class="fas fa-chevron-down toggle-icon" id="toggle-bachelor"></i>
+          <i class="fas fa-chevron-down toggle-icon" id="toggle-master"></i>
         </div>
-        <div class="education-details" id="details-bachelor" style="display: none;">
-          <div class="detail-row">
-            <label>Établissement:</label>
-            <span>IPHEC</span>
-          </div>
-          <div class="detail-row">
-            <label>Adresse:</label>
-            <span>Any Koira, 2288 Niamey</span>
-          </div>
-          <div class="detail-row">
-            <label>Période:</label>
-            <span>Septembre 2019 - Juin 2020</span>
-          </div>
-          <div class="detail-row">
-            <label>Moyenne:</label>
-            <span>11.98/20</span>
-          </div>
-          <div class="detail-row">
-            <label>Spécialisation:</label>
-            <span>LOGISTIQUE-TRANSPORT</span>
-          </div>
-          <div class="detail-row">
-            <label>Diplôme obtenu:</label>
-            <span>Oui</span>
-          </div>
+        <div class="education-details" id="details-master" style="display: none;">
+          <div class="detail-row"><label>Établissement:</label><span>IPHEC</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>Any Koira, 2288 Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2019 - Juin 2020</span></div>
+          <div class="detail-row"><label>Moyenne:</label><span>11.98/20</span></div>
+          <div class="detail-row"><label>Spécialisation:</label><span>LOGISTIQUE-TRANSPORT</span></div>
+          <div class="detail-row"><label>Diplôme obtenu:</label><span>Oui</span></div>
         </div>
       </div>
 
@@ -206,64 +192,28 @@ education: `
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
         <div class="education-details" id="details-licence1" style="display: none;">
-          <div class="detail-row">
-            <label>Établissement:</label>
-            <span>ESCOM</span>
-          </div>
-          <div class="detail-row">
-            <label>Adresse:</label>
-            <span>QT Abidjan, 2437 Niamey</span>
-          </div>
-          <div class="detail-row">
-            <label>Période:</label>
-            <span>Septembre 2018 - Juin 2019</span>
-          </div>
-          <div class="detail-row">
-            <label>Moyenne:</label>
-            <span>12.87/20</span>
-          </div>
-          <div class="detail-row">
-            <label>Spécialisation:</label>
-            <span>MANAGEMENT LOGISTIQUE-TRANSPORT</span>
-          </div>
-          <div class="detail-row">
-            <label>Diplôme obtenu:</label>
-            <span>Oui</span>
-          </div>
+          <div class="detail-row"><label>Établissement:</label><span>ESCOM</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>QT Abidjan, 2437 Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2018 - Juin 2019</span></div>
+          <div class="detail-row"><label>Moyenne:</label><span>12.87/20</span></div>
+          <div class="detail-row"><label>Spécialisation:</label><span>MANAGEMENT LOGISTIQUE-TRANSPORT</span></div>
+          <div class="detail-row"><label>Diplôme obtenu:</label><span>Oui</span></div>
         </div>
       </div>
 
-         <div class="education-item" onclick="toggleEducationDetails('licence2')">
+      <div class="education-item" onclick="toggleEducationDetails('licence2')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
           <div class="education-title">2-YEAR LICENCE</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence2"></i>
         </div>
         <div class="education-details" id="details-licence2" style="display: none;">
-          <div class="detail-row">
-            <label>Établissement:</label>
-            <span>ECCAM</span>
-          </div>
-          <div class="detail-row">
-            <label>Adresse:</label>
-            <span>BOUKOKI 2, Niamey</span>
-          </div>
-          <div class="detail-row">
-            <label>Période:</label>
-            <span>Septembre 2018 - Juin 2019</span>
-          </div>
-          <div class="detail-row">
-            <label>Moyenne:</label>
-            <span>12/20</span>
-          </div>
-          <div class="detail-row">
-            <label>Spécialisation:</label>
-            <span>TRANSPORT-LOGISTIQUE</span>
-          </div>
-          <div class="detail-row">
-            <label>Diplôme obtenu:</label>
-            <span>BTS - 2018</span>
-          </div>
+          <div class="detail-row"><label>Établissement:</label><span>ECCAM</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>BOUKOKI 2, Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2018 - Juin 2019</span></div>
+          <div class="detail-row"><label>Moyenne:</label><span>12/20</span></div>
+          <div class="detail-row"><label>Spécialisation:</label><span>TRANSPORT-LOGISTIQUE</span></div>
+          <div class="detail-row"><label>Diplôme obtenu:</label><span>BTS - 2018</span></div>
         </div>
       </div>
       
@@ -274,30 +224,12 @@ education: `
           <i class="fas fa-chevron-down toggle-icon" id="toggle-highschool"></i>
         </div>
         <div class="education-details" id="details-highschool" style="display: none;">
-          <div class="detail-row">
-            <label>Établissement:</label>
-            <span>Lycée SONI ALI BER</span>
-          </div>
-          <div class="detail-row">
-            <label>Adresse:</label>
-            <span>COMPLEXE, 28501 Niamey</span>
-          </div>
-          <div class="detail-row">
-            <label>Période:</label>
-            <span>Septembre 2013 - Juillet 2016</span>
-          </div>
-          <div class="detail-row">
-            <label>Moyenne au bac:</label>
-            <span>14.22/20</span>
-          </div>
-          <div class="detail-row">
-            <label>Filière:</label>
-            <span>Scientifique</span>
-          </div>
-          <div class="detail-row">
-            <label>Mention:</label>
-            <span>Bien</span>
-          </div>
+          <div class="detail-row"><label>Établissement:</label><span>Lycée SONI ALI BER</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>COMPLEXE, 28501 Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2013 - Juillet 2016</span></div>
+          <div class="detail-row"><label>Moyenne au bac:</label><span>14.22/20</span></div>
+          <div class="detail-row"><label>Filière:</label><span>Scientifique</span></div>
+          <div class="detail-row"><label>Mention:</label><span>Bien</span></div>
         </div>
       </div>
     </div>
@@ -329,12 +261,8 @@ documents: `
           <label for="passport">Passeport valide</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('passport')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('passport')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
@@ -343,12 +271,8 @@ documents: `
           <label for="financial">Preuves financières</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('finance')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('finance')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
@@ -357,12 +281,8 @@ documents: `
           <label for="BAC">BAC Transcript</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('bac')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('bac')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
@@ -371,12 +291,8 @@ documents: `
           <label for="Motivation">Lettre De Motivation</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('motivation')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('motivation')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
        <div class="document-item">
@@ -385,12 +301,8 @@ documents: `
           <label for="Etude">Projet d'étude</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('etude')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('etude')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
        <div class="document-item">
@@ -399,12 +311,8 @@ documents: `
           <label for="Recomandation">Lettre De Recommandation</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('recommandation')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('recommandation')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
@@ -413,12 +321,8 @@ documents: `
           <label for="licence_2">Transcript ECCAM</label>
         </div>
         <div class="document-status status-pending">
-          <span class="status-pending">
-            <i class="fas fa-clock"></i> En attente
-          </span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('licence_2')">
-            <i class="fas fa-upload"></i> Téléverser
-          </button>
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('licence_2')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
       <div class="document-item">
@@ -427,12 +331,8 @@ documents: `
           <label for="licence_3">Transcript ESCOM</label>
         </div>
         <div class="document-status status-pending">
-          <span class="status-pending">
-            <i class="fas fa-clock"></i> En attente
-          </span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('licence_3')">
-            <i class="fas fa-upload"></i> Téléverser
-          </button>
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('licence_3')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
 	    <div class="document-item">
@@ -441,12 +341,8 @@ documents: `
           <label for="master_1">Transcript IPHEC</label>
         </div>
         <div class="document-status status-pending">
-          <span class="status-pending">
-            <i class="fas fa-clock"></i> En attente
-          </span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('Master_1')">
-            <i class="fas fa-upload"></i> Téléverser
-          </button>
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('Master_1')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
       <div class="document-item">
@@ -455,12 +351,8 @@ documents: `
           <label for="photos">Photos d'identité</label>
         </div>
         <div class="document-status status-uploaded">
-          <span class="status-uploaded">
-            <i class="fas fa-check-circle"></i> Téléchargé
-          </span>
-          <button class="app-btn btn-download" onclick="downloadDocument('photos')">
-            <i class="fas fa-download"></i> Télécharger
-          </button>
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('photos')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
     </div>
@@ -494,21 +386,11 @@ documents: `
         <div style="margin-top: 2rem;">
           <label style="font-weight: bold;">Quels permis d'études ou visas valides possédez-vous ?</label>
           <div class="radio-group" style="margin-top: 0.5rem; flex-wrap: wrap; gap: 1rem;">
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" /> Canada
-            </label>
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" /> États-Unis
-            </label>
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" /> Royaume-Uni
-            </label>
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" /> Australie
-            </label>
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" checked /> Aucun
-            </label>
+            <label><input type="checkbox" /> Canada</label>
+            <label><input type="checkbox" /> États-Unis</label>
+            <label><input type="checkbox" /> Royaume-Uni</label>
+            <label><input type="checkbox" /> Australie</label>
+            <label><input type="checkbox" checked /> Aucun</label>
           </div>
         </div>
         <div style="margin-top: 2rem;">
@@ -556,48 +438,13 @@ function showProfileSection(section) {
   currentSection = section;
   document.getElementById('profile-content').innerHTML = profileSections[section];
   
-  // Mettre à jour le menu actif
-  const sections = ['general', 'education', 'documents', 'tests', 'visa'];
-  sections.forEach(sec => {
-    const menuItem = document.getElementById(`menu-${sec}`);
-    if (menuItem) {
-      menuItem.classList.remove('active');
-      const icon = menuItem.querySelector('.menu-icon');
-      if (icon) {
-        icon.classList.remove('fa-check-circle');
-        icon.classList.add('fa-arrow-circle-right');
-      }
-    }
-  });
-  
+  document.querySelectorAll('.profile-sidebar li').forEach(item => item.classList.remove('active'));
   document.getElementById(`menu-${section}`).classList.add('active');
-  const activeIcon = document.querySelector(`#menu-${section} .menu-icon`);
-  activeIcon.classList.remove('fa-arrow-circle-right');
-  activeIcon.classList.add('fa-check-circle');
   
-  // Ajouter l'événement au bouton Modifier
   const saveBtn = document.querySelector('#profile-content .save-btn');
   if (saveBtn) {
     saveBtn.onclick = toggleEditMode;
   }
-}
-
-function toggleSection(id) {
-  const section = document.getElementById(id);
-  const icon = document.getElementById('icon-' + id);
-  if (section.style.display === "none" || section.style.display === "") {
-    section.style.display = "block";
-    icon.classList.remove('fa-chevron-down');
-    icon.classList.add('fa-chevron-up');
-  } else {
-    section.style.display = "none";
-    icon.classList.remove('fa-chevron-up');
-    icon.classList.add('fa-chevron-down');
-  }
-}
-
-function uploadDocuments() {
-  alert("Fonctionnalité de téléchargement activée. Veuillez sélectionner les documents à télécharger.");
 }
 
 function handleCardClick(card) {
@@ -611,8 +458,6 @@ function handleCardClick(card) {
 function markAsRead(button) {
   const card = button.closest('.notification-card');
   card.classList.remove('unread');
-  
-  // Mettre à jour le badge de notification
   updateNotificationBadge();
 }
 
@@ -628,7 +473,6 @@ function deleteNotification(button) {
 function updateNotificationBadge() {
   const unreadCount = document.querySelectorAll('.notification-card.unread').length;
   const badge = document.querySelector('.notification-badge');
-  
   if (badge) {
       if (unreadCount > 0) {
         badge.textContent = unreadCount;
@@ -643,207 +487,106 @@ function updateNotificationBadge() {
 const programData = {
   "International Business": {
     description: "Le programme International Business prépare les étudiants à travailler dans un environnement commercial mondial. Les cours couvrent les opérations commerciales internationales, le marketing mondial, la finance internationale et les stratégies de gestion interculturelle.",
-    requirements: [
-      "Diplôme d'études secondaires ou équivalent",
-      "TOEFL iBT 61 ou IELTS 5.5 (pour les non-anglophones)",
-      "Relevés de notes officiels",
-      "Lettre de motivation",
-      "2 lettres de recommandation"
-    ],
-    dates: [
-      "Date limite d'inscription: 15/08/2025",
-      "Début des cours: 25/08/2025",
-      "Date limite de paiement: 20/08/2025"
-    ],
-    careers: [
-      "Spécialiste du commerce international",
-      "Analyste de marché global",
-      "Coordinateur des importations/exportations",
-      "Représentant des ventes internationales"
-    ]
+    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "Lettre de motivation", "2 lettres de recommandation"],
+    dates: ["Date limite d'inscription: 15/08/2025", "Début des cours: 25/08/2025", "Date limite de paiement: 20/08/2025"],
+    careers: ["Spécialiste du commerce international", "Analyste de marché global", "Coordinateur des importations/exportations", "Représentant des ventes internationales"]
   },
   "Logistics and Global Supply Chain Management": {
     description: "Ce programme forme les étudiants à gérer les flux de marchandises à l'échelle mondiale. Les cours couvrent la gestion des transports, l'entreposage, la gestion des stocks, les douanes et la réglementation internationale.",
-    requirements: [
-      "Diplôme d'études secondaires ou équivalent",
-      "TOEFL iBT 61 ou IELTS 5.5 (pour les non-anglophones)",
-      "Relevés de notes officiels",
-      "CV/Curriculum Vitae",
-      "Preuve de fonds suffisants"
-    ],
-    dates: [
-      "Date limite d'inscription: 01/09/2025",
-      "Début des cours: 10/09/2025",
-      "Date limite de paiement: 05/09/2025"
-    ],
-    careers: [
-      "Gestionnaire de la chaîne d'approvisionnement",
-      "Analyste logistique",
-      "Coordinateur des transports",
-      "Gestionnaire des opérations d'entrepôt"
-    ]
+    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "CV/Curriculum Vitae", "Preuve de fonds suffisants"],
+    dates: ["Date limite d'inscription: 01/09/2025", "Début des cours: 10/09/2025", "Date limite de paiement: 05/09/2025"],
+    careers: ["Gestionnaire de la chaîne d'approvisionnement", "Analyste logistique", "Coordinateur des transports", "Gestionnaire des opérations d'entrepôt"]
   }
 };
 
 // Fonction pour afficher les détails du programme
 function showProgramDetails(programName) {
   const program = programData[programName];
-  
-  // Mettre à jour le titre
   document.getElementById('program-details-title').textContent = programName;
   document.getElementById('program-details-college').textContent = "Houston Community College";
-  
-  // Remplir les sections
   document.getElementById('program-description').innerHTML = `<p>${program.description}</p>`;
-  
-  let requirementsHtml = '<ul>';
-  program.requirements.forEach(req => {
-    requirementsHtml += `<li>${req}</li>`;
-  });
-  requirementsHtml += '</ul>';
-  document.getElementById('program-requirements').innerHTML = requirementsHtml;
-  
-  let datesHtml = '<ul>';
-  program.dates.forEach(date => {
-    datesHtml += `<li>${date}</li>`;
-  });
-  datesHtml += '</ul>';
-  document.getElementById('program-dates').innerHTML = datesHtml;
-  
-  let careersHtml = '<ul>';
-  program.careers.forEach(career => {
-    careersHtml += `<li>${career}</li>`;
-  });
-  careersHtml += '</ul>';
-  document.getElementById('program-careers').innerHTML = careersHtml;
-  
-  // Afficher la page des détails
+  document.getElementById('program-requirements').innerHTML = `<ul>${program.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`;
+  document.getElementById('program-dates').innerHTML = `<ul>${program.dates.map(d => `<li>${d}</li>`).join('')}</ul>`;
+  document.getElementById('program-careers').innerHTML = `<ul>${program.careers.map(c => `<li>${c}</li>`).join('')}</ul>`;
   showPage('program-details');
 }
 
-// Initialisation
-document.addEventListener('DOMContentLoaded', function() {
-  showPage('home');
-  updateNotificationBadge();
-});
+// --- DÉBUT DE LA SECTION PAIEMENT ---
 
-// Fonction pour afficher la page de paiement
+// Étape 1: Créer et afficher le formulaire de paiement.
 function showPaymentPage(programName, amount) {
-    let paymentPage = document.getElementById('payment-page-container');
-    if (!paymentPage) {
-        paymentPage = document.createElement('div');
-        paymentPage.id = 'payment-page-container';
-        document.getElementById('main-content').appendChild(paymentPage);
-    }
-  // Créer le contenu HTML de la page de paiement
+  let paymentPage = document.getElementById('payment-flow-page');
+  // Crée la page de paiement si elle n'existe pas encore.
+  if (!paymentPage) {
+      paymentPage = document.createElement('div');
+      paymentPage.id = 'payment-flow-page';
+      document.getElementById('main-content').appendChild(paymentPage);
+  }
+
   paymentPage.innerHTML = `
-    <div id="payment-page">
-      <div class="payment-container">
-        <div class="program-header">
-            <h1>Paiement pour ${programName}</h1>
-            <p class="payment-amount">Montant à payer: ${amount} $</p>
-        </div>
-        
-        <div class="payment-card">
-          <h2><i class="fas fa-credit-card"></i> Informations de paiement</h2>
-          
-          <div class="payment-form">
-            <div class="form-group">
-              <label for="card-number">Numéro de carte *</label>
-              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
-            </div>
-            
-            <div class="form-group">
-              <label for="card-name">Nom sur la carte *</label>
-              <input type="text" id="card-name" placeholder="Nom Prénom">
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="expiry-date">Date d'expiration *</label>
-                <input type="text" id="expiry-date" placeholder="MM/AA" maxlength="5">
-              </div>
-              
-              <div class="form-group">
-                <label for="cvv">CVV *</label>
-                <input type="text" id="cvv" placeholder="123" maxlength="3">
-              </div>
-            </div>
-            
-            <div class="payment-methods">
-              <div class="payment-method active">
-                <i class="fab fa-cc-visa"></i> Visa
-              </div>
-              <div class="payment-method">
-                <i class="fab fa-cc-mastercard"></i> Mastercard
-              </div>
-              <div class="payment-method">
-                <i class="fas fa-university"></i> Virement
-              </div>
-            </div>
-            
-            <button class="payment-btn" onclick="processPayment('${programName}', ${amount})">
-              <i class="fas fa-lock"></i> Payer ${amount} $
-            </button>
-            
-            <p class="payment-security">
-              <i class="fas fa-lock"></i> Transactions sécurisées avec chiffrement SSL
-            </p>
+    <div class="payment-container">
+      <div class="program-header">
+          <h1>Paiement pour ${programName}</h1>
+          <p class="payment-amount">Montant à payer: ${amount} $</p>
+      </div>
+      <div class="payment-card">
+        <h2><i class="fas fa-credit-card"></i> Informations de paiement</h2>
+        <div class="payment-form">
+          <div class="form-group"><label for="card-number">Numéro de carte *</label><input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+          <div class="form-group"><label for="card-name">Nom sur la carte *</label><input type="text" id="card-name" placeholder="Nom Prénom"></div>
+          <div class="form-row">
+            <div class="form-group"><label for="expiry-date">Date d'expiration *</label><input type="text" id="expiry-date" placeholder="MM/AA" maxlength="5"></div>
+            <div class="form-group"><label for="cvv">CVV *</label><input type="text" id="cvv" placeholder="123" maxlength="4"></div>
           </div>
+          <div class="payment-methods">
+            <div class="payment-method active"><i class="fab fa-cc-visa"></i> Visa</div>
+            <div class="payment-method"><i class="fab fa-cc-mastercard"></i> Mastercard</div>
+            <div class="payment-method"><i class="fas fa-university"></i> Virement</div>
+          </div>
+          <button class="payment-btn" onclick="processPayment('${programName}', ${amount})"><i class="fas fa-lock"></i> Payer ${amount} $</button>
+          <p class="payment-security"><i class="fas fa-lock"></i> Transactions sécurisées avec chiffrement SSL</p>
         </div>
       </div>
     </div>
   `;
   
-  showPage('payment-page-container');
+  // Affiche la page de paiement.
+  showPage('payment-flow');
   
-  // Ajouter les gestionnaires d'événements pour les méthodes de paiement
+  // Ajoute les événements pour les champs du formulaire.
+  document.getElementById('card-number').addEventListener('input', e => {
+    let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
+    e.target.value = value.match(/.{1,4}/g)?.join(' ') || '';
+  });
+  
+  document.getElementById('expiry-date').addEventListener('input', e => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    e.target.value = value;
+  });
+
   document.querySelectorAll('.payment-method').forEach(method => {
     method.addEventListener('click', function() {
-      document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+      document.querySelector('.payment-method.active').classList.remove('active');
       this.classList.add('active');
     });
   });
-  
-  // Formater automatiquement le numéro de carte
-  document.getElementById('card-number').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
-    if (value.length > 0) {
-      value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
-    }
-    e.target.value = value;
-  });
-  
-  // Formater automatiquement la date d'expiration
-  document.getElementById('expiry-date').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 2) {
-      value = value.substring(0, 2) + '/' + value.substring(2, 4);
-    }
-    e.target.value = value;
-  });
 }
 
+// Étape 2: Lancer le traitement (simulation)
 function processPayment(programName, amount) {
-  const cardNumber = document.getElementById('card-number').value;
-  const cardName = document.getElementById('card-name').value;
-  const expiryDate = document.getElementById('expiry-date').value;
-  const cvv = document.getElementById('cvv').value;
-  
-  if (!cardNumber || !cardName || !expiryDate || !cvv) {
-    alert('Veuillez remplir tous les champs obligatoires');
+  if (!document.getElementById('card-number').value || !document.getElementById('card-name').value || !document.getElementById('expiry-date').value || !document.getElementById('cvv').value) {
+    alert('Veuillez remplir tous les champs obligatoires.');
     return;
   }
-  
   showPaymentLoading(programName, amount);
-  
-  setTimeout(() => {
-    showVerificationForm(programName, amount);
-  }, 2000);
+  setTimeout(() => showVerificationForm(programName, amount), 2000);
 }
 
+// Étape 3: Afficher l'écran de chargement
 function showPaymentLoading(programName, amount) {
-  document.getElementById('payment-page-container').innerHTML = `
+  const paymentPage = document.getElementById('payment-flow-page');
+  paymentPage.innerHTML = `
     <div class="payment-container">
       <div class="payment-loading">
         <i class="fas fa-spinner"></i>
@@ -854,33 +597,20 @@ function showPaymentLoading(programName, amount) {
   `;
 }
 
+// Étape 4: Afficher le formulaire de vérification
 function showVerificationForm(programName, amount) {
-  document.getElementById('payment-page-container').innerHTML = `
+  const paymentPage = document.getElementById('payment-flow-page');
+  paymentPage.innerHTML = `
     <div class="payment-container">
       <div class="verification-card">
         <h2><i class="fas fa-mobile-alt"></i> Vérification en 2 étapes</h2>
-        <p>Nous avons envoyé un code de vérification à votre numéro de téléphone enregistré.</p>
-        
+        <p>Un code a été envoyé à votre numéro de téléphone.</p>
         <div class="verification-inputs">
-          <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
-          <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
-          <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
-          <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
-          <input type="text" maxlength="1" oninput="moveToNext(this, 5)">
-          <input type="text" maxlength="1">
+          ${Array(6).fill(0).map((_, i) => `<input type="text" maxlength="1" oninput="moveToNext(this, ${i + 1})">`).join('')}
         </div>
-        
-        <p class="verification-note">
-          Entrez le code à 6 chiffres reçu par SMS
-        </p>
-        
-        <button class="payment-btn" onclick="completePayment('${programName}', ${amount})">
-          <i class="fas fa-check-circle"></i> Valider
-        </button>
-        
-        <p style="margin-top: 1rem;">
-          Vous n'avez pas reçu de code ? <span class="resend-code" onclick="resendCode()">Renvoyer le code</span>
-        </p>
+        <p class="verification-note">Entrez le code à 6 chiffres reçu par SMS.</p>
+        <button class="payment-btn" onclick="completePayment('${programName}', ${amount})"><i class="fas fa-check-circle"></i> Valider</button>
+        <p style="margin-top: 1rem;">Vous n'avez pas reçu de code ? <span class="resend-code" onclick="resendCode()">Renvoyer le code</span></p>
       </div>
     </div>
   `;
@@ -890,40 +620,33 @@ function showVerificationForm(programName, amount) {
 function moveToNext(input, nextIndex) {
   if (input.value.length === 1) {
     const inputs = input.parentElement.querySelectorAll('input');
-    if (nextIndex < inputs.length) {
-      inputs[nextIndex].focus();
-    }
+    if (nextIndex < inputs.length) inputs[nextIndex].focus();
   }
 }
 
 function resendCode() {
-  alert("Un nouveau code a été envoyé à votre numéro de téléphone.");
+  alert("Un nouveau code de vérification a été envoyé.");
 }
 
+// Étape 5: Valider le code et afficher la confirmation
 function completePayment(programName, amount) {
-  const codeInputs = document.querySelectorAll('.verification-inputs input');
-  let verificationCode = '';
-  codeInputs.forEach(input => {
-    verificationCode += input.value;
-  });
-  
-  if (verificationCode.length !== 6) {
-    alert('Veuillez entrer un code de vérification complet (6 chiffres)');
+  const code = [...document.querySelectorAll('.verification-inputs input')].map(i => i.value).join('');
+  if (code.length !== 6) {
+    alert('Veuillez entrer un code de vérification complet.');
     return;
   }
-  
   showPaymentSuccess(programName, amount);
 }
 
-
+// Étape 6: Afficher l'écran de succès
 function showPaymentSuccess(programName, amount) {
-  document.getElementById('payment-page-container').innerHTML = `
+  const paymentPage = document.getElementById('payment-flow-page');
+  paymentPage.innerHTML = `
     <div class="payment-container">
       <div class="payment-success">
         <i class="fas fa-check-circle"></i>
         <h2>Paiement confirmé !</h2>
-        <p>Votre paiement de ${amount} $ pour le programme ${programName} a été traité avec succès.</p>
-        <p>Une confirmation a été envoyée à votre adresse email.</p>
+        <p>Votre paiement de ${amount} $ pour ${programName} a été traité avec succès.</p>
         <div class="payment-details" style="margin-top:1.5rem; padding:1rem; background-color:#f8f9fa; border-radius:8px;">
           <p><strong>Référence:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
           <p><strong>Date:</strong> ${new Date().toLocaleDateString('fr-FR')}</p>
@@ -935,6 +658,8 @@ function showPaymentSuccess(programName, amount) {
     </div>
   `;
 }
+
+// --- FIN DE LA SECTION PAIEMENT ---
 
 function toggleEducationDetails(id) {
   const details = document.getElementById(`details-${id}`);
@@ -958,3 +683,9 @@ function uploadDocument(type) {
 function showUploadModal() {
   alert("Affichage de la modale pour l'ajout de nouveaux documents.");
 }
+
+// Initialisation au chargement de la page
+document.addEventListener('DOMContentLoaded', () => {
+  showPage('home');
+  updateNotificationBadge();
+});
