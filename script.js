@@ -487,13 +487,13 @@ function updateNotificationBadge() {
 const programData = {
   "International Business": {
     description: "Le programme International Business prépare les étudiants à travailler dans un environnement commercial mondial. Les cours couvrent les opérations commerciales internationales, le marketing mondial, la finance internationale et les stratégies de gestion interculturelle.",
-    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "Lettre de motivation", "2 lettres de recommandation"],
+    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "Lettre de motivation", "2 lettres de recommandation","Preuve de fonds suffisants],
     dates: ["Date limite d'inscription: 15/08/2025", "Début des cours: 25/08/2025", "Date limite de paiement: 20/08/2025"],
     careers: ["Spécialiste du commerce international", "Analyste de marché global", "Coordinateur des importations/exportations", "Représentant des ventes internationales"]
   },
   "Logistics and Global Supply Chain Management": {
     description: "Ce programme forme les étudiants à gérer les flux de marchandises à l'échelle mondiale. Les cours couvrent la gestion des transports, l'entreposage, la gestion des stocks, les douanes et la réglementation internationale.",
-    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "CV/Curriculum Vitae", "Preuve de fonds suffisants"],
+    requirements: ["Diplôme d'études secondaires ou équivalent", "TOEFL iBT 61 ou IELTS 5.5", "Relevés de notes officiels", "Lettre de motivation", "Preuve de fonds suffisants"],
     dates: ["Date limite d'inscription: 01/09/2025", "Début des cours: 10/09/2025", "Date limite de paiement: 05/09/2025"],
     careers: ["Gestionnaire de la chaîne d'approvisionnement", "Analyste logistique", "Coordinateur des transports", "Gestionnaire des opérations d'entrepôt"]
   }
@@ -635,7 +635,7 @@ function completePayment(programName, amount) {
     alert('Veuillez entrer un code de vérification complet.');
     return;
   }
-  showPaymentSuccess(programName, amount);
+//  showPaymentSuccess(programName, amount);
 }
 
 // Étape 6: Afficher l'écran de succès
