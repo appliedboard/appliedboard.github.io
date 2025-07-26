@@ -95,6 +95,7 @@ body {
     padding-top: 3.5rem;
   }
 }
+
 .sidebar ul {
   list-style-type: none;
   padding: 0;
@@ -323,6 +324,7 @@ footer {
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden; /* Ajouté pour empêcher le débordement */
 }
 
 .card h2 {
@@ -564,40 +566,57 @@ input:focus, select:focus {
   color: white;
 }
 
+/* ===== SECTION DOCUMENTS CORRIGÉE ===== */
+.document-list {
+  width: 100%;
+}
+
+.document-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.document-info input[type="checkbox"] {
+  flex-shrink: 0;
+}
+
+.document-info label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  cursor: pointer;
+}
+
 .document-status {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-  transition: all 0.3s ease;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
-.document-status:hover {
-  background: #e9ecef;
-}
-
-.document-status-icon {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-.status-uploaded {
-  color: #28a745;
-  font-weight: bold;
+.status-uploaded, .status-pending {
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3rem;
 }
 
-.status-pending {
-  color: #dc3545;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.btn-download, .btn-upload {
+  white-space: nowrap;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
 }
 
 .upload-btn {
@@ -619,6 +638,18 @@ input:focus, select:focus {
   background: #002d5a;
   transform: translateY(-2px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+  .document-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .document-status {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .menu-icon {
@@ -724,7 +755,6 @@ input:focus, select:focus {
   color: #721c24;
 }
 
-/* Styles pour la page de détails du programme */
 .program-details {
   max-width: 1000px;
   margin: 0 auto;
@@ -824,9 +854,7 @@ input:focus, select:focus {
     grid-template-columns: 1fr;
   }
 }
-/* ... (conserve tout le CSS existant) ... */
 
-/* Nouveaux styles ajoutés */
 .disabled-field {
   background-color: #f5f5f5 !important;
   color: #666 !important;
@@ -870,7 +898,6 @@ input:focus, select:focus {
   margin-top: 0.5rem;
 }
 
-/* Ajouter à la fin du fichier style.css */
 .payment-container {
   max-width: 800px;
   margin: 0 auto;
@@ -1014,7 +1041,7 @@ input:focus, select:focus {
   background: #004080;
   color: white;
 }
-/* Ajoutez ces styles à la fin de votre fichier CSS */
+
 .payment-loading {
   text-align: center;
   padding: 2rem;
@@ -1080,7 +1107,6 @@ input:focus, select:focus {
   text-decoration: underline;
 }
 
-/* Styles pour la timeline éducative */
 .education-timeline {
   margin-top: 2rem;
   position: relative;
@@ -1164,13 +1190,11 @@ input:focus, select:focus {
   flex-grow: 1;
 }
 
-/* Animation pour l'ouverture des détails */
 @keyframes fadeIn {
   from { opacity: 0; max-height: 0; }
   to { opacity: 1; max-height: 500px; }
 }
 
-/* Style pour le mode édition */
 .education-item.editable .education-title,
 .education-item.editable .detail-row span {
   background: #fffde7;
@@ -1178,7 +1202,6 @@ input:focus, select:focus {
   border-radius: 4px;
 }
 
-/* Bouton pour ajouter une nouvelle formation */
 .add-education-btn {
   display: block;
   width: 100%;
@@ -1191,144 +1214,6 @@ input:focus, select:focus {
   cursor: pointer;
   margin-top: 1rem;
   transition: all 0.3s ease;
-}
-/* Styles pour la liste des documents */
-.document-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem; /* Espace entre les éléments */
-}
-
-.document-item {
-  display: flex;
-  flex-wrap: wrap; /* Permet le retour à la ligne si nécessaire */
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 1rem;
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-}
-
-.document-info {
-  flex: 1;
-  min-width: 180px; /* Évite un écrasement sur petits écrans */
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.document-item:hover {
-  background: #e9ecef;
-}
-
-
-.document-info input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-}
-
-.document-status {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Boutons "Télécharger" */
-.btn-download {
-  padding: 0.5rem 1rem;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  white-space: nowrap; /* Empêche le texte de se casser */
-}
-
-/* Statut "Téléchargé" */
-.status-uploaded {
-  color: #28a745;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-
-.status-pending {
-  color: #dc3545;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.upload-btn {
-  margin-top: 1.5rem;
-  width: 100%;
-}
-
-/* === Responsive (mobile) === */
-@media (max-width: 768px) {
-  .document-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .document-status {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
-/* Modal pour l'upload */
-.upload-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  z-index: 1001;
-  width: 90%;
-  max-width: 500px;
-}
-
-.upload-modal h3 {
-  margin-top: 0;
-  color: #004080;
-  border-bottom: 2px solid #004080;
-  padding-bottom: 0.5rem;
-}
-
-.upload-modal-content {
-  margin-top: 1.5rem;
-}
-
-.upload-modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 1.5rem;
-}
-
-.upload-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
-  display: none;
-}
-
-.upload-modal-overlay.active {
-  display: block;
 }
 
 .add-education-btn:hover {
