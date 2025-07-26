@@ -341,7 +341,7 @@ documents: `
       </div>
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="financial" checked>
+          <input type="checkbox" id="financial" disabled checked>
           <label for="financial">Preuves financières</label>
         </div>
         <div class="document-status">
@@ -356,7 +356,7 @@ documents: `
 
             <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="BAC" checked>
+          <input type="checkbox" id="BAC" disabled checked>
           <label for="financial">BAC Transcript</label>
         </div>
         <div class="document-status">
@@ -371,7 +371,7 @@ documents: `
 
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Motivation" checked>
+          <input type="checkbox" id="Motivation" disabled checked>
           <label for="financial">Lettre De Motivation</label>
         </div>
         <div class="document-status">
@@ -385,7 +385,7 @@ documents: `
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Etude" checked>
+          <input type="checkbox" id="Etude"disabled checked>
           <label for="financial">Projet d'etude</label>
         </div>
         <div class="document-status">
@@ -399,7 +399,7 @@ documents: `
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Recomandation" checked>
+          <input type="checkbox" id="Recomandation" disabled checked>
           <label for="financial">Lettre De Recomandation</label>
         </div>
         <div class="document-status">
