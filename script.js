@@ -339,14 +339,13 @@ documents: `
           </button>
         </div>
       </div>
-      
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="financial" disabled>
           <label for="financial">Preuves financières</label>
         </div>
         <div class="document-status">
-          <span class="status-pending">
+          <span class="status-uploaded">
             <i class="fas fa-clock"></i> En attente
           </span>
           <button class="app-btn btn-upload" onclick="uploadDocument('financial')">
@@ -357,14 +356,29 @@ documents: `
       
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="acceptance" disabled>
-          <label for="acceptance">Lettre d'acceptation</label>
+          <input type="checkbox" id="licence_2" disabled>
+          <label for="licence_2">ECCAM</label>
         </div>
         <div class="document-status">
           <span class="status-pending">
             <i class="fas fa-clock"></i> En attente
           </span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('acceptance')">
+          <button class="app-btn btn-upload" onclick="uploadDocument('licence_2')">
+            <i class="fas fa-upload"></i> Téléverser
+          </button>
+        </div>
+      </div>
+      
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="licence_3" disabled>
+          <label for="licence_3">ESCOM</label>
+        </div>
+        <div class="document-status">
+          <span class="status-pending">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('licence_3')">
             <i class="fas fa-upload"></i> Téléverser
           </button>
         </div>
