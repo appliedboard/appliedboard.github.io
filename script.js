@@ -147,7 +147,7 @@ const profileSections = {
         <button class="save-btn btn-modify-disabled">
           <i class="fas fa-edit"></i> Modifier
         </button>
-      </div>
+      </div> 
       <p class="not-editable-message">Cliquez sur "Modifier" pour mettre à jour vos informations</p>
     </div>
   `,
