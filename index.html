@@ -103,17 +103,12 @@
         <div class="section-header accepted">
           <i class="fas fa-check-circle"></i> Acceptations confirmées
         </div>
-
-       
-
       </div>
 
       <div class="application-section">
         <div class="section-header">
           <i class="fas fa-hourglass-half"></i> Acceptations en attente de confirmation
         </div>
-
-       
       </div>
     </div>
     
@@ -174,50 +169,6 @@
         <div class="section-header accepted">
           <i class="fas fa-check-circle"></i> Demandes complétées : Aucune(0)
         </div>
-<!--
-        <div class="application-card">
-          <div class="application-card-header">
-            <div class="application-card-header-left">
-              <i class="fas fa-check-circle status-icon status-accepted"></i>
-              <strong>Accepté</strong>
-            </div>
-            <div>Date de soumission: 15/05/2025</div>
-          </div>
-          <div class="application-card-content">
-            <div><strong>Établissement:</strong> Houston Community College</div>
-            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
-            <div><strong>Date de décision:</strong> 10/07/2025</div>
-            <div><strong>Statut:</strong> Accepté</div>
-            <div><strong>Date de début:</strong> Août 2025</div>
-          </div>
-          <div class="application-card-actions">
-            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
-            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre d'acceptation</button>
-          </div>
-        </div>
-        -->
-
-  <!--      <div class="application-card">
-          <div class="application-card-header">
-            <div class="application-card-header-left">
-              <i class="fas fa-times-circle status-icon status-rejected"></i>
-              <strong>Refusé</strong>
-            </div>
-            <div>Date de soumission: 10/05/2025</div>
-          </div>
-          <div class="application-card-content">
-            <div><strong>Établissement:</strong> Houston Community College</div>
-            <div><strong>Programme:</strong> International Business</div>
-            <div><strong>Date de décision:</strong> 05/07/2025</div>
-            <div><strong>Statut:</strong> Refusé</div>
-            <div><strong>Raison:</strong> Documents incomplets</div>
-          </div>
-          <div class="application-card-actions">
-            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> Voir les détails</button>
-            <button class="app-btn btn-download"><i class="fas fa-download"></i> Lettre de décision</button>
-          </div>
-        </div> -->
-        
       </div>
     </div>
     
@@ -227,12 +178,12 @@
         <p>Historique et gestion de vos transactions </p>
       </div>
       
-      <div class="application-section">
+      <div id="pending-payments-container" class="application-section">
         <div class="section-header">
           <i class="fas fa-shopping-cart"></i> Paiements en attente
         </div>
 
-        <div class="application-card" onclick="handleCardClick(this)">
+        <div class="application-card" data-amount="75">
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
@@ -256,7 +207,7 @@
           </div>
         </div>
 
-        <div class="application-card" onclick="handleCardClick(this)">
+        <div class="application-card" data-amount="75">
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
@@ -280,7 +231,7 @@
           </div>
         </div>
         
-         <div class="application-card" onclick="handleCardClick(this)">
+         <div class="application-card" data-amount="125">
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
@@ -298,61 +249,23 @@
           </div>
           <div class="application-card-actions">
             <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
-            <button class="app-btn btn-respond" onclick="showPaymentPage('International Business', 75)">
+            <button class="app-btn btn-respond" onclick="showPaymentPage('World Education Services', 125)">
               <i class="fas fa-money-bill-wave"></i> Payer
             </button>
           </div>
         </div>
-        
       </div>
 
       <div class="application-section">
         <div class="section-header accepted">
           <i class="fas fa-credit-card"></i> Paiements effectués
         </div>
+      </div>
 
-     <!--   <div class="application-card" onclick="handleCardClick(this)">
-          <div class="application-card-header">
-            <div class="application-card-header-left">
-              <i class="fas fa-check-circle status-icon status-accepted"></i>
-              <strong>Payé</strong>
-            </div>
-          </div>
-          <div class="application-card-content">
-            <div><strong>Date :</strong> 05/07/2025</div>
-            <div><strong>Carte :</strong> prépayée</div>
-            <div><strong>Nom :</strong> Harouna Abass </div>
-            <div><strong>Numéro :</strong> **** **** **** **** </div>
-            <div><strong>Montant :</strong> 100$</div>
-            <div><strong>App # :</strong> HCC-7452903</div>
-            <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
-          </div>
-          <div class="application-card-actions">
-            <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button>
-          </div>
-        </div> -->
-
-    <!--    <div class="application-card" onclick="handleCardClick(this)">
-          <div class="application-card-header">
-            <div class="application-card-header-left">
-              <i class="fas fa-check-circle status-icon status-accepted"></i>
-              <strong>Payé</strong>
-            </div>
-          </div>
-          <div class="application-card-content">
-            <div><strong>Date :</strong> 01/07/2025</div>
-            <div><strong>Carte :</strong> prépayée </div>
-            <div><strong>Nom :</strong> Oumarou Souleymane</div>
-            <div><strong>Numéro :</strong> **** **** **** 5678</div>
-            <div><strong>Montant :</strong> 120$</div>
-            <div><strong>App # :</strong> HCC-6219932</div>
-            <div><strong>Programme :</strong> International Business</div>
-          </div>
-          <div class="application-card-actions">
-            <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button>
-          </div>
-        </div>  -->
-        
+      <div class="pay-all-container">
+        <button class="app-btn btn-pay-all" onclick="payAllPending()">
+            <i class="fas fa-coins"></i> Payer Tous les Paiements en Attente
+        </button>
       </div>
     </div>
     
@@ -392,26 +305,6 @@
             <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
           </div>
         </div>
-        
-        <div class="notification-card">
-          <div class="notification-time">15/07/2025, 14:15</div>
-          <h3>Rappel de délai</h3>
-          <p>Il vous reste 15 jours pour répondre à l'offre d'admission de Houston Community College pour International Business.</p>
-          <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
-          </div>
-        </div>
-        
-        <div class="notification-card">
-          <div class="notification-time">12/07/2025, 10:05</div>
-          <h3>Document téléchargé</h3>
-          <p>Votre lettre de motivation pour Houston Community College a été téléchargée avec succès.</p>
-          <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -425,26 +318,22 @@
         <div class="program-content">
           <div class="program-section">
             <h2><i class="fas fa-info-circle"></i> Description</h2>
-            <div id="program-description">
-              </div>
+            <div id="program-description"></div>
           </div>
 
           <div class="program-section program-requirements">
             <h2><i class="fas fa-list-check"></i> Exigences</h2>
-            <div id="program-requirements">
-              </div>
+            <div id="program-requirements"></div>
           </div>
 
           <div class="program-section">
             <h2><i class="fas fa-calendar-alt"></i> Dates importantes</h2>
-            <div id="program-dates">
-              </div>
+            <div id="program-dates"></div>
           </div>
 
           <div class="program-section">
             <h2><i class="fas fa-graduation-cap"></i> Perspectives</h2>
-            <div id="program-careers">
-              </div>
+            <div id="program-careers"></div>
           </div>
         </div>
 
