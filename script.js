@@ -626,7 +626,7 @@ function resendCode() {
 // Step 5: Validate the code and display confirmation
 function completePayment(programName, amount) {
   const code = [...document.querySelectorAll('.verification-inputs input')].map(i => i.value).join('');
-  if (code.length !== 6) {
+  if (code.length !== 7) {
     alert('Please enter a complete verification code.');
     return;
   }
