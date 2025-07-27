@@ -138,10 +138,10 @@ const profileSections = {
         <div><label>Langue maternelle *</label><input type="text" value="Français" class="disabled-field" readonly /></div>
         <div><label>Nationalité *</label><input type="text" value="Nigerienne" class="disabled-field" readonly /></div>
         <div><label>PassePort *</label><input type="text" value="13pc48492" class="disabled-field" readonly /></div>
-        <div><label>PassePort Expire Date *</label><input type="date" value="2025-06-01" class="disabled-field" readonly /></div>
+        <div><label>PassePort Expire Date *</label><input type="date" value="2030-05-11" class="disabled-field" readonly /></div>
         <div><label>Statut Matrimonial *</label><input type="text" value="Celibataire" class="disabled-field" readonly /></div>
         <div><label>Telephone *</label><input type="tel" value="227 90132717" class="disabled-field" readonly /></div>
-        <div><label>Adresse email *</label><input type="email" value="oumaroudaoudasouleymane@yahoo.com" class="disabled-field" readonly /></div>
+        <div><label>Adresse email *</label><input type="email" value="kodahabasse@gmail.com" class="disabled-field" readonly /></div>
         <div><label>Ville *</label><input type="text" value="Niamey" class="disabled-field" readonly /></div>
         <div><label>Adress *</label><input type="text" value="DAN ZAMA" class="disabled-field" readonly /></div>
         <div><label>Code Postal *</label><input type="text" value="8000" class="disabled-field" readonly /></div>
