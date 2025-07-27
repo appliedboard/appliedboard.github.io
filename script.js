@@ -191,7 +191,7 @@ education: `
           <div class="education-title">1-YEAR BTS</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
-        <div class="education-details" id="details-licence" style="display: none;">
+        <div class="education-details" id="details-licence1" style="display: none;">
           <div class="detail-row"><label>Établissement:</label><span>ONECS</span></div>
           <div class="detail-row"><label>Adresse:</label><span>Niamey</span></div>
           <div class="detail-row"><label>Période:</label><span>Septembre 2021</span></div>
@@ -499,6 +499,30 @@ function showProgramDetails(programName) {
 
 // --- DÉBUT DE LA SECTION PAIEMENT ---
 
+// Fonction pour payer tous les paiements en attente
+function payAllPending() {
+    const pendingCards = document.querySelectorAll('#pending-payments-container .application-card');
+    let totalAmount = 0;
+
+    if (pendingCards.length === 0) {
+        alert("Il n'y a aucun paiement en attente à régler.");
+        return;
+    }
+
+    pendingCards.forEach(card => {
+        const amount = parseFloat(card.dataset.amount);
+        if (!isNaN(amount)) {
+            totalAmount += amount;
+        }
+    });
+
+    if (totalAmount > 0) {
+        showPaymentPage('Paiement groupé des frais en attente', totalAmount);
+    } else {
+        alert("Le montant total est de zéro. Aucun paiement n'est nécessaire.");
+    }
+}
+
 // Étape 1: Créer et afficher le formulaire de paiement.
 function showPaymentPage(programName, amount) {
   let paymentPage = document.getElementById('payment-flow-page');
@@ -632,7 +656,7 @@ function showPaymentSuccess(programName, amount) {
       <div class="payment-success">
         <i class="fas fa-check-circle"></i>
         <h2>Paiement confirmé !</h2>
-        <p>Votre paiement de ${amount} $ pour ${programName} a été traité avec succès.</p>
+        <p>Votre paiement de ${amount} $ pour le programme "${programName}" a été traité avec succès.</p>
         <div class="payment-details" style="margin-top:1.5rem; padding:1rem; background-color:#f8f9fa; border-radius:8px;">
           <p><strong>Référence:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
           <p><strong>Date:</strong> ${new Date().toLocaleDateString('fr-FR')}</p>
