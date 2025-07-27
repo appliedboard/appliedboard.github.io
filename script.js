@@ -188,34 +188,20 @@ education: `
        <div class="education-item" onclick="toggleEducationDetails('licence1')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">1-YEAR LICENCE</div>
+          <div class="education-title">1-YEAR BTS</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
-        <div class="education-details" id="details-licence1" style="display: none;">
-          <div class="detail-row"><label>Établissement:</label><span>ESCOM</span></div>
-          <div class="detail-row"><label>Adresse:</label><span>QT Abidjan, 2437 Niamey</span></div>
-          <div class="detail-row"><label>Période:</label><span>Septembre 2018 - Juin 2019</span></div>
-          <div class="detail-row"><label>Moyenne:</label><span>12.87/20</span></div>
-          <div class="detail-row"><label>Spécialisation:</label><span>MANAGEMENT LOGISTIQUE-TRANSPORT</span></div>
+        <div class="education-details" id="details-licence" style="display: none;">
+          <div class="detail-row"><label>Établissement:</label><span>ONECS</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2021</span></div>
+          <div class="detail-row"><label>Moyenne:</label><span>11/20</span></div>
+          <div class="detail-row"><label>Spécialisation:</label><span>Communication des Entreprises</span></div>
           <div class="detail-row"><label>Diplôme obtenu:</label><span>Oui</span></div>
         </div>
       </div>
 
-      <div class="education-item" onclick="toggleEducationDetails('licence2')">
-        <div class="education-header">
-          <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">2-YEAR LICENCE</div>
-          <i class="fas fa-chevron-down toggle-icon" id="toggle-licence2"></i>
-        </div>
-        <div class="education-details" id="details-licence2" style="display: none;">
-          <div class="detail-row"><label>Établissement:</label><span>ECCAM</span></div>
-          <div class="detail-row"><label>Adresse:</label><span>BOUKOKI 2, Niamey</span></div>
-          <div class="detail-row"><label>Période:</label><span>Septembre 2018 - Juin 2019</span></div>
-          <div class="detail-row"><label>Moyenne:</label><span>12/20</span></div>
-          <div class="detail-row"><label>Spécialisation:</label><span>TRANSPORT-LOGISTIQUE</span></div>
-          <div class="detail-row"><label>Diplôme obtenu:</label><span>BTS - 2018</span></div>
-        </div>
-      </div>
+
       
       <div class="education-item" onclick="toggleEducationDetails('highschool')">
         <div class="education-header">
@@ -224,12 +210,12 @@ education: `
           <i class="fas fa-chevron-down toggle-icon" id="toggle-highschool"></i>
         </div>
         <div class="education-details" id="details-highschool" style="display: none;">
-          <div class="detail-row"><label>Établissement:</label><span>Lycée SONI ALI BER</span></div>
-          <div class="detail-row"><label>Adresse:</label><span>COMPLEXE, 28501 Niamey</span></div>
-          <div class="detail-row"><label>Période:</label><span>Septembre 2013 - Juillet 2016</span></div>
-          <div class="detail-row"><label>Moyenne au bac:</label><span>14.22/20</span></div>
-          <div class="detail-row"><label>Filière:</label><span>Scientifique</span></div>
-          <div class="detail-row"><label>Mention:</label><span>Bien</span></div>
+          <div class="detail-row"><label>Établissement:</label><span>Lycée </span></div>
+          <div class="detail-row"><label>Adresse:</label><span>-, - Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2015 - Juillet 2018</span></div>
+          <div class="detail-row"><label>Moyenne au bac:</label><span>10.56/20</span></div>
+          <div class="detail-row"><label>Filière:</label><span>Littérature</span></div>
+          <div class="detail-row"><label>Mention:</label><span>Passable</span></div>
         </div>
       </div>
     </div>
