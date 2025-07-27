@@ -431,7 +431,7 @@ input:focus, select:focus {
   color: #004080;
 }
 
-/* Styles pour la section des documents */
+/* Styles for documents section */
 .document-list-container {
   max-height: 450px;
   overflow-y: auto;
@@ -756,7 +756,7 @@ input:focus, select:focus {
   color: #721c24;
 }
 
-/* Styles pour la page de détails du programme */
+/* Styles for program details page */
 .program-details {
   max-width: 1000px;
   margin: 0 auto;
@@ -1108,7 +1108,7 @@ input:focus, select:focus {
   text-decoration: underline;
 }
 
-/* Styles pour la timeline éducative */
+/* Styles for educational timeline */
 .education-timeline {
   margin-top: 2rem;
   position: relative;
@@ -1192,7 +1192,7 @@ input:focus, select:focus {
   flex-grow: 1;
 }
 
-/* Style pour le mode édition */
+/* Style for edit mode */
 .education-item.editable .education-title,
 .education-item.editable .detail-row span {
   background: #fffde7;
@@ -1200,7 +1200,7 @@ input:focus, select:focus {
   border-radius: 4px;
 }
 
-/* Bouton pour ajouter une nouvelle formation */
+/* Button to add new education */
 .add-education-btn {
   display: block;
   width: 100%;
@@ -1220,7 +1220,7 @@ input:focus, select:focus {
   border-style: solid;
 }
 
-/* Styles pour le bouton "Payer Tout" */
+/* Styles for "Pay All" button */
 .pay-all-container {
   text-align: center;
   margin-top: 2rem;
