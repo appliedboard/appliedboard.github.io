@@ -188,7 +188,7 @@ education: `
        <div class="education-item" onclick="toggleEducationDetails('licence1')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title"2-YEAR BTS</div>
+          <div class="education-title">2-YEAR BTS</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
         <div class="education-details" id="details-licence1" style="display: none;">
@@ -261,16 +261,7 @@ documents: `
           <button class="app-btn btn-download" onclick="downloadDocument('finance')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
-      <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="BAC" disabled checked>
-          <label for="BAC">BAC Transcript</label>
-        </div>
-        <div class="document-status status-uploaded">
-          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('bac')"><i class="fas fa-download"></i> Télécharger</button>
-        </div>
-      </div>
+      
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="Motivation" disabled checked>
@@ -301,6 +292,18 @@ documents: `
           <button class="app-btn btn-download" onclick="downloadDocument('recommandation')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
+
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="BAC" disabled >
+          <label for="BAC">Transcript BAC</label>
+        </div>
+       <div class="document-status status-pending">
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-download" onclick="uploadDocument('bac')"><i class="fas fa-upload"></i> Téléverser</button>
+        </div>
+      </div>
+      
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_2" disabled>
@@ -321,26 +324,8 @@ documents: `
           <button class="app-btn btn-upload" onclick="uploadDocument('licence_3')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
-	    <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="master_1" disabled>
-          <label for="master_1">Transcript IPHEC</label>
-        </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('Master_1')"><i class="fas fa-upload"></i> Téléverser</button>
-        </div>
-      </div>
-      <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="photos" disabled checked>
-          <label for="photos">Photos d'identité</label>
-        </div>
-        <div class="document-status status-uploaded">
-          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('photos')"><i class="fas fa-download"></i> Télécharger</button>
-        </div>
-      </div>
+	    
+      
     </div>
     
     <button class="upload-btn" onclick="showUploadModal()">
