@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AppliedBoard</title>
+  <title>Applyboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -24,13 +24,13 @@
   </div>
 
   <div class="sidebar" id="sidebar">
-    <h2><i class="fas fa-graduation-cap"></i> AppliedBoard</h2>
+    <h2><i class="fas fa-graduation-cap"></i> Applyboard</h2>
     <ul>
-      <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Accueil</a></li>
-      <li><a href="#" onclick="showPage('profile')"><i class="fas fa-user"></i> Mon Profil</a></li>
-      <li><a href="#" onclick="showPage('acceptations')"><i class="fas fa-check-circle"></i> Mes Acceptations</a></li>
-      <li><a href="#" onclick="showPage('demandes')"><i class="fas fa-envelope-open-text"></i> Mes Demandes</a></li>
-      <li><a href="#" onclick="showPage('payments')"><i class="fas fa-credit-card"></i> Mes Paiements</a></li>
+      <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#" onclick="showPage('profile')"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a href="#" onclick="showPage('acceptations')"><i class="fas fa-check-circle"></i> My Acceptances</a></li>
+      <li><a href="#" onclick="showPage('demandes')"><i class="fas fa-envelope-open-text"></i> My Applications</a></li>
+      <li><a href="#" onclick="showPage('payments')"><i class="fas fa-credit-card"></i> My Payments</a></li>
       <li><a href="#" onclick="showPage('notifications')"><i class="fas fa-bell"></i> Notifications</a></li>
     </ul>
   </div>
@@ -40,27 +40,27 @@
   <main id="main-content">
     <div id="home-page">
       <div class="welcome-section">
-        <h1>Bienvenue sur AppliedBoard</h1>
-        <p>Votre plateforme complète pour gérer vos demandes d'admission dans les universités à travers le monde. Suivez votre parcours, gérez vos documents et maximisez vos chances de réussite.</p>
+        <h1>Welcome to Applyboard</h1>
+        <p>Your comprehensive platform to manage your university applications worldwide. Track your journey, manage your documents, and maximize your chances of success.</p>
       </div>
       
       <div class="features">
         <div class="feature-card" onclick="showPage('profile')">
           <i class="fas fa-user-graduate"></i>
-          <h3>Gestion de Profil</h3>
-          <p>Créez et gérez votre profil académique complet pour faciliter vos candidatures.</p>
+          <h3>Profile Management</h3>
+          <p>Create and manage your complete academic profile to facilitate your applications.</p>
         </div>
         
         <div class="feature-card" onclick="showPage('demandes')">
           <i class="fas fa-university"></i>
-          <h3>Suivi des Demandes</h3>
-          <p>Suivez l'état de vos candidatures en temps réel et recevez des notifications.</p>
+          <h3>Application Tracking</h3>
+          <p>Track the status of your applications in real-time and receive notifications.</p>
         </div>
         
         <div class="feature-card" onclick="showProfileSection('documents')">
           <i class="fas fa-file-contract"></i>
-          <h3>Gestion des Documents</h3>
-          <p>Téléchargez et organisez tous vos documents académiques en un seul endroit.</p>
+          <h3>Document Management</h3>
+          <p>Upload and organize all your academic documents in one place.</p>
         </div>
       </div>
     </div>
@@ -68,22 +68,22 @@
     <div id="profile-page" style="display: none;">
       <div class="layout">
         <div class="profile-sidebar">
-          <h2><i class="fas fa-user-circle"></i> Mon Profil</h2>
+          <h2><i class="fas fa-user-circle"></i> My Profile</h2>
           <ul>
             <li id="menu-general" onclick="showProfileSection('general')" class="active">
-              <i class="menu-icon fas fa-arrow-circle-right"></i> Informations Générales
+              <i class="menu-icon fas fa-arrow-circle-right"></i> General Information
             </li>
             <li id="menu-education" onclick="showProfileSection('education')">
-              <i class="menu-icon fas fa-arrow-circle-right"></i> Historique Éducatif
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Educational History
             </li>
             <li id="menu-documents" onclick="showProfileSection('documents')">
               <i class="menu-icon fas fa-arrow-circle-right"></i> Documents
             </li>
             <li id="menu-tests" onclick="showProfileSection('tests')">
-              <i class="menu-icon fas fa-arrow-circle-right"></i> Résultats de Tests
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Test Results
             </li>
             <li id="menu-visa" onclick="showProfileSection('visa')">
-              <i class="menu-icon fas fa-arrow-circle-right"></i> Visa & Permis d'Études
+              <i class="menu-icon fas fa-arrow-circle-right"></i> Visa & Study Permit
             </li>
           </ul>
         </div>
@@ -95,51 +95,51 @@
     
     <div id="acceptations-page" style="display: none;">
       <div class="welcome-section">
-        <h1>Mes Acceptations</h1>
-        <p>Gérez vos offres d'admission.</p>
+        <h1>My Acceptances</h1>
+        <p>Manage your admission offers.</p>
       </div>
       
       <div class="application-section">
         <div class="section-header accepted">
-          <i class="fas fa-check-circle"></i> Acceptations confirmées
+          <i class="fas fa-check-circle"></i> Confirmed Acceptances
         </div>
       </div>
 
       <div class="application-section">
         <div class="section-header">
-          <i class="fas fa-hourglass-half"></i> Acceptations en attente de confirmation
+          <i class="fas fa-hourglass-half"></i> Acceptances Awaiting Confirmation
         </div>
       </div>
     </div>
     
     <div id="demandes-page" style="display: none;">
       <div class="welcome-section">
-        <h1>Mes Demandes</h1>
-        <p>Suivez l'état de vos candidatures .</p>
+        <h1>My Applications</h1>
+        <p>Track the status of your applications.</p>
       </div>
       
       <div class="application-section">
         <div class="section-header">
-          <i class="fas fa-hourglass-start"></i> Demandes en cours
+          <i class="fas fa-hourglass-start"></i> In-Progress Applications
         </div>
 
         <div class="application-card">
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-exclamation-circle status-icon status-pending"></i>
-              <strong>En traitement</strong>
+              <strong>Processing</strong>
             </div>
-            <div>Date de soumission: 20/07/2025</div>
+            <div>Submission Date: 07/20/2025</div>
           </div>
           <div class="application-card-content">
-            <div><strong>Établissement:</strong> Houston Community College</div>
-            <div><strong>Programme:</strong> International Business</div>
-            <div><strong>Date limite:</strong> 15/08/2025</div>
-            <div><strong>Statut:</strong> Paiement </div>
-            <div><strong>Date de décision estimée:</strong> 15/09/2025</div>
+            <div><strong>Institution:</strong> Houston Community College</div>
+            <div><strong>Program:</strong> International Business</div>
+            <div><strong>Deadline:</strong> 08/15/2025</div>
+            <div><strong>Status:</strong> Payment</div>
+            <div><strong>Estimated Decision Date:</strong> 09/15/2025</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> Voir les détails</button>
+            <button class="app-btn btn-view" onclick="showProgramDetails('International Business')"><i class="fas fa-eye"></i> View Details</button>
           </div>
         </div>
 
@@ -147,20 +147,20 @@
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-exclamation-circle status-icon status-pending"></i>
-              <strong> Paiement requis</strong>
+              <strong>Payment Required</strong>
             </div>
-            <div>Date de soumission: 20/07/2025</div>
+            <div>Submission Date: 07/20/2025</div>
           </div>
           <div class="application-card-content">
-            <div><strong>Établissement:</strong> Houston Community College</div>
-            <div><strong>Programme:</strong> Logistics and Global Supply Chain Management</div>
-            <div><strong>Date limite:</strong> 15/08/2025</div>
-            <div><strong>Statut:</strong> Paiement requis</div>
-            <div><strong>Date de décision estimée:</strong> 15/09/2025</div>
+            <div><strong>Institution:</strong> Houston Community College</div>
+            <div><strong>Program:</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Deadline:</strong> 08/15/2025</div>
+            <div><strong>Status:</strong> Payment Required</div>
+            <div><strong>Estimated Decision Date:</strong> 09/15/2025</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
-            <button class="app-btn btn-upload" onclick="showProfileSection('documents')"><i class="fas fa-upload"></i> Téléverser les documents manquants</button>
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> View Details</button>
+            <button class="app-btn btn-upload" onclick="showProfileSection('documents')"><i class="fas fa-upload"></i> Upload Missing Documents</button>
           </div>
         </div>
 
@@ -168,20 +168,20 @@
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-exclamation-circle status-icon status-pending"></i>
-              <strong>Paiement requis</strong>
+              <strong>Payment Required</strong>
             </div>
-            <div>Date de soumission: 21/07/2025</div>
+            <div>Submission Date: 07/21/2025</div>
           </div>
           <div class="application-card-content">
-            <div><strong>Établissement:</strong> World Education Services </div>
-            <div><strong>Programme:</strong> évaluations des diplômes étudiants internationaux et  immigrants </div>
-            <div><strong>Date limite:</strong> - - - </div>
-            <div><strong>Statut:</strong> Paiement requis</div>
-            <div><strong>Date de décision estimée:</strong> 15/09/2025</div>
+            <div><strong>Institution:</strong> World Education Services</div>
+            <div><strong>Program:</strong> Evaluations for international students and immigrants</div>
+            <div><strong>Deadline:</strong> - - -</div>
+            <div><strong>Status:</strong> Payment Required</div>
+            <div><strong>Estimated Decision Date:</strong> 09/15/2025</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> Voir les détails</button>
-            <button class="app-btn btn-upload" onclick="showProfileSection('documents')"><i class="fas fa-upload"></i> Téléverser les documents manquants</button>
+            <button class="app-btn btn-view" onclick="showProgramDetails('Logistics and Global Supply Chain Management')"><i class="fas fa-eye"></i> View Details</button>
+            <button class="app-btn btn-upload" onclick="showProfileSection('documents')"><i class="fas fa-upload"></i> Upload Missing Documents</button>
           </div>
         </div>
         
@@ -189,42 +189,42 @@
 
       <div class="application-section">
         <div class="section-header accepted">
-          <i class="fas fa-check-circle"></i> Demandes complétées : Aucune(0)
+          <i class="fas fa-check-circle"></i> Completed Applications: None (0)
         </div>
       </div>
     </div>
     
     <div id="payments-page" style="display: none;">
       <div class="welcome-section">
-        <h1>Mes Paiements</h1>
-        <p>Historique et gestion de vos transactions </p>
+        <h1>My Payments</h1>
+        <p>History and management of your transactions</p>
       </div>
       
       <div id="pending-payments-container" class="application-section">
         <div class="section-header">
-          <i class="fas fa-shopping-cart"></i> Paiements en attente
+          <i class="fas fa-shopping-cart"></i> Pending Payments
         </div>
 
         <div class="application-card" data-amount="75">
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
-              <strong>En attente</strong>
+              <strong>Pending</strong>
             </div>
           </div>
           <div class="application-card-content">
-            <div><strong>Date :</strong> 20/07/2025</div>
-            <div><strong>Carte :</strong> prépayée</div>
-            <div><strong>Nom :</strong> Harouna Abass </div>
-            <div><strong>Numéro :</strong> **** **** **** ****</div>
-            <div><strong>Montant :</strong> 75$</div>
-            <div><strong>App # :</strong> HCC-8362701</div>
-            <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
+            <div><strong>Date:</strong> 07/20/2025</div>
+            <div><strong>Card:</strong> Prepaid</div>
+            <div><strong>Name:</strong> Harouna Abass</div>
+            <div><strong>Number:</strong> **** **** **** ****</div>
+            <div><strong>Amount:</strong> $75</div>
+            <div><strong>App #:</strong> HCC-8362701</div>
+            <div><strong>Program:</strong> Logistics and Global Supply Chain Management</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Delete</button>
             <button class="app-btn btn-respond" onclick="showPaymentPage('Logistics and Global Supply Chain Management', 75)">
-              <i class="fas fa-money-bill-wave"></i> Payer
+              <i class="fas fa-money-bill-wave"></i> Pay
             </button>
           </div>
         </div>
@@ -233,22 +233,22 @@
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
-              <strong>En attente</strong>
+              <strong>Pending</strong>
             </div>
           </div>
           <div class="application-card-content">
-            <div><strong>Date :</strong> 20/07/2025</div>
-            <div><strong>Carte :</strong> prépayée </div>
-            <div><strong>Nom :</strong> Harouna Abass </div>
-            <div><strong>Numéro :</strong> **** **** **** **** </div>
-            <div><strong>Montant :</strong> 75$</div>
-            <div><strong>App # :</strong> HCC-9362701</div>
-            <div><strong>Programme :</strong> International Business</div>
+            <div><strong>Date:</strong> 07/20/2025</div>
+            <div><strong>Card:</strong> Prepaid</div>
+            <div><strong>Name:</strong> Harouna Abass</div>
+            <div><strong>Number:</strong> **** **** **** ****</div>
+            <div><strong>Amount:</strong> $75</div>
+            <div><strong>App #:</strong> HCC-9362701</div>
+            <div><strong>Program:</strong> International Business</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Delete</button>
             <button class="app-btn btn-respond" onclick="showPaymentPage('International Business', 75)">
-              <i class="fas fa-money-bill-wave"></i> Payer
+              <i class="fas fa-money-bill-wave"></i> Pay
             </button>
           </div>
         </div>
@@ -257,22 +257,22 @@
           <div class="application-card-header">
             <div class="application-card-header-left">
               <i class="fas fa-clock status-icon status-pending"></i>
-              <strong>En attente</strong>
+              <strong>Pending</strong>
             </div>
           </div>
           <div class="application-card-content">
-            <div><strong>Date :</strong> 21/07/2025</div>
-            <div><strong>Carte :</strong> prépayée </div>
-            <div><strong>Nom :</strong> Harouna Abass </div>
-            <div><strong>Numéro :</strong> **** **** **** **** </div>
-            <div><strong>Montant :</strong> 125$</div>
-            <div><strong>App # :</strong> WES-9342559</div>
-            <div><strong>Programme :</strong> World Education Services</div>
+            <div><strong>Date:</strong> 07/21/2025</div>
+            <div><strong>Card:</strong> Prepaid</div>
+            <div><strong>Name:</strong> Harouna Abass</div>
+            <div><strong>Number:</strong> **** **** **** ****</div>
+            <div><strong>Amount:</strong> $125</div>
+            <div><strong>App #:</strong> WES-9342559</div>
+            <div><strong>Program:</strong> World Education Services</div>
           </div>
           <div class="application-card-actions">
-            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+            <button class="app-btn btn-delete"><i class="fas fa-trash-alt"></i> Delete</button>
             <button class="app-btn btn-respond" onclick="showPaymentPage('World Education Services', 125)">
-              <i class="fas fa-money-bill-wave"></i> Payer
+              <i class="fas fa-money-bill-wave"></i> Pay
             </button>
           </div>
         </div>
@@ -280,13 +280,13 @@
 
       <div class="application-section">
         <div class="section-header accepted">
-          <i class="fas fa-credit-card"></i> Paiements effectués
+          <i class="fas fa-credit-card"></i> Completed Payments
         </div>
       </div>
 
       <div class="pay-all-container">
         <button class="app-btn btn-pay-all" onclick="payAllPending()">
-            <i class="fas fa-coins"></i> Payer Tous les Paiements en Attente
+            <i class="fas fa-coins"></i> Pay All Pending Payments
         </button>
       </div>
     </div>
@@ -294,28 +294,28 @@
     <div id="notifications-page" style="display: none;">
       <div class="welcome-section">
         <h1>Notifications</h1>
-        <p>Restez informé des mises à jour importantes .</p>
+        <p>Stay informed about important updates.</p>
       </div>
       
       <div class="application-section">
       
         
         <div class="notification-card">
-          <div class="notification-time">22/07/2025, 11:20</div>
-          <h3>Paiement requie </h3>
-          <p> Votre paiement de 150$ pour Houston Community College est requis .</p>
+          <div class="notification-time">07/22/2025, 11:20</div>
+          <h3>Payment Required</h3>
+          <p>Your payment of $150 for Houston Community College is required.</p>
           <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Mark as read</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Delete</button>
           </div>
         </div>
           <div class="notification-card">
-          <div class="notification-time">22/07/2025, 11:20</div>
-          <h3>Paiement requie </h3>
-          <p> Votre paiement de 125$ pour WES est requis .</p>
+          <div class="notification-time">07/22/2025, 11:20</div>
+          <h3>Payment Required</h3>
+          <p>Your payment of $125 for WES is required.</p>
           <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Marquer comme lu</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Supprimer</button>
+            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Mark as read</button>
+            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Delete</button>
           </div>
         </div>
 
@@ -326,7 +326,7 @@
     <div id="program-details-page" style="display: none;">
       <div class="program-details">
         <div class="program-header">
-          <h1 id="program-details-title">Détails du Programme</h1>
+          <h1 id="program-details-title">Program Details</h1>
           <p id="program-details-college">Houston Community College</p>
         </div>
 
@@ -337,28 +337,28 @@
           </div>
 
           <div class="program-section program-requirements">
-            <h2><i class="fas fa-list-check"></i> Exigences</h2>
+            <h2><i class="fas fa-list-check"></i> Requirements</h2>
             <div id="program-requirements"></div>
           </div>
 
           <div class="program-section">
-            <h2><i class="fas fa-calendar-alt"></i> Dates importantes</h2>
+            <h2><i class="fas fa-calendar-alt"></i> Important Dates</h2>
             <div id="program-dates"></div>
           </div>
 
           <div class="program-section">
-            <h2><i class="fas fa-graduation-cap"></i> Perspectives</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Career Prospects</h2>
             <div id="program-careers"></div>
           </div>
         </div>
 
-        <a href="#" class="back-btn" onclick="showPage('demandes')"><i class="fas fa-arrow-left"></i> Retour aux demandes</a>
+        <a href="#" class="back-btn" onclick="showPage('demandes')"><i class="fas fa-arrow-left"></i> Back to Applications</a>
       </div>
     </div>
   </main>
 
   <footer>
-    <div>&copy; 2025 <strong>appliedboard.com</strong> - Plateforme de gestion académique</div>
+    <div>&copy; 2025 <strong>Applyboard.com</strong> - Academic management platform</div>
     <div class="footer-icons">
       <a href="#"><i class="fas fa-envelope"></i></a>
       <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -368,11 +368,11 @@
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
     <div class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">Politique de confidentialité</a>
-      <a href="#">Conditions d'utilisation</a>
-      <a href="#">Accessibilité</a>
-      <a href="#">À propos</a>
+      <a href="#">Legal Notice</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+      <a href="#">About</a>
       <a href="#">Blog</a>
     </div>
   </footer>
