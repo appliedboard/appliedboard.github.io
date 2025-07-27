@@ -1219,3 +1219,23 @@ input:focus, select:focus {
   background: #e6f0ff;
   border-style: solid;
 }
+
+/* Styles pour le bouton "Payer Tout" */
+.pay-all-container {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.btn-pay-all {
+  background-color: #28a745 !important;
+  color: white !important;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.btn-pay-all:hover {
+  background-color: #218838 !important;
+}
