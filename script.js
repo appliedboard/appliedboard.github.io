@@ -172,15 +172,15 @@ education: `
       <div class="education-item" onclick="toggleEducationDetails('master')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">1-YEAR MASTER DEGREE</div>
+          <div class="education-title">1-YEAR LICENCE DEGREE</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-master"></i>
         </div>
         <div class="education-details" id="details-master" style="display: none;">
-          <div class="detail-row"><label>Établissement:</label><span>IPHEC</span></div>
-          <div class="detail-row"><label>Adresse:</label><span>Any Koira, 2288 Niamey</span></div>
-          <div class="detail-row"><label>Période:</label><span>Septembre 2019 - Juin 2020</span></div>
-          <div class="detail-row"><label>Moyenne:</label><span>11.98/20</span></div>
-          <div class="detail-row"><label>Spécialisation:</label><span>LOGISTIQUE-TRANSPORT</span></div>
+          <div class="detail-row"><label>Établissement:</label><span>ESCOM</span></div>
+          <div class="detail-row"><label>Adresse:</label><span>Niamey</span></div>
+          <div class="detail-row"><label>Période:</label><span>Septembre 2023 - Juin 2024</span></div>
+          <div class="detail-row"><label>Moyenne:</label><span>13/20</span></div>
+          <div class="detail-row"><label>Spécialisation:</label><span>COMMNICATION</span></div>
           <div class="detail-row"><label>Diplôme obtenu:</label><span>Oui</span></div>
         </div>
       </div>
@@ -188,7 +188,7 @@ education: `
        <div class="education-item" onclick="toggleEducationDetails('licence1')">
         <div class="education-header">
           <i class="fas fa-circle icon-red"></i>
-          <div class="education-title">1-YEAR BTS</div>
+          <div class="education-title"2-YEAR BTS</div>
           <i class="fas fa-chevron-down toggle-icon" id="toggle-licence1"></i>
         </div>
         <div class="education-details" id="details-licence1" style="display: none;">
@@ -304,7 +304,7 @@ documents: `
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="licence_2" disabled>
-          <label for="licence_2">Transcript ECCAM</label>
+          <label for="licence_2">Transcript BTS</label>
         </div>
         <div class="document-status status-pending">
           <span><i class="fas fa-clock"></i> En attente</span>
