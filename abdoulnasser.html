@@ -233,7 +233,7 @@
           <div class="application-card-content">
             <div><strong>Date:</strong> 07/20/2025</div>
             <div><strong>Card:</strong> Prepaid</div>
-            <div><strong>Name:</strong> Harouna Abass</div>
+            <div><strong>Name:</strong> Mahamadou Rouwane</div>
             <div><strong>Number:</strong> **** **** **** ****</div>
             <div><strong>Amount:</strong> $75</div>
             <div><strong>App #:</strong> HCC-9362701</div>
@@ -257,7 +257,7 @@
           <div class="application-card-content">
             <div><strong>Date:</strong> 07/21/2025</div>
             <div><strong>Card:</strong> Prepaid</div>
-            <div><strong>Name:</strong> Harouna Abass</div>
+            <div><strong>Name:</strong>  Mahamadou Rouwane</div>
             <div><strong>Number:</strong> **** **** **** ****</div>
             <div><strong>Amount:</strong> $125</div>
             <div><strong>App #:</strong> WES-9342559</div>
@@ -276,13 +276,73 @@
         <div class="section-header accepted">
           <i class="fas fa-credit-card"></i> Completed Payments
         </div>
+
+            <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Paied</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 07/17/2025</div>
+            <div><strong>Carte :</strong> prépayée</div>
+            <div><strong>Nom :</strong> MAHAMADOU ROUWANE</div>
+            <div><strong>Numéro :</strong> **** **** **** 2641 </div>
+            <div><strong>Montant :</strong> 75$</div>
+            <div><strong>App # :</strong> HCC-7452903</div>
+            <div><strong>Programme :</strong> Logistics and Global Supply Chain Management</div>
+          </div>
+          <div class="application-card-actions">
+         <!--   <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button> -->
+          </div>
+        </div> 
+        
+        <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Paied</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 07/17/2025</div>
+            <div><strong>Carte :</strong> prépayée</div>
+            <div><strong>Nom :</strong> MAHAMADOU ROUWANE</div>
+            <div><strong>Numéro :</strong> **** **** **** 2641 </div>
+            <div><strong>Montant :</strong> 75$</div>
+            <div><strong>App # :</strong> HCC-7452904</div>
+            <div><strong>Programme :</strong>  International Business </div>
+          </div>
+          <div class="application-card-actions">
+         <!--   <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button> -->
+          </div>
+        </div> 
+
+       <div class="application-card" onclick="handleCardClick(this)">
+          <div class="application-card-header">
+            <div class="application-card-header-left">
+              <i class="fas fa-check-circle status-icon status-accepted"></i>
+              <strong>Paied</strong>
+            </div>
+          </div>
+          <div class="application-card-content">
+            <div><strong>Date :</strong> 01/17/2025</div>
+            <div><strong>Carte :</strong> prépayée </div>
+            <div><strong>Nom :</strong> MAHAMADOU ROUWANE</div>
+            <div><strong>Numéro :</strong> **** **** **** 2641</div>
+            <div><strong>Montant :</strong> 125$</div>
+            <div><strong>App # :</strong> HCC-6219932</div>
+            <div><strong>Programme :</strong>Evaluations for international students and immigrants</div>
+          </div>
+          <div class="application-card-actions">
+         <!--   <button class="app-btn btn-download"><i class="fas fa-download"></i> Télécharger</button> -->
+          </div>
+        </div> 
+        
       </div>
 
-      <div class="pay-all-container">
-        <button class="app-btn btn-pay-all" onclick="payAllPending()">
-            <i class="fas fa-coins"></i> Pay All Pending Payments
-        </button>
-      </div>
+     
     </div>
     
     <div id="notifications-page" style="display: none;">
@@ -294,24 +354,21 @@
       <div class="application-section">
       
         
-        <div class="notification-card">
-          <div class="notification-time">07/22/2025, 11:20</div>
-          <h3>Payment Required</h3>
-          <p>Your payment of $150 for Houston Community College is required.</p>
-          <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Mark as read</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Delete</button>
-          </div>
-        </div>
-          <div class="notification-card">
-          <div class="notification-time">07/22/2025, 11:20</div>
-          <h3>Payment Required</h3>
-          <p>Your payment of $125 for WES is required.</p>
-          <div class="notification-actions">
-            <button class="notification-btn btn-mark-read" onclick="markAsRead(this)">Mark as read</button>
-            <button class="notification-btn btn-delete-notif" onclick="deleteNotification(this)">Delete</button>
-          </div>
-        </div>
+        <div class="payment-card payment-completed">
+    <div class="payment-time">07/17/2025, 11:27</div>
+    <h3>Payment Confirmed</h3>
+    <p>Your payment of <strong>$150</strong> for <strong>Houston Community College</strong> has been successfully processed.</p>
+    <div class="payment-actions">
+    </div>
+</div>
+
+<div class="payment-card payment-completed">
+    <div class="payment-time">07/17/2025, 11:23</div>
+    <h3>Payment Confirmed</h3>
+    <p>Your payment of <strong>$125</strong> for <strong>WES</strong> has been successfully processed.</p>
+    <div class="payment-actions">
+    </div>
+</div>
 
         
       </div>
