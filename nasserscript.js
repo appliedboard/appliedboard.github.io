@@ -265,22 +265,32 @@ documents: `
       </div>
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="financial" disabled checked>
-          <label for="financial">Preuves financières</label>
+          <input type="checkbox" id="photos" disabled checked>
+          <label for="photos">Photos d'identité</label>
         </div>
         <div class="document-status status-uploaded">
           <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('finance')"><i class="fas fa-download"></i> Télécharger</button>
+          <button class="app-btn btn-download" onclick="downloadDocument('photos')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
         <div class="document-info">
           <input type="checkbox" id="BAC" disabled checked>
-          <label for="BAC">BAC Transcript</label>
+          <label for="BAC">Relevé de notes - Baccalauréat</label>
         </div>
         <div class="document-status status-uploaded">
           <span><i class="fas fa-check-circle"></i> Téléchargé</span>
           <button class="app-btn btn-download" onclick="downloadDocument('bac')"><i class="fas fa-download"></i> Télécharger</button>
+        </div>
+      </div>
+       <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="dut" disabled checked>
+          <label for="dut">Diplôme / Relevé de notes - DUT (Génie Rural)</label>
+        </div>
+        <div class="document-status status-uploaded">
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('dut')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
@@ -295,62 +305,32 @@ documents: `
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Etude" disabled checked>
-          <label for="Etude">Projet d'étude</label>
+          <input type="checkbox" id="Recomandation" disabled>
+          <label for="Recomandation">Lettre De Recommandation</label>
         </div>
-        <div class="document-status status-uploaded">
-          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('etude')"><i class="fas fa-download"></i> Télécharger</button>
+        <div class="document-status status-pending">
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('recommandation')"><i class="fas fa-upload"></i> Téléverser</button>
+        </div>
+      </div>
+      <div class="document-item">
+        <div class="document-info">
+          <input type="checkbox" id="financial" disabled>
+          <label for="financial">Preuves financières</label>
+        </div>
+        <div class="document-status status-pending">
+          <span><i class="fas fa-clock"></i> En attente</span>
+          <button class="app-btn btn-upload" onclick="uploadDocument('finance')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Recomandation" disabled checked>
-          <label for="Recomandation">Lettre De Recommandation</label>
-        </div>
-        <div class="document-status status-uploaded">
-          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('recommandation')"><i class="fas fa-download"></i> Télécharger</button>
-        </div>
-      </div>
-      <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="licence_2" disabled>
-          <label for="licence_2">Transcript ECCAM</label>
+          <input type="checkbox" id="Etude" disabled>
+          <label for="Etude">Projet d'étude</label>
         </div>
         <div class="document-status status-pending">
           <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('licence_2')"><i class="fas fa-upload"></i> Téléverser</button>
-        </div>
-      </div>
-      <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="licence_3" disabled>
-          <label for="licence_3">Transcript ESCOM</label>
-        </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('licence_3')"><i class="fas fa-upload"></i> Téléverser</button>
-        </div>
-      </div>
-	    <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="master_1" disabled>
-          <label for="master_1">Transcript IPHEC</label>
-        </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('Master_1')"><i class="fas fa-upload"></i> Téléverser</button>
-        </div>
-      </div>
-      <div class="document-item">
-        <div class="document-info">
-          <input type="checkbox" id="photos" disabled checked>
-          <label for="photos">Photos d'identité</label>
-        </div>
-        <div class="document-status status-uploaded">
-          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
-          <button class="app-btn btn-download" onclick="downloadDocument('photos')"><i class="fas fa-download"></i> Télécharger</button>
+          <button class="app-btn btn-upload" onclick="uploadDocument('etude')"><i class="fas fa-upload"></i> Téléverser</button>
         </div>
       </div>
     </div>
