@@ -305,32 +305,32 @@ documents: `
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Recomandation" disabled>
+          <input type="checkbox" id="Recomandation" disabled checked>
           <label for="Recomandation">Lettre De Recommandation</label>
         </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('recommandation')"><i class="fas fa-upload"></i> Téléverser</button>
+        <div class="document-status status-uploaded">
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('recommandation')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
       <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="financial" disabled>
+          <input type="checkbox" id="financial" disabled checked>
           <label for="financial">Preuves financières</label>
         </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('finance')"><i class="fas fa-upload"></i> Téléverser</button>
+        <div class="document-status status-uploaded">
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('finance')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
        <div class="document-item">
         <div class="document-info">
-          <input type="checkbox" id="Etude" disabled>
+          <input type="checkbox" id="Etude" disabled checked>
           <label for="Etude">Projet d'étude</label>
         </div>
-        <div class="document-status status-pending">
-          <span><i class="fas fa-clock"></i> En attente</span>
-          <button class="app-btn btn-upload" onclick="uploadDocument('etude')"><i class="fas fa-upload"></i> Téléverser</button>
+        <div class="document-status status-uploaded">
+          <span><i class="fas fa-check-circle"></i> Téléchargé</span>
+          <button class="app-btn btn-download" onclick="downloadDocument('etude')"><i class="fas fa-download"></i> Télécharger</button>
         </div>
       </div>
     </div>
