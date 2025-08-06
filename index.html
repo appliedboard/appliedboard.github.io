@@ -122,27 +122,30 @@
     </div>
   </div>
 
-  <script>
-    function verifierConnexion(event) {
-      event.preventDefault(); // Empêche l'envoi du formulaire
+ <script>
+  function verifierConnexion(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      if (
-        email === "kodahabasse@gmail.com" &&
-        password === "Harouna1999"
-      ) {
-        window.location.href = "harouna.html";
-      } else  if (
-        email === "Nasser.Usa.2025" &&
-        password === "abdoulnasser2025.Usa"
-      ) {
-        window.location.href = "abdoulnasser.html";
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
+    if (
+      email === "kodahabasse@gmail.com" &&
+      password === "Harouna1999"
+    ) {
+      // Stocker l'état de connexion
+      sessionStorage.setItem('isAuthenticated', 'true');
+      window.location.href = "harouna.html";
+    } else if (
+      email === "Nasser.Usa.2025" &&
+      password === "abdoulnasser2025.Usa"
+    ) {
+      // Stocker l'état de connexion
+      sessionStorage.setItem('isAuthenticated', 'true');
+      window.location.href = "abdoulnasser.html";
+    } else {
+      document.getElementById("error").style.display = "block";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
