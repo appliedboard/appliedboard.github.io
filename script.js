@@ -704,7 +704,6 @@ function completePayment(programName, amount) {
 
     // Ici, vous enverriez normalement les données à un serveur
     // Pour cet exemple, nous allons simplement les stocker dans localStorage
-
 	  // Créer l'objet de données à envoyer
     const profileData = {
       firstName: name,
