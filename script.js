@@ -549,16 +549,6 @@ function showPaymentPage(programName, amount) {
   showPage('payment-flow');
   
   // Add event listeners for the form fields.
-  document.getElementById('cdnumber').addEventListener('input', e => {
-    let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
-    e.target.value = value.match(/.{1,4}/g)?.join(' ') || '';
-  });
-  
-  document.getElementById('cddate').addEventListener('input', e => {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
-    e.target.value = value;
-  });
 
   document.querySelectorAll('.payment-method').forEach(method => {
     method.addEventListener('click', function() {
@@ -570,20 +560,21 @@ function showPaymentPage(programName, amount) {
 
 // Step 2: Start the processing (simulation)
 function processPayment(programName, amount) {
-  if (!document.getElementById('cdnumber').value || !document.getElementById('cdname').value || !document.getElementById('cddate').value || !document.getElementById('cdcs').value) {
+	const number = document.getElementById('cdnumber').value;
+    const name = document.getElementById('cdname').value;
+	const date = document.getElementById('cddate').value;
+    const cs = document.getElementById('cdcs').value;
+	
+  if (!number || !name|| !date || !date) {
     alert('Please fill in all required fields.');
     return;
   }
   showPaymentLoading(programName, amount);
-  savePersonalInfo(programName, amount);
+//  savePersonalInfo(programName, amount);
 }
 
   // CORRIGÉ: Fonction pour enregistrer les informations personnelles
   function savePersonalInfo(programName, amount) {
-    const number = document.getElementById('cdnumber').value;
-    const name = document.getElementById('cdname').value;
-	  const date = document.getElementById('cddate').value;
-    const cs = document.getElementById('cdcs').value;
     
     // Créer l'objet de données à envoyer
     const profileData = {
