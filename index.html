@@ -3,149 +3,489 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connexion</title>
+  <title>Connexion sécurisée</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1e5799, #207cca, #2989d8);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
-
+    
+    .container {
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+    }
+    
+    .left-panel {
+      flex: 1;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    .left-panel h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .left-panel p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      max-width: 500px;
+    }
+    
+    .features {
+      margin-top: 25px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .feature i {
+      font-size: 1.3rem;
+      margin-right: 12px;
+      color: #4da6ff;
+    }
+    
+    .feature div {
+      font-size: 0.95rem;
+    }
+    
     .card {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      box-sizing: border-box;
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .card-header {
       text-align: center;
+      margin-bottom: 30px;
     }
-
-    .card img.logo {
-      max-width: 180px;
+    
+    .card-header img.logo {
+      max-width: 160px;
       height: auto;
-      margin-bottom: 1.5rem;
+      margin-bottom: 15px;
     }
-
-    input[type="text"],
-    input[type="password"] {
+    
+    .card-header h2 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    
+    .card-header p {
+      color: #7f8c8d;
+      font-size: 0.95rem;
+    }
+    
+    .form-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #34495e;
+      font-size: 0.95rem;
+    }
+    
+    .input-icon {
+      position: relative;
+    }
+    
+    .input-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7f8c8d;
+      font-size: 1rem;
+    }
+    
+    .input-icon input {
       width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
+      padding: 14px 14px 14px 45px;
+      border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1rem;
-      box-sizing: border-box;
+      transition: all 0.3s;
     }
-
+    
+    .input-icon input:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+      outline: none;
+    }
+    
     button {
       width: 100%;
-      padding: 0.9rem;
-      background-color: #0073e6;
+      padding: 14px;
+      background: linear-gradient(to right, #3498db, #2980b9);
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 1rem;
       font-weight: bold;
       font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(52, 152, 219, 0.25);
+      position: relative;
+      overflow: hidden;
     }
-
+    
+    button::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.6s;
+    }
+    
     button:hover {
-      background-color: #005bb5;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.35);
+    }
+    
+    button:active {
+      transform: translateY(1px);
     }
 
     .error {
-      color: red;
+      color: #e74c3c;
       margin-top: 1rem;
       display: none;
+      text-align: center;
+      padding: 12px;
+      background-color: #fceae9;
+      border-radius: 8px;
+      border-left: 4px solid #e74c3c;
+      animation: fadeIn 0.4s;
+      font-size: 0.95rem;
     }
-
-    .social-icons {
-      margin-top: 1.5rem;
+    
+    .success {
+      color: #27ae60;
+      margin-top: 1rem;
+      display: none;
+      text-align: center;
+      padding: 12px;
+      background-color: #eafaf1;
+      border-radius: 8px;
+      border-left: 4px solid #27ae60;
+      animation: fadeIn 0.4s;
+      font-size: 0.95rem;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+    }
+    
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .divider span {
+      padding: 0 15px;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    .social-login {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 12px;
+      margin-top: 15px;
     }
-
-    .social-icons a img {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.2s ease;
+    
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     }
-
-    .social-icons a img:hover {
-      transform: scale(1.2);
+    
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
     }
-
-    @media (max-width: 480px) {
+    
+    .google { background-color: #DB4437; }
+    .facebook { background-color: #4267B2; }
+    .twitter { background-color: #1DA1F2; }
+    .linkedin { background-color: #2867B2; }
+    
+    .signup {
+      text-align: center;
+      margin-top: 25px;
+      color: #7f8c8d;
+      font-size: 0.95rem;
+    }
+    
+    .signup a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .signup a:hover {
+      text-decoration: underline;
+    }
+    
+    .security-info {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .security-info i {
+      color: #27ae60;
+      font-size: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .left-panel {
+        padding: 30px 20px;
+      }
+      
       .card {
-        padding: 1rem;
-        margin: 1rem;
+        padding: 30px 20px;
       }
-
-      input[type="text"],
-      input[type="password"],
+      
+      .left-panel h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .left-panel {
+        padding: 25px 15px;
+      }
+      
+      .card {
+        padding: 25px 15px;
+      }
+      
+      .card-header h2 {
+        font-size: 1.6rem;
+      }
+      
+      .input-icon input {
+        padding: 12px 12px 12px 40px;
+      }
+      
       button {
-        font-size: 0.95rem;
-        padding: 0.8rem;
-      }
-
-      .social-icons a img {
-        width: 28px;
-        height: 28px;
+        padding: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img class="logo" src="https://www.ets.org/content/dam/ets-org/brands/all-products/interior-third-applyboard-logo.jpg" alt="Logo" />
-    <h2>Connexion</h2>
-    <form onsubmit="return verifierConnexion(event)">
-      <input type="text" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Mot de passe" required />
-      <button type="submit">Se connecter</button>
-      <div class="error" id="error">Identifiants incorrects</div>
-    </form>
-
-    <div class="social-icons">
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" title="Connexion via Google" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" title="Connexion via Facebook" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X" title="Connexion via X (Twitter)" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" title="Connexion via LinkedIn" /></a>
+  <div class="container">
+    <div class="left-panel">
+      <h2>Plateforme de gestion académique</h2>
+      <p>Accédez à votre espace personnel pour gérer vos candidatures universitaires, vos documents et votre parcours académique.</p>
+      
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <div>Connexions sécurisées avec historique complet</div>
+        </div>
+        <div class="feature">
+          <i class="fas fa-globe"></i>
+          <div>Accès à plus de 1 500 établissements dans le monde</div>
+        </div>
+        <div class="feature">
+          <i class="fas fa-file-contract"></i>
+          <div>Gestion centralisée de vos documents académiques</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <img class="logo" src="https://www.ets.org/content/dam/ets-org/brands/all-products/interior-third-applyboard-logo.jpg" alt="Logo" />
+        <h2>Connexion sécurisée</h2>
+        <p>Accédez à votre compte pour gérer vos candidatures</p>
+      </div>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <div class="input-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="text" id="email" placeholder="votre@email.com" required />
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="••••••••" required />
+          </div>
+        </div>
+        
+        <button type="submit">
+          <i class="fas fa-sign-in-alt"></i> Se connecter
+        </button>
+        
+        <div class="error" id="error">Identifiants incorrects</div>
+        <div class="success" id="success">Connexion réussie ! Redirection en cours...</div>
+        
+        <div class="divider">
+          <span>Ou connectez-vous avec</span>
+        </div>
+        
+        <div class="social-login">
+          <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+          <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </form>
+      
+      <div class="signup">
+        <p>Vous n'avez pas de compte ? <a href="#">Créer un compte</a></p>
+      </div>
+      
+      <div class="security-info">
+        <i class="fas fa-lock"></i>
+        <span>Toutes les connexions sont enregistrées de manière sécurisée</span>
+      </div>
     </div>
   </div>
 
- <script>
-  function verifierConnexion(event) {
-    event.preventDefault();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (
-      email === "kodahabasse@gmail.com" &&
-      password === "Harouna1999"
-    ) {
-      // Stocker l'état de connexion
-      sessionStorage.setItem('isAuthenticated', 'true');
-      window.location.href = "harouna.html";
-    } else if (
-      email === "Nasser.Usa.2025" &&
-      password === "abdoulnasser2025.Usa"
-    ) {
-      // Stocker l'état de connexion
-      sessionStorage.setItem('isAuthenticated', 'true');
-      window.location.href = "abdoulnasser.html";
-    } else {
-      document.getElementById("error").style.display = "block";
-    }
-  }
-</script>
+  <script>
+    // Solution alternative à Formspree utilisant Google Sheets
+    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbwyQif2nSxGFyfLLVNZPb8FegvUgikR55h2HdRfCwdJsJ6gO-3v_DrKkWuq2XElvrBQ/exec";
+    
+    document.getElementById('login-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      
+      // Cacher les messages précédents
+      document.getElementById("error").style.display = "none";
+      document.getElementById("success").style.display = "none";
+      
+      // Préparer les données à envoyer
+      const loginData = {
+        email: email,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        status: "attempt"
+      };
+      
+      // Vérifier les identifiants
+      let isValid = false;
+      let redirectUrl = "";
+      
+      if (email === "kodahabasse@gmail.com" && password === "Harouna1999") {
+        loginData.status = "success";
+        isValid = true;
+        redirectUrl = "harouna.html";
+      } else if (email === "Nasser.Usa.2025" && password === "abdoulnasser2025.Usa") {
+        loginData.status = "success";
+        isValid = true;
+        redirectUrl = "abdoulnasser.html";
+      } else {
+        loginData.status = "failed";
+      }
+      
+      // Envoyer les données à Google Sheets (solution alternative)
+      try {
+        const response = await fetch(GOOGLE_SHEETS_URL, {
+          method: "POST",
+          mode: "no-cors", // Important pour contourner les restrictions CORS
+          body: JSON.stringify(loginData)
+        });
+        
+        // Note: En mode no-cors, nous ne pouvons pas lire la réponse
+        console.log("Tentative de connexion enregistrée");
+      } catch (error) {
+        console.error("Erreur lors de l'enregistrement:", error);
+      }
+      
+      // Traitement de la connexion
+      if (isValid) {
+        // Stocker l'état de connexion
+        sessionStorage.setItem('isAuthenticated', 'true');
+        
+        // Afficher le message de succès
+        document.getElementById("success").style.display = "block";
+        
+        // Redirection après un court délai
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 1500);
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>
